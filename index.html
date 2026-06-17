@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>醫檢師細菌分類大綱 ── G+球菌（定版模板）</title>
+<style>
+  :root{
+    --gp:#7b3fa0;        /* Gram(+) 紫 */
+    --gp-soft:#f3e9fb;
+    --gp-line:#d9b8ee;
+    --gn:#e8639a;        /* Gram(-) 粉（供日後使用） */
+    --ink:#1f2330;
+    --muted:#6b6f80;
+    --bg:#faf8fc;
+    --card:#ffffff;
+    --star:#e8a317;
+    --ok:#1f9d57;
+    --warn:#c0392b;
+    --chip:#eef0f6;
+    --shadow:0 1px 3px rgba(30,20,50,.08),0 6px 18px rgba(30,20,50,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    line-height:1.65;font-size:15.5px;}
+  header.top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#fff,#fbf7ff);
+    border-bottom:2px solid var(--gp-line);box-shadow:var(--shadow);padding:14px 20px;}
+  .title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .gp-badge{background:var(--gp);color:#fff;border-radius:8px;padding:4px 12px;font-weight:700;font-size:14px;letter-spacing:1px}
+  h1{font-size:20px;margin:0;font-weight:800}
+  .sub{color:var(--muted);font-size:13px;margin-top:2px}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  #search{flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--gp-line);border-radius:10px;font-size:15px;outline:none}
+  #search:focus{border-color:var(--gp);box-shadow:0 0 0 3px var(--gp-soft)}
+  .tagbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .tagfilter{cursor:pointer;border:1.5px solid var(--gp-line);background:#fff;color:var(--ink);
+    border-radius:999px;padding:5px 13px;font-size:13px;user-select:none;transition:.15s}
+  .tagfilter:hover{border-color:var(--gp)}
+  .tagfilter.active{background:var(--gp);color:#fff;border-color:var(--gp)}
+  .btn-mini{cursor:pointer;border:1.5px solid var(--gp-line);background:#fff;border-radius:8px;padding:6px 12px;font-size:13px}
+  .btn-mini:hover{border-color:var(--gp)}
+  main{max-width:1080px;margin:0 auto;padding:22px 18px 80px}
+  .flow{background:var(--gp-soft);border:1.5px solid var(--gp-line);border-radius:14px;padding:18px 20px;margin:8px 0 26px}
+  .flow h2{margin:0 0 12px;font-size:17px;color:var(--gp);display:flex;align-items:center;gap:8px}
+  .flow-svg-wrap{overflow-x:auto}
+  .group{margin-bottom:30px}
+  .group-head{cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--gp);color:#fff;
+    padding:11px 16px;border-radius:10px;font-weight:800;font-size:16px;user-select:none}
+  .group-head .arrow{transition:.2s;font-size:13px}
+  .group.collapsed .group-head .arrow{transform:rotate(-90deg)}
+  .group.collapsed .group-body{display:none}
+  .group-body{padding-top:14px;display:grid;gap:16px}
+  .card{background:var(--card);border:1px solid var(--gp-line);border-left:6px solid var(--gp);
+    border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .card-head{cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;flex-wrap:wrap}
+  .card-head .name-zh{font-weight:800;font-size:16px}
+  .card-head .name-en{font-style:italic;color:var(--gp);font-weight:600;font-size:14.5px}
+  .stars{color:var(--star);font-size:14px;letter-spacing:1px}
+  .card-head .arrow{margin-left:auto;color:var(--muted);transition:.2s;font-size:13px}
+  .card.collapsed .arrow{transform:rotate(-90deg)}
+  .card.collapsed .card-body{display:none}
+  .chips{display:flex;gap:5px;flex-wrap:wrap}
+  .chip{background:var(--chip);border-radius:6px;padding:2px 9px;font-size:11.5px;color:#4a5168;white-space:nowrap}
+  .chip.sys{background:#e7f3ff;color:#1c6fb8}
+  .card-body{padding:4px 16px 16px;border-top:1px dashed var(--gp-line)}
+  .field{padding:9px 0;border-bottom:1px solid #f0eef5;display:grid;grid-template-columns:148px 1fr;gap:10px}
+  .field:last-child{border-bottom:none}
+  .field .k{font-weight:700;color:var(--gp);font-size:13.5px}
+  .field .v{font-size:14.5px}
+  .field .v b{color:var(--warn)}
+  .pos{color:var(--ok);font-weight:700}
+  .neg{color:var(--warn);font-weight:700}
+  .hot{background:#fff7e6;border:1px solid #ffe2a8;border-radius:8px;padding:10px 12px;margin-top:4px}
+  .hot .k{color:#b9770e}
+  table.qa{width:100%;border-collapse:collapse;margin-top:6px;font-size:13px}
+  table.qa td{border:1px solid #ece8f3;padding:5px 8px;vertical-align:top}
+  table.qa td.yr{white-space:nowrap;color:var(--gp);font-weight:700;width:96px}
+  .nohit{text-align:center;color:var(--muted);padding:40px}
+  .legend{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .ref{font-size:12.5px;color:var(--muted);border-top:1px solid var(--gp-line);margin-top:30px;padding-top:14px}
+  /* flowchart boxes */
+  .fc{display:flex;flex-direction:column;gap:0;font-size:13.5px;min-width:560px}
+  .fc-row{display:flex;align-items:center;gap:8px;margin:3px 0;flex-wrap:wrap}
+  .fc-test{background:#fff;border:1.5px solid var(--gp);border-radius:8px;padding:5px 11px;font-weight:700;color:var(--gp)}
+  .fc-arm{display:flex;align-items:center;gap:7px;margin-left:14px}
+  .fc-cond{font-weight:700}
+  .fc-cond.p{color:var(--ok)}
+  .fc-cond.n{color:var(--warn)}
+  .fc-result{background:var(--gp-soft);border:1px solid var(--gp-line);border-radius:8px;padding:4px 10px;font-style:italic}
+  .fc-arrow{color:var(--muted)}
+  @media(max-width:640px){
+    .field{grid-template-columns:1fr;gap:2px}
+    .field .k{font-size:12.5px}
+    h1{font-size:17px}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title-row">
+    <span class="gp-badge">GRAM ⊕</span>
+    <div>
+      <h1>醫檢師細菌分類大綱 ── 革蘭氏陽性球菌（G⁺ Cocci）</h1>
+      <div class="sub">科目：微生物學與臨床微生物學（包括細菌與黴菌）｜定版模板 v1.0｜資料依據：Mahon《Textbook of Diagnostic Microbiology》、Murray《Medical Microbiology》</div>
+    </div>
+  </div>
+  <div class="controls">
+    <input id="search" type="text" placeholder="🔍 即時搜尋：菌名、試驗、培養基、疾病、毒素…（例 coagulase、optochin、CAMP、風濕熱）">
+    <span class="btn-mini" id="expandAll">全部展開</span>
+    <span class="btn-mini" id="collapseAll">全部收合</span>
+  </div>
+  <div class="tagbar" id="tagbar">
+    <span style="font-size:13px;color:var(--muted);align-self:center;margin-right:2px">臨床系統：</span>
+  </div>
+  <div class="legend">⭐ 高頻考點標記（依 101–115 年醫檢師「微生物學與臨床微生物學」考古題頻率）｜⭐⭐⭐ 極高頻 ⭐⭐ 高頻 ⭐ 常見</div>
+</header>
+
+<main>
+  <!-- ===== 分流圖 ===== -->
+  <section class="flow">
+    <h2>🧭 G⁺ 球菌鑑定流程分流圖</h2>
+    <div class="flow-svg-wrap">
+      <div class="fc">
+        <div class="fc-row"><span class="fc-test">Gram 染色 → G⁺ 球菌</span><span class="fc-arrow">→</span><span class="fc-test">Catalase</span></div>
+        <div class="fc-arm"><span class="fc-cond p">陽性 (+)</span><span class="fc-arrow">→</span><span class="fc-test">Staphylococcus / Micrococcus（葡萄串狀）</span><span class="fc-arrow">→</span><span class="fc-test">Coagulase</span></div>
+        <div class="fc-arm" style="margin-left:42px"><span class="fc-cond p">(+)</span><span class="fc-arrow">→</span><span class="fc-result">S. aureus</span></div>
+        <div class="fc-arm" style="margin-left:42px"><span class="fc-cond n">(−) CoNS</span><span class="fc-arrow">→</span><span class="fc-test">Novobiocin</span>
+          <span class="fc-arrow">：</span><span class="fc-cond n">抗藥(R)</span>→<span class="fc-result">S. saprophyticus</span>
+          <span style="margin-left:6px"></span><span class="fc-cond p">感受(S)</span>→<span class="fc-result">S. epidermidis</span></div>
+        <div class="fc-arm"><span class="fc-cond n">陰性 (−)</span><span class="fc-arrow">→</span><span class="fc-test">Streptococcus / Enterococcus（鏈狀）</span><span class="fc-arrow">→</span><span class="fc-test">BAP 溶血型</span></div>
+        <div class="fc-arm" style="margin-left:42px"><span class="fc-cond" style="color:#1c6fb8">β 溶血</span><span class="fc-arrow">→</span><span class="fc-test">Bacitracin / PYR / CAMP</span>
+          <span class="fc-arrow">：</span><span class="fc-result">Bacitracin-S, PYR(+) → A群 S. pyogenes</span>
+          <span class="fc-result">CAMP(+)/hippurate(+) → B群 S. agalactiae</span></div>
+        <div class="fc-arm" style="margin-left:42px"><span class="fc-cond" style="color:#1c6fb8">α 溶血</span><span class="fc-arrow">→</span><span class="fc-test">Optochin / Bile solubility</span>
+          <span class="fc-arrow">：</span><span class="fc-result">Optochin-S, 膽溶(+) → S. pneumoniae</span>
+          <span class="fc-result">Optochin-R, 膽溶(−) → Viridans strep.</span></div>
+        <div class="fc-arm" style="margin-left:42px"><span class="fc-cond" style="color:var(--muted)">γ/變異</span><span class="fc-arrow">→</span><span class="fc-test">Bile esculin + 6.5% NaCl</span>
+          <span class="fc-arrow">：</span><span class="fc-result">兩者(+), PYR(+) → Enterococcus</span>
+          <span class="fc-result">BE(+), 6.5%NaCl(−) → S. bovis（D群非腸球菌）</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cards"></div>
+  <div class="nohit" id="nohit" style="display:none">查無符合條件的菌種，請調整搜尋或篩選條件。</div>
+
+  <div class="ref">
+    <b>參考依據：</b>Mahon CR, Lehman DC. <i>Textbook of Diagnostic Microbiology</i>；Murray PR, et al. <i>Medical Microbiology</i>。
+    考題來源：考選部歷年「醫事檢驗師」國家考試「微生物學與臨床微生物學（包括細菌與黴菌）」試卷（民國 101–115 年），經 twinkle-hub 國考資料庫檢索。
+    試卷原檔可於考選部考畢試題查詢系統 (wwwq.moex.gov.tw) 以年度與題號調閱。
+  </div>
+</main>
+
+<script>
+/* ===== 資料：G+ 球菌 ===== */
+const SYS = ["呼吸道","腸道","泌尿","血流","CNS","STI","皮膚軟組織"];
+const DATA = [
+{
+  group:"Staphylococcus（葡萄球菌）", id:"saureus",
+  zh:"金黃色葡萄球菌", en:"Staphylococcus aureus", stars:3,
+  sys:["皮膚軟組織","血流","呼吸道","腸道"],
+  morph:"G⁺ 球菌，<b>葡萄串狀</b>排列 (grape-like clusters)，0.5–1.5 µm，無芽孢、無動性，部分具莢膜。",
+  oxy:"兼性厭氧；<span class='pos'>catalase (+)</span>、oxidase (−)。",
+  media:"MSA（Mannitol Salt Agar，7.5% NaCl）：<b>發酵甘露醇</b>使酚紅變黃 → 黃色菌落；BAP：金黃色、<b>β 溶血</b>菌落；CHROMagar S. aureus。",
+  tests:"<span class='pos'>Coagulase (+)</span>（slide=bound/clumping factor；tube=free coagulase）；<span class='pos'>thermostable DNase (+)</span>；mannitol (+)；novobiocin-S；VP (+)；PYR (−)。",
+  vir:"protein A（結合 IgG Fc 段抗吞噬）、coagulase、TSST-1（超抗原）、腸毒素 A–E（<b>耐熱</b>，食物中毒）、exfoliative toxin（SSSS）、PVL、α-toxin、溶血素。",
+  dis:"皮膚軟組織感染（癤、膿瘍、蜂窩組織炎）、菌血症/心內膜炎、骨髓炎、肺炎、<b>食物中毒</b>（嘔吐為主，潛伏期短 1–6 h）、毒性休克症候群 (TSS)、燙傷樣皮膚症候群 (SSSS)。",
+  resist:"<b>MRSA</b>：mecA 基因 → PBP2a，對所有 β-lactam 抗藥；偵測 gold standard＝<b>mecA 基因</b>（或 cefoxitin disk）；VISA/VRSA 罕見 (vanA)。",
+  hot:"① coagulase (+) 為與 CoNS 的分界線。② thermostable DNase 與 coagulase 高度一致，可輔助鑑定。③ MRSA 機轉＝mecA→PBP2a（非 β-lactamase）。④ protein A 用於 coagglutination test。⑤ 易混淆：<i>S. lugdunensis</i> 可 slide-coagulase(+)、tube-coagulase(−)，且帶 mecA、ornithine decarboxylase(+)，勿誤判為 S. aureus。",
+  qa:[
+    ["113年 第17題","由心內膜炎病人分離之 G⁺ 球菌，slide coagulase(+)、tube coagulase(−)、具 mecA、ornithine decarboxylase(+) → 最可能為何菌？（鑑別 S. lugdunensis vs S. aureus）"],
+    ["109年 第33題","關於 S. aureus coagulase 之敘述，下列何者錯誤？（coagulase 對熱穩定、具抗原性）"],
+    ["104年 第16/18題","偵測 methicillin 抗藥性之 gold standard＝偵測 mecA；與 coagulase 高度一致之試驗＝thermostable DNase。"]
+  ]
+},
+{
+  group:"Staphylococcus（葡萄球菌）", id:"sepi",
+  zh:"表皮葡萄球菌", en:"Staphylococcus epidermidis", stars:2,
+  sys:["血流"],
+  morph:"G⁺ 球菌，葡萄串狀排列。凝固酶陰性葡萄球菌 (CoNS) 代表。",
+  oxy:"兼性厭氧；<span class='pos'>catalase (+)</span>。",
+  media:"BAP：白色、<b>非溶血</b>菌落；MSA：<b>不發酵甘露醇</b>（培養基不變黃，仍為紅/粉色）。",
+  tests:"<span class='neg'>Coagulase (−)</span>；<b>novobiocin 感受 (S)</b>；DNase (−)；urease 可變。",
+  vir:"<b>生物膜 (biofilm / slime，PIA 多醣)</b> → 附著導管、人工瓣膜、人工關節。",
+  dis:"人工裝置相關感染（中心靜脈導管、人工瓣膜、人工關節）、菌血症（常為血液培養污染或真性 CoNS 感染需判讀）、人工瓣膜心內膜炎。",
+  resist:"常為 methicillin-resistant（帶 mecA）；院內常見。",
+  hot:"① CoNS 代表菌，與 S. aureus 區分靠 coagulase / mannitol / 溶血。② 與 S. saprophyticus 區分：<b>novobiocin-S</b>（epidermidis）vs novobiocin-R（saprophyticus）。③ biofilm 為人工裝置感染關鍵。",
+  qa:[
+    ["109年 醫學(二) 第6題","無法區分 S. aureus 與 S. epidermidis 的試驗＝catalase（兩者皆 +）；可區分者＝coagulase、mannitol 發酵、溶血型。"],
+    ["106年 第26題","年輕女性 UTI 之葡萄球菌為 S. saprophyticus，藉以與 epidermidis 對比（novobiocin S/R）。"]
+  ]
+},
+{
+  group:"Staphylococcus（葡萄球菌）", id:"ssapro",
+  zh:"腐生葡萄球菌", en:"Staphylococcus saprophyticus", stars:2,
+  sys:["泌尿"],
+  morph:"G⁺ 球菌，葡萄串狀排列。凝固酶陰性葡萄球菌 (CoNS)。",
+  oxy:"兼性厭氧；<span class='pos'>catalase (+)</span>。",
+  media:"BAP：白色、非溶血菌落；不易長於 MacConkey。",
+  tests:"<span class='neg'>Coagulase (−)</span>；<b>novobiocin 抗藥 (R)</b>（5 µg disk，抑制圈小）；<span class='pos'>urease (+)</span>；PYR (−)。",
+  vir:"表面蛋白（Aas、UafA）促進附著尿路上皮。",
+  dis:"<b>年輕（性活躍）女性</b>急性膀胱炎／泌尿道感染，為社區型 UTI 第二常見（僅次於 E. coli）。",
+  resist:"對 novobiocin 天然抗藥，為主要鑑別特徵。",
+  hot:"① <b>novobiocin-R</b> 為關鍵鑑別（vs epidermidis 之 S）。② 年輕女性社區型 UTI 經典菌。③ 自尿液分離之 catalase(+)、coagulase(−)、novobiocin-R G⁺球菌即指向本菌。",
+  qa:[
+    ["102年 第19題","尿液分離 catalase(+)、coagulase(−)、bacitracin 與 novobiocin 均抗藥 → S. saprophyticus。"],
+    ["106年 第26題","下列何種葡萄球菌易造成年輕女性尿路感染？→ S. saprophyticus。"],
+    ["114年 第11題","分離 S. saprophyticus 最不適用之培養基（MacConkey 對 G⁺ 球菌不利）。"]
+  ]
+},
+{
+  group:"Streptococcus（鏈球菌）", id:"spyo",
+  zh:"化膿性鏈球菌（A 群，GAS）", en:"Streptococcus pyogenes", stars:3,
+  sys:["皮膚軟組織","呼吸道","血流"],
+  morph:"G⁺ 球菌，<b>鏈狀</b>排列 (chains)。Lancefield <b>A 群</b>。",
+  oxy:"兼性厭氧；<span class='neg'>catalase (−)</span>。",
+  media:"BAP：<b>大範圍 β 溶血</b>（厭氧下 streptolysin O 更明顯）；PEA 可選擇性分離。",
+  tests:"β-hemolytic；<b>bacitracin (0.04 U) 感受 (S)</b>；<span class='pos'>PYR (+)</span>；CAMP (−)；SXT 抗藥；Lancefield A 群抗原。",
+  vir:"<b>M protein</b>（抗吞噬，與心肌組織抗原相似 → 風濕熱）、streptolysin O（氧敏感、具抗原性 → ASO 效價）、streptolysin S（氧穩定，造成 BAP 表面溶血）、streptokinase、hyaluronidase、DNase B、SpeA/SpeC（超抗原 → 猩紅熱/STSS）、C5a peptidase。",
+  dis:"咽喉炎、猩紅熱、膿皮症/丹毒、壞死性筋膜炎、產褥熱、鏈球菌毒性休克症候群 (STSS)；<b>後遺症</b>：急性風濕熱 (ARF)、急性鏈球菌後腎絲球腎炎 (AGN)。",
+  resist:"對 <b>penicillin 仍敏感</b>（第一線經驗治療）。",
+  hot:"① bacitracin-S + PYR(+) 為 A 群指標。② streptolysin O 氧敏感、ASO 用於診斷風濕熱；BAP 表面溶血主因 streptolysin S。③ M protein 與心肌抗原相似 → ARF。④ SpeA 為超抗原。⑤ 易混淆：<i>S. anginosus</i> group 可帶 A 群抗原，但 <b>PYR(−)、VP(+)</b> 可區分。",
+  qa:[
+    ["103年 第13題","β 溶血、bacitracin-S、CAMP(−)、PYR(+) → A 群 Streptococcus。"],
+    ["111年 第16題","S. pyogenes 引起急性風濕熱之機轉＝M protein 與心肌抗原相似之交叉免疫反應。"],
+    ["104年 第14題","BAP 表面（有氧）菌落溶血主因＝streptolysin S。"]
+  ]
+},
+{
+  group:"Streptococcus（鏈球菌）", id:"saga",
+  zh:"無乳鏈球菌（B 群，GBS）", en:"Streptococcus agalactiae", stars:3,
+  sys:["血流","CNS","泌尿"],
+  morph:"G⁺ 球菌，鏈狀排列。Lancefield <b>B 群</b>。",
+  oxy:"兼性厭氧；<span class='neg'>catalase (−)</span>。",
+  media:"BAP：<b>窄範圍 β 溶血</b>（部分非溶血）；NGM (New Granada medium)：產橘紅色色素；孕婦篩檢用 <b>LIM broth</b> 選擇性增菌。",
+  tests:"β-hemolytic（窄）；<span class='pos'>CAMP test (+)</span>（與 S. aureus 交界呈<b>箭頭狀</b>加強溶血）；<span class='pos'>hippurate 水解 (+)</span>；bacitracin-R；PYR (−)；SXT 抗藥；Lancefield B 群。",
+  vir:"<b>莢膜多醣 (capsular polysaccharide)</b>（分型依據、抗吞噬）、CAMP factor、β-hemolysin。",
+  dis:"<b>新生兒</b>敗血症/腦膜炎/肺炎（早發與晚發型）、孕產婦感染、成人（糖尿病/免疫低下）菌血症與軟組織感染。",
+  resist:"對 penicillin 敏感；孕婦 35–37 週篩檢、產時預防性投藥。",
+  hot:"① CAMP(+) 呈<b>箭頭狀</b>（vs Listeria 之 block 狀）。② hippurate 水解(+)。③ <b>莢膜多醣</b>為菌株分型依據。④ LIM broth 為孕婦 GBS 篩檢增菌培養基。",
+  qa:[
+    ["107年 第8題","CAMP test：S. agalactiae 與 S. aureus 交界呈箭頭狀加強溶血（Listeria 為 block 狀）。"],
+    ["107年 第5題","S. agalactiae 主要菌株分型依據＝capsular polysaccharide。"],
+    ["106年 第22題","篩檢孕婦 GBS 之增菌培養基＝LIM broth。"]
+  ]
+},
+{
+  group:"Streptococcus（鏈球菌）", id:"spneu",
+  zh:"肺炎鏈球菌", en:"Streptococcus pneumoniae", stars:3,
+  sys:["呼吸道","CNS","血流"],
+  morph:"G⁺ <b>矛尖狀雙球菌</b> (lancet-shaped diplococci)，具<b>莢膜</b>。",
+  oxy:"兼性厭氧；<span class='neg'>catalase (−)</span>。",
+  media:"BAP：<b>α 溶血</b>（草綠色）；菌落中央凹陷（臍狀/draughtsman，因 autolysin 自溶）；可長於巧克力培養基。",
+  tests:"α-hemolytic；<b>optochin 感受 (S)</b>（抑制圈 ≥14 mm）；<span class='pos'>bile solubility (+)</span>（膽鹽活化 autolysin 而溶解）；<span class='neg'>bile esculin (−)</span>；Quellung 反應（莢膜膨脹，可分型）；不耐 6.5% NaCl。",
+  vir:"<b>莢膜多醣</b>（最重要毒力，抗吞噬，>90 血清型）、pneumolysin、IgA protease、teichoic acid。",
+  dis:"社區型（大葉性）肺炎、成人細菌性腦膜炎（最常見之一）、中耳炎/鼻竇炎（兒童）、菌血症。",
+  resist:"penicillin 抗性源於 <b>PBP 改變</b>（非 β-lactamase）；oxacillin 1 µg disk 篩檢；疫苗 PCV13 / PPSV23。",
+  hot:"① <b>optochin-S + 膽溶(+)</b> 為與 viridans 的分界。② 莢膜 Quellung 可分型。③ 菌落凹陷源於 autolysis。④ penicillin 抗性＝PBP 改變。⑤ bile esculin(−)（vs Enterococcus +）。",
+  qa:[
+    ["107年 第14題","α 溶血、optochin 形成抑制圈後，再以 bile solubility test 確認 S. pneumoniae。"],
+    ["108年 第29題","S. pneumoniae：optochin-S、bile solubility(+)、bile esculin(−)、SXT-R。"],
+    ["108年 醫學(二) 第1題","S. pneumoniae 對 penicillin 抗性主因＝PBP 改變。"]
+  ]
+},
+{
+  group:"Streptococcus（鏈球菌）", id:"viridans",
+  zh:"草綠色鏈球菌（群）", en:"Viridans streptococci", stars:2,
+  sys:["血流","皮膚軟組織"],
+  morph:"G⁺ 球菌，鏈狀排列。含 mitis、sanguinis、mutans、salivarius、anginosus、bovis 等群。",
+  oxy:"兼性厭氧；<span class='neg'>catalase (−)</span>；部分需 CO₂。",
+  media:"BAP：<b>α 溶血或不溶血</b>，菌落不凹陷（與 pneumoniae 不同）。",
+  tests:"α/γ-hemolytic；<b>optochin 抗藥 (R)</b>；<span class='neg'>bile solubility (−)</span>；多不耐 6.5% NaCl；anginosus group VP(+)。",
+  vir:"葡聚糖 (dextran/glucan) 附著心瓣膜與牙齒表面；無強毒素。",
+  dis:"<b>亞急性細菌性心內膜炎 (SBE)</b>（受損瓣膜，sanguinis/mitis）、<b>齲齒</b>（S. mutans）、深部膿瘍（anginosus group）、免疫低下者菌血症。",
+  resist:"多對 penicillin 敏感（部分降低）；bovis group 帶 D 群抗原、與大腸直腸癌相關。",
+  hot:"① <b>optochin-R + 膽不溶</b> 為與 S. pneumoniae 的關鍵區分（兩者皆 α 溶血）。② S. mutans → 齲齒；anginosus group → 膿瘍。③ bovis group 帶 group D 抗原，菌血症應警覺大腸癌。④ 易混淆：營養變異菌 Abiotrophia/Granulicatella 次培養於 BAP 不長。",
+  qa:[
+    ["108年 第31題","草綠色鏈球菌敘述何者錯誤（為正常菌叢、α或γ溶血、可致菌血症）。"],
+    ["110年 第20題","Viridans 中帶 group D 抗原者＝S. bovis group。"],
+    ["112年 第19題","心內膜炎血液培養之鏈球菌次培養於 BAP 不長 → Abiotrophia/Granulicatella（營養變異鏈球菌）。"]
+  ]
+},
+{
+  group:"Enterococcus（腸球菌）", id:"entero",
+  zh:"腸球菌（糞腸球菌／屎腸球菌）", en:"Enterococcus faecalis / faecium", stars:3,
+  sys:["泌尿","血流","腸道"],
+  morph:"G⁺ 球菌，成對或短鏈排列。Lancefield <b>D 群</b>。",
+  oxy:"兼性厭氧；<span class='neg'>catalase (−)</span>。",
+  media:"BAP：γ（非溶血）或 α；<b>bile esculin azide agar</b>：水解 esculin → <b>黑色</b>；6.5% NaCl broth：生長混濁。",
+  tests:"<span class='pos'>bile esculin (+)</span> <b>且</b> <span class='pos'>6.5% NaCl 生長 (+)</span> <b>且</b> <span class='pos'>PYR (+)</span>；耐膽鹽；LAP(+)。",
+  vir:"黏附素、明膠酶、cytolysin；環境耐受力強（耐熱、耐鹽、耐膽鹽）。",
+  dis:"泌尿道感染、菌血症、心內膜炎、腹腔/膽道感染、院內感染。",
+  resist:"<b>VRE</b>（vanA/vanB）：肽聚糖前驅物五肽末端 <b>D-Ala-D-Ala → D-Ala-D-Lac</b>；對 cephalosporin <b>天然抗藥</b>；治療常需 ampicillin + 高濃度 aminoglycoside 協同。",
+  hot:"① <b>bile esculin(+) + 6.5% NaCl(+) + PYR(+)</b> 三陽為腸球菌指標。② 與 S. bovis（D 群非腸球菌）區分：<b>6.5% NaCl 與 PYR</b>（腸球菌 + / bovis −）。③ VRE 機轉＝D-Ala-D-Lac。④ 天然抗 cephalosporin。",
+  qa:[
+    ["110年 第12題","區分 Enterococcus 與 group D streptococci 之試驗：PYR、bile esculin、6.5% NaCl（三者皆可）。"],
+    ["104年 第15題","vanA/vanB VRE 抗藥機轉＝五肽末端 D-Ala-D-Ala → D-Ala-D-Lac。"],
+    ["112年 第20題","Enterococcus 藥敏組合＝ampicillin、glycopeptides 及高濃度 aminoglycoside。"]
+  ]
+}
+];
+
+/* ===== 渲染 ===== */
+const cardsEl=document.getElementById('cards');
+const tagbar=document.getElementById('tagbar');
+let activeTags=new Set();
+
+SYS.forEach(s=>{
+  const b=document.createElement('span');
+  b.className='tagfilter';b.textContent=s;b.dataset.sys=s;
+  b.onclick=()=>{b.classList.toggle('active');
+    if(activeTags.has(s))activeTags.delete(s);else activeTags.add(s);applyFilter();};
+  tagbar.appendChild(b);
+});
+
+function starStr(n){return '⭐'.repeat(n);}
+function fieldRow(k,v){return `<div class="field"><div class="k">${k}</div><div class="v">${v}</div></div>`;}
+
+const groups=[...new Set(DATA.map(d=>d.group))];
+groups.forEach(g=>{
+  const gEl=document.createElement('section');gEl.className='group';gEl.dataset.group=g;
+  gEl.innerHTML=`<div class="group-head"><span class="arrow">▼</span><span>${g}</span></div><div class="group-body"></div>`;
+  const body=gEl.querySelector('.group-body');
+  gEl.querySelector('.group-head').onclick=()=>gEl.classList.toggle('collapsed');
+  DATA.filter(d=>d.group===g).forEach(d=>{
+    const card=document.createElement('article');card.className='card';card.dataset.id=d.id;
+    card.dataset.sys=d.sys.join(',');
+    const qaRows=d.qa.map(q=>`<tr><td class="yr">${q[0]}</td><td>${q[1]}</td></tr>`).join('');
+    card.innerHTML=`
+      <div class="card-head">
+        <span class="name-zh">${d.zh}</span>
+        <span class="name-en">${d.en}</span>
+        <span class="stars" title="高頻程度">${starStr(d.stars)}</span>
+        <div class="chips">${d.sys.map(s=>`<span class="chip sys">${s}</span>`).join('')}</div>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="card-body">
+        ${fieldRow('① 菌名',`<b>${d.zh}</b>　<i>${d.en}</i>`)}
+        ${fieldRow('② 形態',d.morph)}
+        ${fieldRow('③ 氧氣需求/基礎反應',d.oxy)}
+        ${fieldRow('④ 選擇/鑑別培養基',d.media)}
+        ${fieldRow('⑤ 關鍵鑑定試驗',d.tests)}
+        ${fieldRow('⑥ 致病因子/毒素',d.vir)}
+        ${fieldRow('⑦ 代表疾病',d.dis)}
+        ${fieldRow('⑧ 血清分型/抗藥性',d.resist)}
+        <div class="hot"><div class="field" style="border:none;padding:0"><div class="k">⑨ ⭐高頻考點與易混淆</div><div class="v">${d.hot}</div></div>
+          <table class="qa"><tbody>${qaRows}</tbody></table></div>
+      </div>`;
+    card.querySelector('.card-head').onclick=()=>card.classList.toggle('collapsed');
+    body.appendChild(card);
+  });
+  cardsEl.appendChild(gEl);
+});
+
+/* ===== 搜尋 + 篩選 ===== */
+const search=document.getElementById('search');
+const nohit=document.getElementById('nohit');
+function applyFilter(){
+  const q=search.value.trim().toLowerCase();
+  let anyVisible=false;
+  document.querySelectorAll('.group').forEach(gEl=>{
+    let groupHas=false;
+    gEl.querySelectorAll('.card').forEach(card=>{
+      const txt=card.textContent.toLowerCase();
+      const sysArr=card.dataset.sys.split(',');
+      const matchText=!q||txt.includes(q);
+      const matchTag=activeTags.size===0||[...activeTags].every(t=>sysArr.includes(t));
+      const show=matchText&&matchTag;
+      card.style.display=show?'':'none';
+      if(show){groupHas=true;anyVisible=true;}
+    });
+    gEl.style.display=groupHas?'':'none';
+  });
+  nohit.style.display=anyVisible?'none':'block';
+}
+search.addEventListener('input',applyFilter);
+document.getElementById('expandAll').onclick=()=>{
+  document.querySelectorAll('.card,.group').forEach(e=>e.classList.remove('collapsed'));};
+document.getElementById('collapseAll').onclick=()=>{
+  document.querySelectorAll('.card').forEach(e=>e.classList.add('collapsed'));};
+</script>
+</body>
+</html>
