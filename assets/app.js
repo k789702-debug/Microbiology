@@ -90,7 +90,7 @@
     });
     $('#search').addEventListener('input',applyFilter);
     $('#expandAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.remove('collapsed'));
-    $('#collapseAll').onclick=()=>document.querySelectorAll('.card').forEach(e=>e.classList.add('collapsed'));
+    $('#collapseAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.add('collapsed'));
   }
 
   function applyFilter(){
@@ -114,5 +114,5 @@
       g.style.display=gHas?'':'none';
     });
     $('#nohit').style.display=any?'none':'block';
-  }
-})();
+  }})();
+

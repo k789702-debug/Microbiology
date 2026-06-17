@@ -1,7 +1,7 @@
 {
   "meta": {
     "subject": "微生物學與臨床微生物學（包括細菌與黴菌）",
-    "source": "Mahon Textbook of Diagnostic Microbiology；Murray Medical Microbiology；考選部醫檢師歷年考題(民國101-115)",
+    "source": "Mahon Textbook of Diagnostic Microbiology；Murray Medical Microbiology；考選部醫檢師考題（民國101-114年完整年度，及115年第一次試卷）",
     "clinical_systems": [
       "呼吸道",
       "腸道",
@@ -9,8 +9,11 @@
       "血流",
       "CNS",
       "STI",
-      "皮膚軟組織"
-    ]
+      "皮膚軟組織",
+      "周邊神經"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-06-17"
   },
   "flows": {
     "革蘭氏陽性球菌（G⁺ Cocci）": [
@@ -65,7 +68,12 @@
       "zh": "金黃色葡萄球菌",
       "en": "Staphylococcus aureus",
       "stars": 3,
-      "sys": "皮膚軟組織 / 血流 / 呼吸道 / 腸道",
+      "sys": [
+        "皮膚軟組織",
+        "血流",
+        "呼吸道",
+        "腸道"
+      ],
       "morph": "G⁺ 球菌，**葡萄串狀**排列；無芽孢、無動性。",
       "oxy": "兼性厭氧；**catalase(+)**、oxidase(−)。",
       "media": "MSA：發酵甘露醇→黃色；BAP：金黃、**β溶血**。",
@@ -100,7 +108,9 @@
       "zh": "表皮葡萄球菌",
       "en": "Staphylococcus epidermidis",
       "stars": 2,
-      "sys": "血流",
+      "sys": [
+        "血流"
+      ],
       "morph": "G⁺ 球菌，葡萄串狀；CoNS 代表。",
       "oxy": "兼性厭氧；**catalase(+)**。",
       "media": "BAP：白色非溶血；MSA：不發酵甘露醇。",
@@ -126,7 +136,9 @@
       "zh": "腐生葡萄球菌",
       "en": "Staphylococcus saprophyticus",
       "stars": 2,
-      "sys": "泌尿",
+      "sys": [
+        "泌尿"
+      ],
       "morph": "G⁺ 球菌，葡萄串狀；CoNS。",
       "oxy": "兼性厭氧；**catalase(+)**。",
       "media": "BAP：白色非溶血。",
@@ -160,7 +172,11 @@
       "zh": "化膿性鏈球菌（A群,GAS）",
       "en": "Streptococcus pyogenes",
       "stars": 3,
-      "sys": "皮膚軟組織 / 呼吸道 / 血流",
+      "sys": [
+        "皮膚軟組織",
+        "呼吸道",
+        "血流"
+      ],
       "morph": "G⁺ 球菌，**鏈狀**；Lancefield **A群**。",
       "oxy": "兼性厭氧；**catalase(−)**。",
       "media": "BAP：**大範圍β溶血**。",
@@ -195,7 +211,11 @@
       "zh": "無乳鏈球菌（B群,GBS）",
       "en": "Streptococcus agalactiae",
       "stars": 3,
-      "sys": "血流 / CNS / 泌尿",
+      "sys": [
+        "血流",
+        "CNS",
+        "泌尿"
+      ],
       "morph": "G⁺ 球菌，鏈狀；Lancefield **B群**。",
       "oxy": "兼性厭氧；**catalase(−)**。",
       "media": "BAP：**窄β溶血**；NGM 橘紅色素；孕婦篩檢 **LIM broth**。",
@@ -230,7 +250,11 @@
       "zh": "肺炎鏈球菌",
       "en": "Streptococcus pneumoniae",
       "stars": 3,
-      "sys": "呼吸道 / CNS / 血流",
+      "sys": [
+        "呼吸道",
+        "CNS",
+        "血流"
+      ],
       "morph": "G⁺ **矛尖狀雙球菌**，具**莢膜**。",
       "oxy": "兼性厭氧；**catalase(−)**。",
       "media": "BAP：**α溶血**，菌落中央凹陷(autolysin)。",
@@ -265,7 +289,10 @@
       "zh": "草綠色鏈球菌（群）",
       "en": "Viridans streptococci",
       "stars": 2,
-      "sys": "血流 / 皮膚軟組織",
+      "sys": [
+        "血流",
+        "皮膚軟組織"
+      ],
       "morph": "G⁺ 球菌，鏈狀；含 mitis/sanguinis/mutans/anginosus/bovis 群。",
       "oxy": "兼性厭氧；**catalase(−)**。",
       "media": "BAP：**α或不溶血**，不凹陷。",
@@ -299,7 +326,11 @@
       "zh": "腸球菌（糞/屎腸球菌）",
       "en": "Enterococcus faecalis / faecium",
       "stars": 3,
-      "sys": "泌尿 / 血流 / 腸道",
+      "sys": [
+        "泌尿",
+        "血流",
+        "腸道"
+      ],
       "morph": "G⁺ 球菌，成對/短鏈；Lancefield **D群**。",
       "oxy": "兼性厭氧；**catalase(−)**。",
       "media": "bile esculin azide→黑色；6.5%NaCl→生長。",
@@ -334,7 +365,10 @@
       "zh": "炭疽桿菌",
       "en": "Bacillus anthracis",
       "stars": 2,
-      "sys": "皮膚軟組織 / 呼吸道",
+      "sys": [
+        "皮膚軟組織",
+        "呼吸道"
+      ],
       "morph": "G⁺ 大桿、竹節狀鏈、中央芽孢不膨大、具**多肽莢膜**。",
       "oxy": "兼性需氧；**catalase(+)**；**非動性**(屬內罕見)。",
       "media": "BAP 非溶血、medusa-head 菌落。",
@@ -364,7 +398,10 @@
       "zh": "蠟狀芽孢桿菌",
       "en": "Bacillus cereus",
       "stars": 3,
-      "sys": "腸道 / 血流",
+      "sys": [
+        "腸道",
+        "血流"
+      ],
       "morph": "G⁺ 桿、芽孢、**動性(+)**。",
       "oxy": "兼性需氧；**catalase(+)**；BAP **β溶血**、**lecithinase(+)**。",
       "media": "MYP 培養(卵磷脂酶/甘露醇)。",
@@ -398,7 +435,10 @@
       "zh": "破傷風梭菌",
       "en": "Clostridium tetani",
       "stars": 2,
-      "sys": "皮膚軟組織 / CNS",
+      "sys": [
+        "皮膚軟組織",
+        "CNS"
+      ],
       "morph": "G⁺ 厭氧桿、**終端芽孢「鼓槌狀」**、動性。",
       "oxy": "**絕對厭氧**；catalase(−)。",
       "media": "厭氧培養、群集。",
@@ -423,7 +463,10 @@
       "zh": "肉毒桿菌",
       "en": "Clostridium botulinum",
       "stars": 2,
-      "sys": "腸道 / CNS",
+      "sys": [
+        "腸道",
+        "CNS"
+      ],
       "morph": "G⁺ 厭氧桿、次終端芽孢。",
       "oxy": "**絕對厭氧**。",
       "media": "厭氧。",
@@ -449,7 +492,10 @@
       "zh": "產氣莢膜梭菌",
       "en": "Clostridium perfringens",
       "stars": 3,
-      "sys": "皮膚軟組織 / 腸道",
+      "sys": [
+        "皮膚軟組織",
+        "腸道"
+      ],
       "morph": "G⁺ 厭氧粗大桿、莢膜、芽孢少見、**非動性**。",
       "oxy": "**厭氧**(耐氧)；catalase(−)。",
       "media": "BAP **雙環溶血(double zone)**、卵黃培養 **Nagler reaction(+)**。",
@@ -479,7 +525,9 @@
       "zh": "困難梭菌",
       "en": "Clostridioides difficile",
       "stars": 2,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁺ 厭氧桿、芽孢。",
       "oxy": "**絕對厭氧**。",
       "media": "**CCFA**(cycloserine-cefoxitin-fructose)選擇培養。",
@@ -505,7 +553,9 @@
       "zh": "白喉棒狀桿菌",
       "en": "Corynebacterium diphtheriae",
       "stars": 3,
-      "sys": "呼吸道",
+      "sys": [
+        "呼吸道"
+      ],
       "morph": "G⁺ 棒狀、**柵欄狀/中文字排列**、**異染顆粒**(Babes-Ernst,Albert/Loeffler 染)。",
       "oxy": "兼性厭氧；**catalase(+)**、非動性。",
       "media": "**Tinsdale**(亞碲酸鹽→黑色暈)、**Loeffler 血清**。",
@@ -536,7 +586,10 @@
       "zh": "單核球增多性李斯特菌",
       "en": "Listeria monocytogenes",
       "stars": 3,
-      "sys": "血流 / CNS",
+      "sys": [
+        "血流",
+        "CNS"
+      ],
       "morph": "G⁺ 短桿。",
       "oxy": "兼性厭氧；**catalase(+)**；BAP 窄 β溶血。",
       "media": "**冷增菌(4℃)**、PALCAM。",
@@ -570,7 +623,9 @@
       "zh": "豬丹毒桿菌",
       "en": "Erysipelothrix rhusiopathiae",
       "stars": 1,
-      "sys": "皮膚軟組織",
+      "sys": [
+        "皮膚軟組織"
+      ],
       "morph": "G⁺ 細桿。",
       "oxy": "兼性厭氧；catalase(−)。",
       "media": "TSI。",
@@ -596,7 +651,10 @@
       "zh": "乳酸桿菌",
       "en": "Lactobacillus spp.",
       "stars": 1,
-      "sys": "泌尿 / 腸道",
+      "sys": [
+        "泌尿",
+        "腸道"
+      ],
       "morph": "G⁺ 長桿。",
       "oxy": "厭氧/微需氧；**catalase(−)**;產乳酸。",
       "media": "MRS。",
@@ -621,7 +679,11 @@
       "zh": "諾卡氏菌",
       "en": "Nocardia spp.",
       "stars": 2,
-      "sys": "呼吸道 / CNS / 皮膚軟組織",
+      "sys": [
+        "呼吸道",
+        "CNS",
+        "皮膚軟組織"
+      ],
       "morph": "G⁺ **分枝絲狀**、串珠狀(beaded)。",
       "oxy": "**好氧**；catalase(+)、urease(+);含 mycolic acid。",
       "media": "可長 BAP/Sabouraud；生長慢。",
@@ -651,7 +713,9 @@
       "zh": "以色列放線菌",
       "en": "Actinomyces israelii",
       "stars": 2,
-      "sys": "皮膚軟組織",
+      "sys": [
+        "皮膚軟組織"
+      ],
       "morph": "G⁺ **分枝絲狀**。",
       "oxy": "**厭氧/微需氧**；非抗酸。",
       "media": "厭氧、生長慢。",
@@ -681,7 +745,11 @@
       "zh": "結核分枝桿菌",
       "en": "Mycobacterium tuberculosis",
       "stars": 3,
-      "sys": "呼吸道 / 血流 / CNS",
+      "sys": [
+        "呼吸道",
+        "血流",
+        "CNS"
+      ],
       "morph": "**抗酸桿菌**(Ziehl-Neelsen 石碳酸復紅→紅;**3% 鹽酸酒精脫色**;Kinyoun 冷染;auramine 螢光)。",
       "oxy": "絕對需氧；生長極慢(3–8 週)。",
       "media": "**Löwenstein-Jensen(蛋黃)**→buff 色;液態 MGIT。",
@@ -715,7 +783,10 @@
       "zh": "痲瘋分枝桿菌",
       "en": "Mycobacterium leprae",
       "stars": 2,
-      "sys": "皮膚軟組織 / 周邊神經",
+      "sys": [
+        "皮膚軟組織",
+        "周邊神經"
+      ],
       "morph": "抗酸桿菌、**無法人工培養**(犰狳/鼠足墊)。",
       "oxy": "嗜低溫(體表)。",
       "media": "不可培養。",
@@ -741,7 +812,10 @@
       "zh": "非結核分枝桿菌（NTM）",
       "en": "Mycobacterium avium complex 等",
       "stars": 2,
-      "sys": "呼吸道 / 血流",
+      "sys": [
+        "呼吸道",
+        "血流"
+      ],
       "morph": "抗酸桿菌;環境菌。",
       "oxy": "需氧;依 **Runyon 分類**(光/暗產色、快速生長)。",
       "media": "LJ/液態培養。",
@@ -767,7 +841,11 @@
       "zh": "淋病雙球菌",
       "en": "Neisseria gonorrhoeae",
       "stars": 3,
-      "sys": "STI / 泌尿 / 皮膚軟組織",
+      "sys": [
+        "STI",
+        "泌尿",
+        "皮膚軟組織"
+      ],
       "morph": "G⁻ **腎形雙球菌**(白血球內)。",
       "oxy": "需 5% CO₂；**oxidase(+)、catalase(+)**。",
       "media": "**Modified Thayer-Martin(MTM)**(vancomycin+colistin+nystatin/trimethoprim;**不含 cephalosporin**)。",
@@ -801,7 +879,11 @@
       "zh": "腦膜炎雙球菌",
       "en": "Neisseria meningitidis",
       "stars": 3,
-      "sys": "CNS / 血流 / 呼吸道",
+      "sys": [
+        "CNS",
+        "血流",
+        "呼吸道"
+      ],
       "morph": "G⁻ 雙球菌、具**莢膜**。",
       "oxy": "需 CO₂；**oxidase(+)**。",
       "media": "巧克力/MTM。",
@@ -827,7 +909,9 @@
       "zh": "卡他莫拉菌",
       "en": "Moraxella catarrhalis",
       "stars": 1,
-      "sys": "呼吸道",
+      "sys": [
+        "呼吸道"
+      ],
       "morph": "G⁻ 雙球菌。",
       "oxy": "需氧；**oxidase(+)**。",
       "media": "BAP(曲棍球推盤狀菌落)。",
@@ -852,7 +936,10 @@
       "zh": "流感嗜血桿菌",
       "en": "Haemophilus influenzae",
       "stars": 3,
-      "sys": "呼吸道 / CNS",
+      "sys": [
+        "呼吸道",
+        "CNS"
+      ],
       "morph": "G⁻ 小球桿。",
       "oxy": "需 **X(hemin)+V(NAD)** 因子。",
       "media": "**巧克力培養基**;BAP 上靠 S. aureus 提供 V→**衛星現象(satellitism)**。",
@@ -886,7 +973,9 @@
       "zh": "百日咳桿菌",
       "en": "Bordetella pertussis",
       "stars": 2,
-      "sys": "呼吸道",
+      "sys": [
+        "呼吸道"
+      ],
       "morph": "G⁻ 小球桿。",
       "oxy": "絕對需氧；**oxidase(+)**。",
       "media": "**Bordet-Gengou(甘油馬鈴薯血)**、Regan-Lowe。",
@@ -921,7 +1010,9 @@
       "zh": "布氏桿菌",
       "en": "Brucella spp.",
       "stars": 1,
-      "sys": "血流",
+      "sys": [
+        "血流"
+      ],
       "morph": "G⁻ 小球桿。",
       "oxy": "需 CO₂;**胞內**。",
       "media": "血培養(慢)、需 BSL-3。",
@@ -947,7 +1038,10 @@
       "zh": "土倫病法蘭西斯菌",
       "en": "Francisella tularensis",
       "stars": 1,
-      "sys": "皮膚軟組織 / 血流",
+      "sys": [
+        "皮膚軟組織",
+        "血流"
+      ],
       "morph": "G⁻ 小球桿。",
       "oxy": "**胞內**;需 cysteine。",
       "media": "BCYE/巧克力(含 cysteine);**BSL-3、極低感染劑量**。",
@@ -973,7 +1067,9 @@
       "zh": "多殺性巴斯德桿菌",
       "en": "Pasteurella multocida",
       "stars": 1,
-      "sys": "皮膚軟組織",
+      "sys": [
+        "皮膚軟組織"
+      ],
       "morph": "G⁻ 球桿、**雙極染色**。",
       "oxy": "兼性厭氧;**oxidase(+)、catalase(+)**。",
       "media": "**不長 MacConkey**;BAP 可長。",
@@ -999,7 +1095,12 @@
       "zh": "大腸桿菌",
       "en": "Escherichia coli",
       "stars": 3,
-      "sys": "腸道 / 泌尿 / 血流 / CNS",
+      "sys": [
+        "腸道",
+        "泌尿",
+        "血流",
+        "CNS"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;**oxidase(−)**、nitrate(+)。",
       "media": "MacConkey **乳糖(+)粉紅**;EMB 金屬綠光澤。",
@@ -1034,7 +1135,11 @@
       "zh": "肺炎克雷伯氏菌",
       "en": "Klebsiella pneumoniae",
       "stars": 3,
-      "sys": "呼吸道 / 泌尿 / 血流",
+      "sys": [
+        "呼吸道",
+        "泌尿",
+        "血流"
+      ],
       "morph": "G⁻ 粗短桿、**大黏液莢膜**。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "MacConkey **乳糖(+)** 黏稠拉絲菌落。",
@@ -1060,7 +1165,10 @@
       "zh": "腸桿菌屬",
       "en": "Enterobacter spp.",
       "stars": 2,
-      "sys": "血流 / 泌尿",
+      "sys": [
+        "血流",
+        "泌尿"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "MacConkey 乳糖(+)。",
@@ -1085,7 +1193,10 @@
       "zh": "沙門氏菌",
       "en": "Salmonella spp.",
       "stars": 3,
-      "sys": "腸道 / 血流",
+      "sys": [
+        "腸道",
+        "血流"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "**XLD(紅+黑心)**、HE、SS;增菌 **selenite/tetrathionate**。",
@@ -1120,7 +1231,9 @@
       "zh": "志賀氏桿菌",
       "en": "Shigella spp.",
       "stars": 3,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "XLD/HE/SS(無色菌落,不發酵木糖)。",
@@ -1146,7 +1259,9 @@
       "zh": "變形桿菌",
       "en": "Proteus mirabilis / vulgaris",
       "stars": 2,
-      "sys": "泌尿",
+      "sys": [
+        "泌尿"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "BAP **群集移行(swarming)** 同心圓。",
@@ -1176,7 +1291,10 @@
       "zh": "黏質沙雷氏菌",
       "en": "Serratia marcescens",
       "stars": 1,
-      "sys": "血流 / 泌尿",
+      "sys": [
+        "血流",
+        "泌尿"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "室溫可產**紅色素(prodigiosin)**。",
@@ -1201,7 +1319,9 @@
       "zh": "小腸結腸炎耶爾森菌",
       "en": "Yersinia enterocolitica",
       "stars": 2,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ 球桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "**CIN 培養(牛眼菌落)**;**冷增菌(4℃)**。",
@@ -1227,7 +1347,10 @@
       "zh": "檸檬酸桿菌",
       "en": "Citrobacter spp.",
       "stars": 1,
-      "sys": "泌尿 / 血流",
+      "sys": [
+        "泌尿",
+        "血流"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "兼性厭氧;oxidase(−)。",
       "media": "MacConkey 乳糖慢/(+)。",
@@ -1251,7 +1374,12 @@
       "zh": "綠膿桿菌",
       "en": "Pseudomonas aeruginosa",
       "stars": 3,
-      "sys": "呼吸道 / 血流 / 泌尿 / 皮膚軟組織",
+      "sys": [
+        "呼吸道",
+        "血流",
+        "泌尿",
+        "皮膚軟組織"
+      ],
       "morph": "G⁻ 桿、單極鞭毛、動性。",
       "oxy": "絕對需氧;**oxidase(+)**、不發酵(氧化)。",
       "media": "**pyocyanin(藍綠)/pyoverdine 螢光**、葡萄味、**42℃ 生長**。",
@@ -1281,7 +1409,10 @@
       "zh": "鮑曼不動桿菌",
       "en": "Acinetobacter baumannii",
       "stars": 2,
-      "sys": "血流 / 呼吸道",
+      "sys": [
+        "血流",
+        "呼吸道"
+      ],
       "morph": "G⁻ 球桿。",
       "oxy": "絕對需氧;**oxidase(−)**、不發酵、**非動性**。",
       "media": "MacConkey 可長(無色)。",
@@ -1311,7 +1442,10 @@
       "zh": "嗜麥芽窄食單胞菌",
       "en": "Stenotrophomonas maltophilia",
       "stars": 2,
-      "sys": "血流 / 呼吸道",
+      "sys": [
+        "血流",
+        "呼吸道"
+      ],
       "morph": "G⁻ 桿。",
       "oxy": "絕對需氧;**oxidase(−)**。",
       "media": "MacConkey 可長。",
@@ -1341,7 +1475,10 @@
       "zh": "類鼻疽伯克氏菌",
       "en": "Burkholderia pseudomallei",
       "stars": 2,
-      "sys": "血流 / 呼吸道",
+      "sys": [
+        "血流",
+        "呼吸道"
+      ],
       "morph": "G⁻ 桿、**雙極(safety-pin 安全別針)**。",
       "oxy": "需氧;**oxidase(+)**。",
       "media": "**Ashdown 培養**。",
@@ -1371,7 +1508,9 @@
       "zh": "霍亂弧菌",
       "en": "Vibrio cholerae",
       "stars": 3,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ **彎曲弧形桿**、單極鞭毛(衝刺式動性)。",
       "oxy": "兼性厭氧;**oxidase(+)**。",
       "media": "**TCBS 黃色(發酵 sucrose)**;鹼性蛋白腖水增菌;**0% NaCl 可生長**。",
@@ -1405,7 +1544,9 @@
       "zh": "腸炎弧菌",
       "en": "Vibrio parahaemolyticus",
       "stars": 2,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ 彎曲桿。",
       "oxy": "兼性厭氧;**oxidase(+)**。",
       "media": "**TCBS 綠色(不發酵 sucrose)**;**嗜鹽(需 NaCl)**。",
@@ -1435,7 +1576,10 @@
       "zh": "創傷弧菌",
       "en": "Vibrio vulnificus",
       "stars": 2,
-      "sys": "皮膚軟組織 / 血流",
+      "sys": [
+        "皮膚軟組織",
+        "血流"
+      ],
       "morph": "G⁻ 彎曲桿。",
       "oxy": "兼性厭氧;**oxidase(+)**。",
       "media": "TCBS 綠;**嗜鹽**;**lactose(+)**。",
@@ -1461,7 +1605,9 @@
       "zh": "空腸彎曲菌",
       "en": "Campylobacter jejuni",
       "stars": 2,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ **彎曲/海鷗翅形**桿。",
       "oxy": "**微需氧**、**42℃**;oxidase(+)、catalase(+)。",
       "media": "**Skirrow/CCDA 選擇培養**、42℃。",
@@ -1487,7 +1633,9 @@
       "zh": "幽門螺旋桿菌",
       "en": "Helicobacter pylori",
       "stars": 3,
-      "sys": "腸道",
+      "sys": [
+        "腸道"
+      ],
       "morph": "G⁻ **螺旋/彎曲**桿、多鞭毛。",
       "oxy": "**微需氧**;oxidase(+)、catalase(+)。",
       "media": "含血選擇培養、微需氧、慢。",
@@ -1517,7 +1665,9 @@
       "zh": "嗜肺退伍軍人菌",
       "en": "Legionella pneumophila",
       "stars": 2,
-      "sys": "呼吸道",
+      "sys": [
+        "呼吸道"
+      ],
       "morph": "G⁻ 桿(難染,需銀染 Dieterle)。",
       "oxy": "需氧。",
       "media": "**BCYE(需 L-cysteine + 鐵)**;不長一般培養基。",
@@ -1543,7 +1693,10 @@
       "zh": "巴東體（漢賽巴東體等）",
       "en": "Bartonella spp.",
       "stars": 1,
-      "sys": "皮膚軟組織 / 血流",
+      "sys": [
+        "皮膚軟組織",
+        "血流"
+      ],
       "morph": "G⁻ 小桿、胞內、難培養。",
       "oxy": "需氧、生長慢。",
       "media": "含血培養(長)。",
@@ -1568,7 +1721,11 @@
       "zh": "脆弱類桿菌",
       "en": "Bacteroides fragilis",
       "stars": 3,
-      "sys": "腸道 / 血流 / 皮膚軟組織",
+      "sys": [
+        "腸道",
+        "血流",
+        "皮膚軟組織"
+      ],
       "morph": "G⁻ **厭氧**桿、具**莢膜**。",
       "oxy": "**絕對厭氧**(耐氧較佳);catalase(+)。",
       "media": "**BBE(bile esculin)→黑色**;耐 20% 膽鹽。",
@@ -1603,7 +1760,10 @@
       "zh": "梭桿菌",
       "en": "Fusobacterium spp.",
       "stars": 1,
-      "sys": "呼吸道 / 血流",
+      "sys": [
+        "呼吸道",
+        "血流"
+      ],
       "morph": "G⁻ **厭氧梭形(兩端尖)**桿。",
       "oxy": "絕對厭氧。",
       "media": "厭氧。",
@@ -1628,7 +1788,10 @@
       "zh": "普雷沃菌／卟啉單胞菌",
       "en": "Prevotella / Porphyromonas",
       "stars": 1,
-      "sys": "皮膚軟組織 / 呼吸道",
+      "sys": [
+        "皮膚軟組織",
+        "呼吸道"
+      ],
       "morph": "G⁻ 厭氧短桿。",
       "oxy": "絕對厭氧。",
       "media": "厭氧;**產黑色素(black-pigmented)**。",
@@ -1653,7 +1816,11 @@
       "zh": "梅毒密螺旋體",
       "en": "Treponema pallidum",
       "stars": 2,
-      "sys": "STI / 皮膚軟組織 / CNS",
+      "sys": [
+        "STI",
+        "皮膚軟組織",
+        "CNS"
+      ],
       "morph": "細密**螺旋體**、**不可體外培養**。",
       "oxy": "微需氧。",
       "media": "**暗視野顯微鏡/DFA** 觀察。",
@@ -1679,7 +1846,11 @@
       "zh": "疏螺旋體",
       "en": "Borrelia spp.",
       "stars": 1,
-      "sys": "皮膚軟組織 / CNS / 血流",
+      "sys": [
+        "皮膚軟組織",
+        "CNS",
+        "血流"
+      ],
       "morph": "較大**螺旋體**、**可 Giemsa/Wright 染**。",
       "oxy": "微需氧;節肢動物媒介。",
       "media": "Barbour-Stoenner-Kelly。",
@@ -1705,7 +1876,10 @@
       "zh": "鉤端螺旋體",
       "en": "Leptospira spp.",
       "stars": 1,
-      "sys": "血流 / 泌尿",
+      "sys": [
+        "血流",
+        "泌尿"
+      ],
       "morph": "細長螺旋、**末端鉤狀(問號形)**。",
       "oxy": "需氧。",
       "media": "**EMJH 培養**、暗視野。",
@@ -1731,7 +1905,9 @@
       "zh": "肺炎黴漿菌",
       "en": "Mycoplasma pneumoniae",
       "stars": 3,
-      "sys": "呼吸道",
+      "sys": [
+        "呼吸道"
+      ],
       "morph": "**無細胞壁**(膽固醇膜)、多形性、最小的自由生活菌。",
       "oxy": "兼性厭氧;生長慢。",
       "media": "**PPLO**、**煎蛋狀(fried-egg)菌落**。",
@@ -1758,7 +1934,10 @@
       "zh": "溶尿尿漿菌",
       "en": "Ureaplasma urealyticum",
       "stars": 1,
-      "sys": "STI / 泌尿",
+      "sys": [
+        "STI",
+        "泌尿"
+      ],
       "morph": "**無細胞壁**、極小。",
       "oxy": "兼性厭氧。",
       "media": "含尿素/血清培養。",
@@ -1783,7 +1962,10 @@
       "zh": "砂眼披衣菌",
       "en": "Chlamydia trachomatis",
       "stars": 3,
-      "sys": "STI / 呼吸道",
+      "sys": [
+        "STI",
+        "呼吸道"
+      ],
       "morph": "**絕對胞內**、雙相生活史:**EB(感染型)/RB(繁殖型)**。",
       "oxy": "胞內。",
       "media": "細胞培養(McCoy)、NAAT。",
@@ -1809,7 +1991,10 @@
       "zh": "立克次體",
       "en": "Rickettsia spp.",
       "stars": 2,
-      "sys": "血流 / 皮膚軟組織",
+      "sys": [
+        "血流",
+        "皮膚軟組織"
+      ],
       "morph": "G⁻ 小桿、**絕對胞內**。",
       "oxy": "胞內。",
       "media": "細胞/胚胎培養;Giménez 染色。",
@@ -1835,7 +2020,10 @@
       "zh": "伯氏考克斯菌",
       "en": "Coxiella burnetii",
       "stars": 1,
-      "sys": "呼吸道 / 血流",
+      "sys": [
+        "呼吸道",
+        "血流"
+      ],
       "morph": "G⁻ 小桿、**絕對胞內**、**孢子樣型(耐環境)**。",
       "oxy": "胞內。",
       "media": "細胞培養;BSL-3。",
@@ -1861,7 +2049,9 @@
       "zh": "艾利希體／無形體",
       "en": "Ehrlichia / Anaplasma",
       "stars": 1,
-      "sys": "血流",
+      "sys": [
+        "血流"
+      ],
       "morph": "G⁻ 小、**絕對胞內、感染白血球**。",
       "oxy": "胞內。",
       "media": "血液抹片找**桑椹體(morulae)**。",
