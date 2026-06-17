@@ -9,7 +9,7 @@
 啟用 Pages 後即可開啟：
 
 ```
-https://<帳號>.github.io/Microbiology/
+https://<k789702-debug>.github.io/Microbiology/
 ```
 
 ## 專案結構（資料與程式分離）
