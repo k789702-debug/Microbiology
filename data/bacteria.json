@@ -1,0 +1,1884 @@
+{
+  "meta": {
+    "subject": "微生物學與臨床微生物學（包括細菌與黴菌）",
+    "source": "Mahon Textbook of Diagnostic Microbiology；Murray Medical Microbiology；考選部醫檢師歷年考題(民國101-115)",
+    "clinical_systems": [
+      "呼吸道",
+      "腸道",
+      "泌尿",
+      "血流",
+      "CNS",
+      "STI",
+      "皮膚軟組織"
+    ]
+  },
+  "flows": {
+    "革蘭氏陽性球菌（G⁺ Cocci）": [
+      "Gram → G⁺ 球菌 → **Catalase**",
+      "├ **(+)** Staphylococcus（葡萄串）→ **Coagulase**：(+) S. aureus／(−) CoNS → **Novobiocin**：R→saprophyticus、S→epidermidis",
+      "└ **(−)** Streptococcus／Enterococcus（鏈狀）→ **BAP 溶血**",
+      "    ├ β：bacitracin-S,PYR(+)→A群 pyogenes；CAMP(+)→B群 agalactiae",
+      "    ├ α：optochin-S,膽溶(+)→pneumoniae；optochin-R→viridans",
+      "    └ γ：bile esculin+6.5%NaCl+PYR 三(+)→Enterococcus"
+    ],
+    "革蘭氏陽性桿菌（G⁺ Bacilli）": [
+      "Gram → G⁺ 桿菌 → 是否**分枝絲狀**？",
+      "├ 分枝絲狀：弱抗酸(+)、好氧 → **Nocardia**；非抗酸、厭氧、硫磺顆粒 → **Actinomyces**",
+      "└ 規則桿菌 → 是否**產芽孢**？",
+      "    ├ 產孢：需氧/兼性 → **Bacillus**（anthracis 非動性/cereus 動性）；厭氧 → **Clostridium**",
+      "    └ 不產孢 → **Catalase**：(+) Listeria（tumbling）／Corynebacterium（異染顆粒）；(−) Lactobacillus／Erysipelothrix(H₂S+)"
+    ],
+    "抗酸菌（Acid-fast Bacteria）": [
+      "抗酸染色(AFB,Ziehl-Neelsen) (+) → Mycobacterium",
+      "├ 生長慢、niacin(+)、cord factor → **M. tuberculosis**",
+      "├ 不可培養、嗜低溫 → **M. leprae**",
+      "└ 環境菌(NTM)，依 Runyon 產色/生長速率分類 → **M. avium complex** 等"
+    ],
+    "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）": [
+      "G⁻ → **Oxidase(+)** 雙球菌 → Neisseria／Moraxella",
+      "├ 醣發酵：只 glucose → **N. gonorrhoeae**；glucose+maltose → **N. meningitidis**；不發酵糖、DNase(+) → **Moraxella**",
+      "└ 小球桿菌（苛養）：需 X+V 因子 → **Haemophilus**；Bordet-Gengou → **Bordetella**；胞內人畜共通 → **Brucella／Francisella／Pasteurella**"
+    ],
+    "革蘭氏陰性桿菌（G⁻ Bacilli）": [
+      "G⁻ 桿菌 → **Oxidase**",
+      "├ **(−)** → 發酵 glucose？",
+      "│   ├ 發酵（**腸桿菌目**）→ lactose：(+) E.coli/Klebsiella；(−) → H₂S(+) Salmonella/Proteus、H₂S(−) Shigella",
+      "│   └ 不發酵 → **Acinetobacter**(oxidase−)／**Stenotrophomonas**(SXT)",
+      "└ **(+)** → 非發酵 **Pseudomonas／Burkholderia**；彎曲 **Vibrio／Campylobacter／Helicobacter**；苛養 **Legionella**(BCYE)；厭氧 **Bacteroides**"
+    ],
+    "螺旋體（Spirochetes）": [
+      "螺旋形、暗視野顯微鏡觀察",
+      "├ 不可培養、細密螺旋 → **Treponema pallidum**（梅毒）",
+      "├ 較大、可 Giemsa 染、節肢媒介 → **Borrelia**（萊姆/回歸熱）",
+      "└ 末端鉤狀、EMJH 培養 → **Leptospira**（鉤端螺旋體病）"
+    ],
+    "非典型／胞內菌（Atypical / Intracellular）": [
+      "細胞壁/培養特性異常",
+      "├ **無細胞壁**（β-lactam 無效）→ **Mycoplasma**；urease(+) → **Ureaplasma**",
+      "└ **絕對胞內** → 含包涵體 **Chlamydia**；節肢媒介 Weil-Felix **Rickettsia**；氣溶膠 **Coxiella**；桑椹體 **Ehrlichia/Anaplasma**"
+    ]
+  },
+  "species": [
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Staphylococcus（葡萄球菌）",
+      "zh": "金黃色葡萄球菌",
+      "en": "Staphylococcus aureus",
+      "stars": 3,
+      "sys": "皮膚軟組織 / 血流 / 呼吸道 / 腸道",
+      "morph": "G⁺ 球菌，**葡萄串狀**排列；無芽孢、無動性。",
+      "oxy": "兼性厭氧；**catalase(+)**、oxidase(−)。",
+      "media": "MSA：發酵甘露醇→黃色；BAP：金黃、**β溶血**。",
+      "tests": "**Coagulase(+)**(slide=clumping factor／tube=free)；thermostable DNase(+)；mannitol(+)；novobiocin-S。",
+      "vir": "protein A、coagulase、TSST-1、腸毒素(耐熱)、exfoliative toxin、PVL、α-toxin。",
+      "dis": "皮膚軟組織感染、菌血症/心內膜炎、骨髓炎、肺炎、**食物中毒**(嘔吐型,1–6h)、TSS、SSSS。",
+      "resist": "**MRSA**：mecA→PBP2a；偵測 gold standard＝mecA(或 cefoxitin)。",
+      "hot": [
+        "coagulase(+) 為與 CoNS 分界",
+        "thermostable DNase 與 coagulase 高度一致",
+        "MRSA＝mecA→PBP2a",
+        "易混淆 S. lugdunensis slide(+)/tube(−)"
+      ],
+      "qa": [
+        [
+          "113年 第17題",
+          "心內膜炎株 slide(+)/tube(−)、mecA、ornithine(+)→鑑別 S. lugdunensis"
+        ],
+        [
+          "109年 第33題",
+          "coagulase 對熱穩定、具抗原性"
+        ],
+        [
+          "104年 第16/18題",
+          "gold standard＝mecA；與 coagulase 一致＝thermostable DNase"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Staphylococcus（葡萄球菌）",
+      "zh": "表皮葡萄球菌",
+      "en": "Staphylococcus epidermidis",
+      "stars": 2,
+      "sys": "血流",
+      "morph": "G⁺ 球菌，葡萄串狀；CoNS 代表。",
+      "oxy": "兼性厭氧；**catalase(+)**。",
+      "media": "BAP：白色非溶血；MSA：不發酵甘露醇。",
+      "tests": "**Coagulase(−)**；**novobiocin-S**；DNase(−)。",
+      "vir": "**生物膜(biofilm/slime)**附著人工裝置。",
+      "dis": "導管/人工瓣膜/人工關節感染、菌血症(需判讀污染)。",
+      "resist": "常 methicillin-resistant(mecA)。",
+      "hot": [
+        "CoNS 代表",
+        "與 saprophyticus 區分：novobiocin S/R",
+        "biofilm 為人工裝置感染關鍵"
+      ],
+      "qa": [
+        [
+          "109年 醫學(二) 第6題",
+          "catalase 無法區分 aureus/epidermidis；coagulase、mannitol、溶血可"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Staphylococcus（葡萄球菌）",
+      "zh": "腐生葡萄球菌",
+      "en": "Staphylococcus saprophyticus",
+      "stars": 2,
+      "sys": "泌尿",
+      "morph": "G⁺ 球菌，葡萄串狀；CoNS。",
+      "oxy": "兼性厭氧；**catalase(+)**。",
+      "media": "BAP：白色非溶血。",
+      "tests": "**Coagulase(−)**；**novobiocin-R**；**urease(+)**；PYR(−)。",
+      "vir": "表面蛋白附著尿路上皮。",
+      "dis": "**年輕女性**急性膀胱炎(社區 UTI 第二常見)。",
+      "resist": "對 novobiocin 天然抗藥。",
+      "hot": [
+        "novobiocin-R 為關鍵",
+        "年輕女性 UTI",
+        "尿液 catalase+/coag−/novobiocin-R→本菌"
+      ],
+      "qa": [
+        [
+          "102年 第19題",
+          "尿液 coag(−)、novobiocin 抗藥→saprophyticus"
+        ],
+        [
+          "106年 第26題",
+          "年輕女性 UTI 葡萄球菌"
+        ],
+        [
+          "114年 第11題",
+          "分離本菌最不適用 MacConkey"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Streptococcus（鏈球菌）",
+      "zh": "化膿性鏈球菌（A群,GAS）",
+      "en": "Streptococcus pyogenes",
+      "stars": 3,
+      "sys": "皮膚軟組織 / 呼吸道 / 血流",
+      "morph": "G⁺ 球菌，**鏈狀**；Lancefield **A群**。",
+      "oxy": "兼性厭氧；**catalase(−)**。",
+      "media": "BAP：**大範圍β溶血**。",
+      "tests": "β溶血；**bacitracin-S**；**PYR(+)**；CAMP(−)；SXT-R。",
+      "vir": "**M protein**(抗吞噬/分子相似)、streptolysin O(ASO)/S、streptokinase、DNase B、SpeA/C(超抗原)。",
+      "dis": "咽喉炎、猩紅熱、丹毒、壞死性筋膜炎、STSS；後遺症**風濕熱/腎絲球腎炎**。",
+      "resist": "penicillin 仍敏感。",
+      "hot": [
+        "bacitracin-S+PYR(+) 為 A群",
+        "streptolysin O 氧敏感/ASO；S 造表面溶血",
+        "M protein→風濕熱",
+        "與 anginosus(PYR−/VP+) 區分"
+      ],
+      "qa": [
+        [
+          "103年 第13題",
+          "β溶血、bacitracin-S、PYR(+)→A群"
+        ],
+        [
+          "111年 第16題",
+          "M protein 與心肌抗原相似→風濕熱"
+        ],
+        [
+          "104年 第14題",
+          "BAP 表面溶血＝streptolysin S"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Streptococcus（鏈球菌）",
+      "zh": "無乳鏈球菌（B群,GBS）",
+      "en": "Streptococcus agalactiae",
+      "stars": 3,
+      "sys": "血流 / CNS / 泌尿",
+      "morph": "G⁺ 球菌，鏈狀；Lancefield **B群**。",
+      "oxy": "兼性厭氧；**catalase(−)**。",
+      "media": "BAP：**窄β溶血**；NGM 橘紅色素；孕婦篩檢 **LIM broth**。",
+      "tests": "β溶血(窄)；**CAMP(+)箭頭狀**；**hippurate(+)**；bacitracin-R；PYR(−)。",
+      "vir": "**莢膜多醣**(分型/抗吞噬)、CAMP factor。",
+      "dis": "**新生兒**敗血症/腦膜炎、孕產婦感染。",
+      "resist": "penicillin 敏感；孕婦 35–37 週篩檢。",
+      "hot": [
+        "CAMP 箭頭狀(vs Listeria block)",
+        "hippurate(+)",
+        "莢膜多醣為分型依據",
+        "LIM broth 篩檢"
+      ],
+      "qa": [
+        [
+          "107年 第8題",
+          "CAMP 箭頭狀;Listeria block"
+        ],
+        [
+          "107年 第5題",
+          "分型依據＝capsular polysaccharide"
+        ],
+        [
+          "106年 第22題",
+          "孕婦篩檢增菌＝LIM broth"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Streptococcus（鏈球菌）",
+      "zh": "肺炎鏈球菌",
+      "en": "Streptococcus pneumoniae",
+      "stars": 3,
+      "sys": "呼吸道 / CNS / 血流",
+      "morph": "G⁺ **矛尖狀雙球菌**，具**莢膜**。",
+      "oxy": "兼性厭氧；**catalase(−)**。",
+      "media": "BAP：**α溶血**，菌落中央凹陷(autolysin)。",
+      "tests": "α溶血；**optochin-S(≥14mm)**；**bile solubility(+)**；bile esculin(−)；Quellung 分型。",
+      "vir": "**莢膜多醣**(最重要,>90 血清型)、pneumolysin、IgA protease。",
+      "dis": "社區型肺炎、成人腦膜炎、中耳炎、菌血症。",
+      "resist": "penicillin 抗性＝**PBP 改變**(非 β-lactamase)；疫苗 PCV13/PPSV23。",
+      "hot": [
+        "optochin-S+膽溶(+) 為與 viridans 分界",
+        "Quellung 分型",
+        "菌落凹陷=autolysis",
+        "抗藥=PBP 改變"
+      ],
+      "qa": [
+        [
+          "107年 第14題",
+          "optochin 後以 bile solubility 確認"
+        ],
+        [
+          "108年 第29題",
+          "optochin-S、膽溶(+)、bile esculin(−)、SXT-R"
+        ],
+        [
+          "111年 第13題",
+          "培養過久 autolysis"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Streptococcus（鏈球菌）",
+      "zh": "草綠色鏈球菌（群）",
+      "en": "Viridans streptococci",
+      "stars": 2,
+      "sys": "血流 / 皮膚軟組織",
+      "morph": "G⁺ 球菌，鏈狀；含 mitis/sanguinis/mutans/anginosus/bovis 群。",
+      "oxy": "兼性厭氧；**catalase(−)**。",
+      "media": "BAP：**α或不溶血**，不凹陷。",
+      "tests": "α/γ溶血；**optochin-R**；**bile solubility(−)**；多不耐 6.5%NaCl。",
+      "vir": "葡聚糖附著瓣膜/牙齒。",
+      "dis": "**亞急性心內膜炎**(sanguinis/mitis)、**齲齒**(mutans)、膿瘍(anginosus)。",
+      "resist": "bovis 群帶 D群抗原、與大腸癌相關(已更名 S. gallolyticus)。",
+      "hot": [
+        "optochin-R+膽不溶 與 pneumoniae 區分",
+        "mutans→齲齒;anginosus→膿瘍",
+        "bovis 菌血症警覺大腸癌"
+      ],
+      "qa": [
+        [
+          "108年 第31題",
+          "viridans 為正常菌叢、α/γ溶血、可致菌血症"
+        ],
+        [
+          "110年 第20題",
+          "帶 D群抗原者＝S. bovis group"
+        ],
+        [
+          "112年 第19題",
+          "BAP 不長→Abiotrophia/Granulicatella"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性球菌（G⁺ Cocci）",
+      "h2": "Enterococcus（腸球菌）",
+      "zh": "腸球菌（糞/屎腸球菌）",
+      "en": "Enterococcus faecalis / faecium",
+      "stars": 3,
+      "sys": "泌尿 / 血流 / 腸道",
+      "morph": "G⁺ 球菌，成對/短鏈；Lancefield **D群**。",
+      "oxy": "兼性厭氧；**catalase(−)**。",
+      "media": "bile esculin azide→黑色；6.5%NaCl→生長。",
+      "tests": "**bile esculin(+) 且 6.5%NaCl(+) 且 PYR(+)**；耐膽鹽。",
+      "vir": "黏附素、明膠酶；環境耐受強。",
+      "dis": "UTI、菌血症、心內膜炎、院內感染。",
+      "resist": "**VRE**(vanA/vanB:D-Ala-D-Ala→**D-Ala-D-Lac**)；對 cephalosporin **天然抗藥**。",
+      "hot": [
+        "三(+)為指標",
+        "與 S. bovis 區分:6.5%NaCl/PYR",
+        "VRE＝D-Ala-D-Lac",
+        "天然抗 cephalosporin"
+      ],
+      "qa": [
+        [
+          "110年 第12題",
+          "PYR/bile esculin/6.5%NaCl 區分 Enterococcus 與 D群 strep"
+        ],
+        [
+          "104年 第15題",
+          "VRE 機轉 D-Ala-D-Lac"
+        ],
+        [
+          "112年 第20題",
+          "治療＝ampicillin+高濃度 aminoglycoside"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Bacillus",
+      "zh": "炭疽桿菌",
+      "en": "Bacillus anthracis",
+      "stars": 2,
+      "sys": "皮膚軟組織 / 呼吸道",
+      "morph": "G⁺ 大桿、竹節狀鏈、中央芽孢不膨大、具**多肽莢膜**。",
+      "oxy": "兼性需氧；**catalase(+)**；**非動性**(屬內罕見)。",
+      "media": "BAP 非溶血、medusa-head 菌落。",
+      "tests": "**非動性**、非溶血；與 C. perfringens 區分用 lecithinase/catalase/Gram。",
+      "vir": "**三組分外毒素**(PA 保護抗原+LF 致死因子+EF 水腫因子)、莢膜。",
+      "dis": "皮膚炭疽(黑色焦痂 eschar)、吸入型(woolsorter)、腸胃型;生物恐怖劑。",
+      "resist": "penicillin 敏感(治療/預防)。",
+      "hot": [
+        "**非動性、非溶血** 為與 B. cereus 鑑別",
+        "三毒素 PA/LF/EF",
+        "莢膜為 poly-D-glutamate"
+      ],
+      "qa": [
+        [
+          "114年 第44題",
+          "lecithinase 區分 C. perfringens 與 B. anthracis"
+        ],
+        [
+          "102年 特考申論",
+          "炭疽桿菌毒力因子、傳染途徑與診斷"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Bacillus",
+      "zh": "蠟狀芽孢桿菌",
+      "en": "Bacillus cereus",
+      "stars": 3,
+      "sys": "腸道 / 血流",
+      "morph": "G⁺ 桿、芽孢、**動性(+)**。",
+      "oxy": "兼性需氧；**catalase(+)**；BAP **β溶血**、**lecithinase(+)**。",
+      "media": "MYP 培養(卵磷脂酶/甘露醇)。",
+      "tests": "動性(+)、β溶血、lecithinase(+)(與 anthracis 反向)。",
+      "vir": "**emetic toxin(cereulide,耐熱)→嘔吐型**；diarrheal 腸毒素(不耐熱)→腹瀉型。",
+      "dis": "食物中毒兩型(炒飯)、眼內炎、導管菌血症。",
+      "resist": "多對 penicillin 抗藥(產 β-lactamase)。",
+      "hot": [
+        "**cereulide 耐熱→嘔吐型**",
+        "與 anthracis 區分:動性/溶血/lecithinase",
+        "兩型食物中毒"
+      ],
+      "qa": [
+        [
+          "114年 第9題",
+          "cereulide 最常引起嘔吐型"
+        ],
+        [
+          "113年 第11題",
+          "cereulide 屬 emetic toxin"
+        ],
+        [
+          "112年 第17題",
+          "B. cereus 食物中毒兩型敘述"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Clostridium",
+      "zh": "破傷風梭菌",
+      "en": "Clostridium tetani",
+      "stars": 2,
+      "sys": "皮膚軟組織 / CNS",
+      "morph": "G⁺ 厭氧桿、**終端芽孢「鼓槌狀」**、動性。",
+      "oxy": "**絕對厭氧**；catalase(−)。",
+      "media": "厭氧培養、群集。",
+      "tests": "鼓槌狀芽孢、厭氧。",
+      "vir": "**tetanospasmin**(阻斷抑制性 GABA/glycine→痙攣性麻痺)。",
+      "dis": "破傷風(牙關緊閉、角弓反張)。",
+      "resist": "類毒素疫苗預防。",
+      "hot": [
+        "**drumstick 鼓槌狀芽孢**",
+        "tetanospasmin 阻斷抑制性神經傳遞→痙攣性麻痺(對比肉毒鬆弛性)"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補（可再請我補檢索）"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Clostridium",
+      "zh": "肉毒桿菌",
+      "en": "Clostridium botulinum",
+      "stars": 2,
+      "sys": "腸道 / CNS",
+      "morph": "G⁺ 厭氧桿、次終端芽孢。",
+      "oxy": "**絕對厭氧**。",
+      "media": "厭氧。",
+      "tests": "毒素偵測(小鼠生物檢定)。",
+      "vir": "**botulinum toxin**(阻斷 ACh 釋放→**鬆弛性麻痺**;已知最毒)。",
+      "dis": "肉毒中毒(罐頭、嬰兒蜂蜜)、複視/吞嚥困難。",
+      "resist": "抗毒素治療。",
+      "hot": [
+        "**鬆弛性麻痺**(vs 破傷風痙攣性)",
+        "阻斷 ACh 釋放",
+        "嬰兒蜂蜜"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Clostridium",
+      "zh": "產氣莢膜梭菌",
+      "en": "Clostridium perfringens",
+      "stars": 3,
+      "sys": "皮膚軟組織 / 腸道",
+      "morph": "G⁺ 厭氧粗大桿、莢膜、芽孢少見、**非動性**。",
+      "oxy": "**厭氧**(耐氧)；catalase(−)。",
+      "media": "BAP **雙環溶血(double zone)**、卵黃培養 **Nagler reaction(+)**。",
+      "tests": "**lecithinase(α-toxin)(+)**、double-zone hemolysis、非動性。",
+      "vir": "**α-toxin(lecithinase/卵磷脂酶)**、腸毒素。",
+      "dis": "**氣性壞疽(肌肉壞死)**、食物中毒、壞死性腸炎。",
+      "resist": "清創+penicillin。",
+      "hot": [
+        "**α-toxin＝lecithinase**(Nagler)",
+        "double-zone hemolysis",
+        "氣性壞疽"
+      ],
+      "qa": [
+        [
+          "114年 醫學(二) 第5題",
+          "α 毒素造成氣性壞疽"
+        ],
+        [
+          "114年 第44題",
+          "lecithinase 區分 perfringens 與 anthracis"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "產芽孢桿菌 — Clostridium",
+      "zh": "困難梭菌",
+      "en": "Clostridioides difficile",
+      "stars": 2,
+      "sys": "腸道",
+      "morph": "G⁺ 厭氧桿、芽孢。",
+      "oxy": "**絕對厭氧**。",
+      "media": "**CCFA**(cycloserine-cefoxitin-fructose)選擇培養。",
+      "tests": "toxin A/B 偵測、GDH 抗原。",
+      "vir": "**toxin A(腸毒素)/toxin B(細胞毒素)**。",
+      "dis": "**抗生素相關偽膜性結腸炎**。",
+      "resist": "vancomycin/fidaxomicin；復發者**糞菌移植**。",
+      "hot": [
+        "偽膜性結腸炎",
+        "toxin A/B",
+        "糞菌移植治療復發"
+      ],
+      "qa": [
+        [
+          "108年 特考申論",
+          "C. difficile 特性、毒素機制、疾病與治療"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "不產孢規則桿菌",
+      "zh": "白喉棒狀桿菌",
+      "en": "Corynebacterium diphtheriae",
+      "stars": 3,
+      "sys": "呼吸道",
+      "morph": "G⁺ 棒狀、**柵欄狀/中文字排列**、**異染顆粒**(Babes-Ernst,Albert/Loeffler 染)。",
+      "oxy": "兼性厭氧；**catalase(+)**、非動性。",
+      "media": "**Tinsdale**(亞碲酸鹽→黑色暈)、**Loeffler 血清**。",
+      "tests": "異染顆粒、Elek test 測毒素。",
+      "vir": "**白喉毒素**(由**溶原性 β-corynephage tox 基因**編碼;ADP-ribosylation **EF-2**→抑蛋白合成;**鐵抑制**毒素產生)。",
+      "dis": "白喉(咽喉灰白假膜)、心肌炎、神經病變。",
+      "resist": "抗毒素+疫苗(類毒素 DTaP)。",
+      "hot": [
+        "**毒素由 β-噬菌體編碼(溶原)**",
+        "**鐵越高毒素越少**",
+        "ADP 核糖基化 EF-2",
+        "異染顆粒"
+      ],
+      "qa": [
+        [
+          "106年 第2題",
+          "白喉毒素由溶原 β-phage tox 編碼;鐵含量影響"
+        ],
+        [
+          "110年 第11題",
+          "白喉毒素基因位於 β-corynephage"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "不產孢規則桿菌",
+      "zh": "單核球增多性李斯特菌",
+      "en": "Listeria monocytogenes",
+      "stars": 3,
+      "sys": "血流 / CNS",
+      "morph": "G⁺ 短桿。",
+      "oxy": "兼性厭氧；**catalase(+)**；BAP 窄 β溶血。",
+      "media": "**冷增菌(4℃)**、PALCAM。",
+      "tests": "**25℃ tumbling motility(翻滾)**、**4℃ 生長**、CAMP(+)block、**esculin(+)**。",
+      "vir": "兼性胞內:**internalin、listeriolysin O、ActA**(肌動蛋白彗星)、phospholipase C。",
+      "dis": "孕婦/新生兒/免疫低下**腦膜炎、敗血症**;未殺菌乳製品。",
+      "resist": "ampicillin(±gentamicin)。",
+      "hot": [
+        "**tumbling motility、冷生長**",
+        "listeriolysin O/ActA",
+        "與 Corynebacterium 區分(動性/esculin/冷生長);cord factor 非其毒力"
+      ],
+      "qa": [
+        [
+          "112年 第19題",
+          "胞內寄生最不相關＝cord factor"
+        ],
+        [
+          "107年 第4題",
+          "Listeria 特性敘述"
+        ],
+        [
+          "105年 第9題",
+          "無法鑑別 Listeria/Corynebacterium 之試驗"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "不產孢規則桿菌",
+      "zh": "豬丹毒桿菌",
+      "en": "Erysipelothrix rhusiopathiae",
+      "stars": 1,
+      "sys": "皮膚軟組織",
+      "morph": "G⁺ 細桿。",
+      "oxy": "兼性厭氧；catalase(−)。",
+      "media": "TSI。",
+      "tests": "**TSI 產 H₂S(+)**(少數 G⁺桿)、非動性。",
+      "vir": "neuraminidase。",
+      "dis": "**類丹毒(erysipeloid)**(屠夫/漁夫手部)、心內膜炎。",
+      "resist": "penicillin。",
+      "hot": [
+        "**G⁺桿但 TSI 產 H₂S**",
+        "類丹毒職業病",
+        "對 vancomycin 天然抗藥"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "不產孢規則桿菌",
+      "zh": "乳酸桿菌",
+      "en": "Lactobacillus spp.",
+      "stars": 1,
+      "sys": "泌尿 / 腸道",
+      "morph": "G⁺ 長桿。",
+      "oxy": "厭氧/微需氧；**catalase(−)**;產乳酸。",
+      "media": "MRS。",
+      "tests": "產乳酸、耐酸。",
+      "vir": "低致病性。",
+      "dis": "**陰道正常菌叢**(維持酸性)、極少致病(免疫低下心內膜炎/菌血症)。",
+      "resist": "對 vancomycin 多天然抗藥。",
+      "hot": [
+        "陰道正常菌叢、產乳酸維酸",
+        "與病原菌區分"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "分枝放線菌",
+      "zh": "諾卡氏菌",
+      "en": "Nocardia spp.",
+      "stars": 2,
+      "sys": "呼吸道 / CNS / 皮膚軟組織",
+      "morph": "G⁺ **分枝絲狀**、串珠狀(beaded)。",
+      "oxy": "**好氧**；catalase(+)、urease(+);含 mycolic acid。",
+      "media": "可長 BAP/Sabouraud；生長慢。",
+      "tests": "**弱(部分)抗酸(+)**(modified Kinyoun)、好氧。",
+      "vir": "cord factor、catalase/SOD 抗吞噬。",
+      "dis": "肺/腦膿瘍(免疫低下)、皮膚足菌腫(mycetoma)。",
+      "resist": "**SXT(TMP-SMX)** 治療。",
+      "hot": [
+        "**弱抗酸(+)**(vs Actinomyces−)",
+        "**好氧**(vs Actinomyces 厭氧)",
+        "SXT 治療"
+      ],
+      "qa": [
+        [
+          "108年 第20題",
+          "Nocardia 含 mycolic acid、好氧"
+        ],
+        [
+          "104年 第10題",
+          "串珠分枝、傳統 ZN 染紅、好氧不產孢"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陽性桿菌（G⁺ Bacilli）",
+      "h2": "分枝放線菌",
+      "zh": "以色列放線菌",
+      "en": "Actinomyces israelii",
+      "stars": 2,
+      "sys": "皮膚軟組織",
+      "morph": "G⁺ **分枝絲狀**。",
+      "oxy": "**厭氧/微需氧**；非抗酸。",
+      "media": "厭氧、生長慢。",
+      "tests": "**非抗酸**、厭氧、**硫磺顆粒(sulfur granules)**。",
+      "vir": "低毒、伺機(黏膜破損)。",
+      "dis": "頸臉部放線菌病(lumpy jaw)、胸腹部、IUD 相關骨盆感染。",
+      "resist": "**penicillin**(長療程)。",
+      "hot": [
+        "**硫磺顆粒**",
+        "**厭氧、非抗酸**(vs Nocardia)",
+        "penicillin 治療"
+      ],
+      "qa": [
+        [
+          "108年 第46題",
+          "組織內 sulfur granules→Actinomyces israelii"
+        ],
+        [
+          "112年 牙醫(二) 第58題",
+          "膿腫分枝 G⁺菌+硫磺顆粒→A. israelii"
+        ]
+      ]
+    },
+    {
+      "h1": "抗酸菌（Acid-fast Bacteria）",
+      "h2": "Mycobacterium",
+      "zh": "結核分枝桿菌",
+      "en": "Mycobacterium tuberculosis",
+      "stars": 3,
+      "sys": "呼吸道 / 血流 / CNS",
+      "morph": "**抗酸桿菌**(Ziehl-Neelsen 石碳酸復紅→紅;**3% 鹽酸酒精脫色**;Kinyoun 冷染;auramine 螢光)。",
+      "oxy": "絕對需氧；生長極慢(3–8 週)。",
+      "media": "**Löwenstein-Jensen(蛋黃)**→buff 色;液態 MGIT。",
+      "tests": "**niacin(+)**、nitrate(+)、68℃ catalase(−)。",
+      "vir": "**cord factor(索狀因子,trehalose dimycolate)**、脂質壁、存活於巨噬細胞。",
+      "dis": "肺結核、粟粒性/肺外結核。",
+      "resist": "RIPE 四合一;MDR/XDR-TB。",
+      "hot": [
+        "**LJ 培養、生長慢**",
+        "**niacin(+)、cord factor**",
+        "ZN 脫色劑＝3% 鹽酸酒精"
+      ],
+      "qa": [
+        [
+          "107年 第5題",
+          "ZN 脫色劑＝3% HCl in alcohol"
+        ],
+        [
+          "110年 第1題",
+          "acridine orange 不適合抗酸鑑別"
+        ],
+        [
+          "114年 第71題",
+          "不具抗酸性者＝Listeria(對比 TB/Nocardia)"
+        ]
+      ]
+    },
+    {
+      "h1": "抗酸菌（Acid-fast Bacteria）",
+      "h2": "Mycobacterium",
+      "zh": "痲瘋分枝桿菌",
+      "en": "Mycobacterium leprae",
+      "stars": 2,
+      "sys": "皮膚軟組織 / 周邊神經",
+      "morph": "抗酸桿菌、**無法人工培養**(犰狳/鼠足墊)。",
+      "oxy": "嗜低溫(體表)。",
+      "media": "不可培養。",
+      "tests": "lepromin 試驗、組織 globi/泡沫細胞。",
+      "vir": "嗜神經(Schwann 細胞)。",
+      "dis": "痲瘋(結核樣/瘤型)、周邊神經病變。",
+      "resist": "dapsone+rifampin+clofazimine。",
+      "hot": [
+        "**不可人工培養**",
+        "嗜低溫部位",
+        "瘤型可見大量 AFB"
+      ],
+      "qa": [
+        [
+          "106年 醫學(二) 第79題",
+          "抗酸染色適用 leprosy/TB/MAC,不適用 Cryptococcus"
+        ]
+      ]
+    },
+    {
+      "h1": "抗酸菌（Acid-fast Bacteria）",
+      "h2": "Mycobacterium",
+      "zh": "非結核分枝桿菌（NTM）",
+      "en": "Mycobacterium avium complex 等",
+      "stars": 2,
+      "sys": "呼吸道 / 血流",
+      "morph": "抗酸桿菌;環境菌。",
+      "oxy": "需氧;依 **Runyon 分類**(光/暗產色、快速生長)。",
+      "media": "LJ/液態培養。",
+      "tests": "產色性、生長速率。",
+      "vir": "伺機性。",
+      "dis": "**MAC 播散性感染(AIDS,CD4<50)**、肺病、淋巴結炎。",
+      "resist": "macrolide 為主多藥療法。",
+      "hot": [
+        "Runyon 分類",
+        "**photochromogen**(M. kansasii/marinum)",
+        "MAC 播散(AIDS)"
+      ],
+      "qa": [
+        [
+          "107年 第70題",
+          "不屬 photochromogen 者＝M. avium complex"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "Neisseria / Moraxella",
+      "zh": "淋病雙球菌",
+      "en": "Neisseria gonorrhoeae",
+      "stars": 3,
+      "sys": "STI / 泌尿 / 皮膚軟組織",
+      "morph": "G⁻ **腎形雙球菌**(白血球內)。",
+      "oxy": "需 5% CO₂；**oxidase(+)、catalase(+)**。",
+      "media": "**Modified Thayer-Martin(MTM)**(vancomycin+colistin+nystatin/trimethoprim;**不含 cephalosporin**)。",
+      "tests": "**僅發酵 glucose**(不發酵 maltose)。",
+      "vir": "pili、Opa、IgA protease、**抗原變異**(無持久免疫)。",
+      "dis": "淋病、PID、新生兒結膜炎、播散性淋菌感染。",
+      "resist": "β-lactamase/染色體抗藥;**無疫苗**。",
+      "hot": [
+        "**只發酵 glucose**(vs meningitidis glucose+maltose)",
+        "抗原變異→重複感染",
+        "MTM 選擇培養"
+      ],
+      "qa": [
+        [
+          "108年 第5題",
+          "N. gonorrhoeae oxidase(+)、catalase(+)"
+        ],
+        [
+          "107年 第32題",
+          "MTM 不含 cephalosporins"
+        ],
+        [
+          "110年 第27題",
+          "以 maltose 產酸區分 gonorrhoeae/meningitidis"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "Neisseria / Moraxella",
+      "zh": "腦膜炎雙球菌",
+      "en": "Neisseria meningitidis",
+      "stars": 3,
+      "sys": "CNS / 血流 / 呼吸道",
+      "morph": "G⁻ 雙球菌、具**莢膜**。",
+      "oxy": "需 CO₂；**oxidase(+)**。",
+      "media": "巧克力/MTM。",
+      "tests": "**發酵 glucose + maltose**。",
+      "vir": "莢膜多醣(分型 A/B/C/Y/W135)、IgA protease、內毒素(LOS)。",
+      "dis": "流行性腦脊髓膜炎、敗血症、瘀斑、**Waterhouse-Friderichsen**。",
+      "resist": "penicillin/ceftriaxone;**莢膜疫苗**(B 型另需)。",
+      "hot": [
+        "**glucose+maltose 皆(+)**",
+        "莢膜疫苗",
+        "與 gonorrhoeae 區分＝maltose"
+      ],
+      "qa": [
+        [
+          "111年 第40題",
+          "N. meningitidis oxidase(+)、catalase(+)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "Neisseria / Moraxella",
+      "zh": "卡他莫拉菌",
+      "en": "Moraxella catarrhalis",
+      "stars": 1,
+      "sys": "呼吸道",
+      "morph": "G⁻ 雙球菌。",
+      "oxy": "需氧；**oxidase(+)**。",
+      "media": "BAP(曲棍球推盤狀菌落)。",
+      "tests": "**DNase(+)**、不發酵醣(asaccharolytic)、**β-lactamase(+)**。",
+      "vir": "黏附素。",
+      "dis": "中耳炎、鼻竇炎、COPD 急性惡化。",
+      "resist": "β-lactamase(+)→amoxicillin-clavulanate。",
+      "hot": [
+        "DNase(+)、不發酵糖",
+        "β-lactamase(+)"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "苛養球桿菌",
+      "zh": "流感嗜血桿菌",
+      "en": "Haemophilus influenzae",
+      "stars": 3,
+      "sys": "呼吸道 / CNS",
+      "morph": "G⁻ 小球桿。",
+      "oxy": "需 **X(hemin)+V(NAD)** 因子。",
+      "media": "**巧克力培養基**;BAP 上靠 S. aureus 提供 V→**衛星現象(satellitism)**。",
+      "tests": "X+V 需求、ALA 試驗。",
+      "vir": "**b 型莢膜(PRP)**、IgA protease、內毒素。",
+      "dis": "腦膜炎/會厭炎/敗血症(Hib)、中耳炎(無莢膜株)。",
+      "resist": "β-lactamase;**Hib 疫苗**。",
+      "hot": [
+        "**需 X+V 因子、巧克力培養**",
+        "**衛星現象**",
+        "Hib 莢膜疫苗"
+      ],
+      "qa": [
+        [
+          "106年 第4題",
+          "厭氧下 H. influenzae 不需 X(只需 V)"
+        ],
+        [
+          "103年 第39題",
+          "最適培養＝chocolate(此處 5% rabbit blood)"
+        ],
+        [
+          "107年 第15題",
+          "不與 S. aureus 衛星現象者(對比)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "苛養球桿菌",
+      "zh": "百日咳桿菌",
+      "en": "Bordetella pertussis",
+      "stars": 2,
+      "sys": "呼吸道",
+      "morph": "G⁻ 小球桿。",
+      "oxy": "絕對需氧；**oxidase(+)**。",
+      "media": "**Bordet-Gengou(甘油馬鈴薯血)**、Regan-Lowe。",
+      "tests": "oxidase(+)、urease(−)。",
+      "vir": "**pertussis toxin**(ADP-ribosylation Gi→↑cAMP)、adenylate cyclase toxin、FHA、**pertactin(黏附)**、tracheal cytotoxin。",
+      "dis": "百日咳(卡他/陣發/恢復期)。",
+      "resist": "macrolide;DTaP 疫苗;**人為唯一宿主**。",
+      "hot": [
+        "Bordet-Gengou 培養",
+        "pertussis toxin↑cAMP",
+        "pertactin 黏附",
+        "人為唯一宿主"
+      ],
+      "qa": [
+        [
+          "110年 第28題",
+          "pertactin 為媒介黏附之膜蛋白"
+        ],
+        [
+          "105年 第26題",
+          "B. pertussis 特性敘述"
+        ],
+        [
+          "112年 第64題",
+          "引起百日咳者＝B. pertussis"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "人畜共通球桿菌",
+      "zh": "布氏桿菌",
+      "en": "Brucella spp.",
+      "stars": 1,
+      "sys": "血流",
+      "morph": "G⁻ 小球桿。",
+      "oxy": "需 CO₂;**胞內**。",
+      "media": "血培養(慢)、需 BSL-3。",
+      "tests": "**urease(+)**、oxidase(+)。",
+      "vir": "胞內存活。",
+      "dis": "**布氏桿菌病/波浪熱**(未殺菌乳、動物接觸)。",
+      "resist": "doxycycline+rifampin/gentamicin。",
+      "hot": [
+        "波浪熱(undulant fever)",
+        "胞內、人畜共通",
+        "血培養慢、BSL-3"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "人畜共通球桿菌",
+      "zh": "土倫病法蘭西斯菌",
+      "en": "Francisella tularensis",
+      "stars": 1,
+      "sys": "皮膚軟組織 / 血流",
+      "morph": "G⁻ 小球桿。",
+      "oxy": "**胞內**;需 cysteine。",
+      "media": "BCYE/巧克力(含 cysteine);**BSL-3、極低感染劑量**。",
+      "tests": "弱 oxidase、生長需 cysteine。",
+      "vir": "胞內存活、莢膜。",
+      "dis": "**兔熱病(tularemia)**(蜱/兔接觸/氣溶膠)。",
+      "resist": "streptomycin/gentamicin。",
+      "hot": [
+        "極低感染劑量(生物恐怖)",
+        "需 cysteine 培養",
+        "兔熱病"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性球菌／球桿菌（G⁻ Cocci / Coccobacilli）",
+      "h2": "人畜共通球桿菌",
+      "zh": "多殺性巴斯德桿菌",
+      "en": "Pasteurella multocida",
+      "stars": 1,
+      "sys": "皮膚軟組織",
+      "morph": "G⁻ 球桿、**雙極染色**。",
+      "oxy": "兼性厭氧;**oxidase(+)、catalase(+)**。",
+      "media": "**不長 MacConkey**;BAP 可長。",
+      "tests": "oxidase(+)、indole(+)、nitrate(+)。",
+      "vir": "莢膜。",
+      "dis": "**貓狗咬抓傷**蜂窩組織炎、軟組織感染。",
+      "resist": "**penicillin 敏感**。",
+      "hot": [
+        "貓狗咬傷",
+        "oxidase(+)、不長 MacConkey",
+        "penicillin 敏感"
+      ],
+      "qa": [
+        [
+          "115年 第28題",
+          "Pasteurella 中最可能產 urease 者＝P. multocida"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "大腸桿菌",
+      "en": "Escherichia coli",
+      "stars": 3,
+      "sys": "腸道 / 泌尿 / 血流 / CNS",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;**oxidase(−)**、nitrate(+)。",
+      "media": "MacConkey **乳糖(+)粉紅**;EMB 金屬綠光澤。",
+      "tests": "**indole(+)**、動性(+)、lactose(+)。",
+      "vir": "型別:**ETEC**(LT/ST,旅行者瀉)、EPEC、**EHEC O157:H7**(Shiga toxin,出血性結腸炎/**HUS**;sorbitol(−),用 **SMAC**)、EIEC、EAEC、UPEC(P 菌毛)。",
+      "dis": "UTI(最常見)、腸炎、敗血症、新生兒腦膜炎(K1)。",
+      "resist": "ESBL、碳青黴烯抗藥。",
+      "hot": [
+        "**O157:H7 山梨醇陰性→SMAC**",
+        "**Shiga toxin→HUS**",
+        "indole(+)",
+        "O=體抗原/H=鞭毛抗原"
+      ],
+      "qa": [
+        [
+          "111年 第38題",
+          "O157:H7 用 sorbitol 取代 lactose 之 MacConkey"
+        ],
+        [
+          "110年 第39題",
+          "產 Shiga toxin 者＝EHEC"
+        ],
+        [
+          "106年 第73題",
+          "O157:H7 為 sorbitol 陰性"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "肺炎克雷伯氏菌",
+      "en": "Klebsiella pneumoniae",
+      "stars": 3,
+      "sys": "呼吸道 / 泌尿 / 血流",
+      "morph": "G⁻ 粗短桿、**大黏液莢膜**。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "MacConkey **乳糖(+)** 黏稠拉絲菌落。",
+      "tests": "**非動性**、**urease(+)**、indole(−)、VP(+)。",
+      "vir": "**莢膜多醣**(抗吞噬)、高黏液株(hvKp)。",
+      "dis": "肺炎(**紅醋栗痰**,酒癮者)、UTI、**肝膿瘍**(台灣常見)。",
+      "resist": "**ESBL、KPC 碳青黴烯酶(CRE)**。",
+      "hot": [
+        "黏液莢膜、非動性",
+        "肝膿瘍(台灣)",
+        "ESBL/CRE 院內抗藥"
+      ],
+      "qa": [
+        [
+          "114年 第27題",
+          "非 swarming 者(對比 Proteus):K. pneumoniae"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "腸桿菌屬",
+      "en": "Enterobacter spp.",
+      "stars": 2,
+      "sys": "血流 / 泌尿",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "MacConkey 乳糖(+)。",
+      "tests": "**動性(+)**、VP(+)、ornithine(+)、citrate(+)、urease 弱。",
+      "vir": "伺機。",
+      "dis": "院內肺炎、UTI、菌血症。",
+      "resist": "**誘導型 AmpC β-lactamase**(對 3 代 cephalosporin 治療中可誘導抗藥)。",
+      "hot": [
+        "**AmpC 誘導型抗藥**",
+        "動性(+)、VP(+) 與 Klebsiella 區分"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "沙門氏菌",
+      "en": "Salmonella spp.",
+      "stars": 3,
+      "sys": "腸道 / 血流",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "**XLD(紅+黑心)**、HE、SS;增菌 **selenite/tetrathionate**。",
+      "tests": "**lactose(−)**、**H₂S(+)(TSI 黑)**、動性(+)、citrate(+)。",
+      "vir": "**Vi 莢膜抗原**(S. Typhi)、TTSS 侵入。",
+      "dis": "**傷寒**(S. Typhi)、腸胃炎、菌血症/骨髓炎(鐮型)。",
+      "resist": "fluoroquinolone/ceftriaxone;抗藥上升。",
+      "hot": [
+        "**H₂S(+)、不發酵乳糖**",
+        "XLD 黑心",
+        "Vi 抗原",
+        "增菌培養基"
+      ],
+      "qa": [
+        [
+          "110年 第30題",
+          "xylose+/lysine+/H₂S+→XLD 紅色黑心"
+        ],
+        [
+          "115年 第3題",
+          "非 Salmonella/Shigella 增菌液＝trypticase soy broth"
+        ],
+        [
+          "108年 第33題",
+          "TSI 產 H₂S 者＝Edwardsiella(對比)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "志賀氏桿菌",
+      "en": "Shigella spp.",
+      "stars": 3,
+      "sys": "腸道",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "XLD/HE/SS(無色菌落,不發酵木糖)。",
+      "tests": "**lactose(−)**、**H₂S(−)**、**非動性**、不產氣。",
+      "vir": "**侵入大腸黏膜**、Shiga toxin(S. dysenteriae)、**極低感染劑量**。",
+      "dis": "細菌性痢疾(血便、裏急後重)。",
+      "resist": "fluoroquinolone;抗藥上升。",
+      "hot": [
+        "**非動性、H₂S(−)**",
+        "低感染劑量",
+        "與 Salmonella 區分(動性/H₂S)"
+      ],
+      "qa": [
+        [
+          "108年 第36題",
+          "培養 Shigella 最適＝XLD"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "變形桿菌",
+      "en": "Proteus mirabilis / vulgaris",
+      "stars": 2,
+      "sys": "泌尿",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "BAP **群集移行(swarming)** 同心圓。",
+      "tests": "**urease 強(+)**、H₂S(+)、**苯丙胺酸脫胺酶(PDA)(+)**、indole(mirabilis−/vulgaris+)。",
+      "vir": "urease(分解尿素→鹼化→**鳥糞石結石**)、swarming。",
+      "dis": "UTI(尤其結石、導尿管)。",
+      "resist": "P. mirabilis 對 nitrofurantoin 抗藥。",
+      "hot": [
+        "**swarming**",
+        "**urease 強(+)→尿路結石**",
+        "H₂S(+)、PDA(+)"
+      ],
+      "qa": [
+        [
+          "114年 第27題",
+          "2% agar 表面 swarming 者＝P. mirabilis"
+        ],
+        [
+          "110年 第75題",
+          "urease 強陽性＝Proteus、H. pylori"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "黏質沙雷氏菌",
+      "en": "Serratia marcescens",
+      "stars": 1,
+      "sys": "血流 / 泌尿",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "室溫可產**紅色素(prodigiosin)**。",
+      "tests": "**DNase(+)**、lipase(+)、gelatinase(+)、lactose 慢/(−)。",
+      "vir": "伺機、院內。",
+      "dis": "院內肺炎、UTI、菌血症、導管感染。",
+      "resist": "多重抗藥、AmpC。",
+      "hot": [
+        "**prodigiosin 紅色素**",
+        "DNase(+)"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "小腸結腸炎耶爾森菌",
+      "en": "Yersinia enterocolitica",
+      "stars": 2,
+      "sys": "腸道",
+      "morph": "G⁻ 球桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "**CIN 培養(牛眼菌落)**;**冷增菌(4℃)**。",
+      "tests": "urease(+)、**動性 25℃(+)/37℃(−)**;TSI A/A。",
+      "vir": "侵入、腸毒素。",
+      "dis": "小腸結腸炎、**假性闌尾炎**(腸繫膜淋巴結炎)、輸血相關敗血症。",
+      "resist": "多數 β-lactam 抗藥(產 β-lactamase)。",
+      "hot": [
+        "**冷增菌、CIN**",
+        "溫度依賴動性",
+        "假性闌尾炎"
+      ],
+      "qa": [
+        [
+          "107年 第33題",
+          "Y. enterocolitica TSI A/A 因發酵 glucose+sucrose"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "腸桿菌目 Enterobacterales",
+      "zh": "檸檬酸桿菌",
+      "en": "Citrobacter spp.",
+      "stars": 1,
+      "sys": "泌尿 / 血流",
+      "morph": "G⁻ 桿。",
+      "oxy": "兼性厭氧;oxidase(−)。",
+      "media": "MacConkey 乳糖慢/(+)。",
+      "tests": "**citrate(+)**、H₂S 可(+)(C. freundii)、動性(+)。",
+      "vir": "伺機;C. koseri 與新生兒腦膜炎/腦膿瘍。",
+      "dis": "UTI、新生兒腦膜炎、院內感染。",
+      "resist": "AmpC。",
+      "hot": [
+        "citrate(+)、部分 H₂S(+)→**易與 Salmonella 混淆**"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "非發酵菌 Non-fermenters",
+      "zh": "綠膿桿菌",
+      "en": "Pseudomonas aeruginosa",
+      "stars": 3,
+      "sys": "呼吸道 / 血流 / 泌尿 / 皮膚軟組織",
+      "morph": "G⁻ 桿、單極鞭毛、動性。",
+      "oxy": "絕對需氧;**oxidase(+)**、不發酵(氧化)。",
+      "media": "**pyocyanin(藍綠)/pyoverdine 螢光**、葡萄味、**42℃ 生長**。",
+      "tests": "oxidase(+)、氧化 glucose、生長 42℃。",
+      "vir": "**exotoxin A**(ADP-ribosylation EF-2)、彈性蛋白酶、**biofilm**、綠膿素。",
+      "dis": "院內肺炎、燒傷感染、囊腫纖維化、綠甲、壞疽性深膿瘡、外耳炎。",
+      "resist": "**多重抗藥**(外膜+efflux+碳青黴烯酶)。",
+      "hot": [
+        "**oxidase(+)、pyocyanin、42℃**",
+        "exotoxin A(類白喉機轉)",
+        "葡萄味"
+      ],
+      "qa": [
+        [
+          "104年 第26題",
+          "產 pyocyanin 者＝P. aeruginosa"
+        ],
+        [
+          "105年 第36題",
+          "P. aeruginosa oxidase(+)、S. maltophilia oxidase(−)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "非發酵菌 Non-fermenters",
+      "zh": "鮑曼不動桿菌",
+      "en": "Acinetobacter baumannii",
+      "stars": 2,
+      "sys": "血流 / 呼吸道",
+      "morph": "G⁻ 球桿。",
+      "oxy": "絕對需氧;**oxidase(−)**、不發酵、**非動性**。",
+      "media": "MacConkey 可長(無色)。",
+      "tests": "**oxidase(−)**(與 Pseudomonas 關鍵差異)、catalase(+)。",
+      "vir": "環境耐受、biofilm。",
+      "dis": "院內肺炎(呼吸器)、菌血症、傷口。",
+      "resist": "**多重抗藥(CRAB,碳青黴烯抗藥)**。",
+      "hot": [
+        "**oxidase(−)**(vs Pseudomonas+)",
+        "非發酵、非動性",
+        "MDR 院內菌"
+      ],
+      "qa": [
+        [
+          "102年 第42題",
+          "A. baumannii oxidase(−)、B. pseudomallei oxidase(+)"
+        ],
+        [
+          "110年 第40題",
+          "oxidase 與他者不同者＝A. baumannii"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "非發酵菌 Non-fermenters",
+      "zh": "嗜麥芽窄食單胞菌",
+      "en": "Stenotrophomonas maltophilia",
+      "stars": 2,
+      "sys": "血流 / 呼吸道",
+      "morph": "G⁻ 桿。",
+      "oxy": "絕對需氧;**oxidase(−)**。",
+      "media": "MacConkey 可長。",
+      "tests": "**oxidase(−)**、**DNase(+)**、氧化 maltose、lysine 脫羧(+)。",
+      "vir": "伺機、biofilm。",
+      "dis": "院內肺炎、導管菌血症(免疫低下)。",
+      "resist": "**對 carbapenem 天然抗藥**;**SXT(TMP-SMX) 首選**。",
+      "hot": [
+        "oxidase(−)、DNase(+)",
+        "**carbapenem 天然抗藥**",
+        "SXT 首選"
+      ],
+      "qa": [
+        [
+          "105年 第36題",
+          "S. maltophilia oxidase(−)"
+        ],
+        [
+          "111年 第35題",
+          "oxidase(−)群含 S. maltophilia、Acinetobacter"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "非發酵菌 Non-fermenters",
+      "zh": "類鼻疽伯克氏菌",
+      "en": "Burkholderia pseudomallei",
+      "stars": 2,
+      "sys": "血流 / 呼吸道",
+      "morph": "G⁻ 桿、**雙極(safety-pin 安全別針)**。",
+      "oxy": "需氧;**oxidase(+)**。",
+      "media": "**Ashdown 培養**。",
+      "tests": "oxidase(+)、氧化醣、動性(+)。",
+      "vir": "胞內存活。",
+      "dis": "**類鼻疽(melioidosis)**(土壤,東南亞/台灣南部,糖尿病者,颱風豪雨後)。",
+      "resist": "ceftazidime/carbapenem 急性期、SXT 根除期。",
+      "hot": [
+        "**oxidase(+)**(vs Acinetobacter−)",
+        "類鼻疽、安全別針外觀",
+        "土壤/豪雨後"
+      ],
+      "qa": [
+        [
+          "102年 第42題",
+          "B. pseudomallei oxidase(+)"
+        ],
+        [
+          "110年 第40題",
+          "oxidase 群(對比 Acinetobacter)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "彎曲菌／弧菌",
+      "zh": "霍亂弧菌",
+      "en": "Vibrio cholerae",
+      "stars": 3,
+      "sys": "腸道",
+      "morph": "G⁻ **彎曲弧形桿**、單極鞭毛(衝刺式動性)。",
+      "oxy": "兼性厭氧;**oxidase(+)**。",
+      "media": "**TCBS 黃色(發酵 sucrose)**;鹼性蛋白腖水增菌;**0% NaCl 可生長**。",
+      "tests": "oxidase(+)、發酵 sucrose、嗜鹼。",
+      "vir": "**cholera toxin**(ADP-ribosylation Gs→↑cAMP→大量水瀉)、TCP 菌毛。",
+      "dis": "霍亂(**米湯樣便**、嚴重脫水);O1/O139。",
+      "resist": "補液為主;doxycycline。",
+      "hot": [
+        "**TCBS 黃色(蔗糖+)**",
+        "**cholera toxin↑cAMP→米湯便**",
+        "0% NaCl 可長(vs 其他弧菌嗜鹽)"
+      ],
+      "qa": [
+        [
+          "108年 第2題",
+          "V. cholerae 發酵 sucrose→TCBS 黃色"
+        ],
+        [
+          "104年 第22題",
+          "V. cholerae 不喜 pH 4.5(嗜鹼)"
+        ],
+        [
+          "106年 第33題",
+          "TCBS 及 0% NaCl 皆良好生長＝V. cholerae"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "彎曲菌／弧菌",
+      "zh": "腸炎弧菌",
+      "en": "Vibrio parahaemolyticus",
+      "stars": 2,
+      "sys": "腸道",
+      "morph": "G⁻ 彎曲桿。",
+      "oxy": "兼性厭氧;**oxidase(+)**。",
+      "media": "**TCBS 綠色(不發酵 sucrose)**;**嗜鹽(需 NaCl)**。",
+      "tests": "oxidase(+)、嗜鹽、**Kanagawa(TDH)**。",
+      "vir": "TDH 耐熱溶血素。",
+      "dis": "**生海鮮**腸炎(台灣常見食媒性腹瀉)。",
+      "resist": "補液為主。",
+      "hot": [
+        "**嗜鹽、TCBS 綠**",
+        "生海鮮",
+        "Kanagawa 陽性"
+      ],
+      "qa": [
+        [
+          "106年 第33題",
+          "V. parahaemolyticus 需 NaCl(0% 不長)"
+        ],
+        [
+          "107年 第21題",
+          "主要致病弧菌(對比 V. furnissii)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "彎曲菌／弧菌",
+      "zh": "創傷弧菌",
+      "en": "Vibrio vulnificus",
+      "stars": 2,
+      "sys": "皮膚軟組織 / 血流",
+      "morph": "G⁻ 彎曲桿。",
+      "oxy": "兼性厭氧;**oxidase(+)**。",
+      "media": "TCBS 綠;**嗜鹽**;**lactose(+)**。",
+      "tests": "oxidase(+)、lactose(+)、嗜鹽。",
+      "vir": "莢膜、鐵依賴生長。",
+      "dis": "**肝病/免疫低下者**生蠔或海水傷口→**壞死性筋膜炎、敗血症**(高死亡率)。",
+      "resist": "doxycycline+ceftazidime;及早清創。",
+      "hot": [
+        "海水傷口/生蠔",
+        "**肝病者敗血症(高死亡)**",
+        "lactose(+)"
+      ],
+      "qa": [
+        [
+          "108年 特考申論",
+          "比較 cholerae/parahaemolyticus/vulnificus"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "彎曲菌／弧菌",
+      "zh": "空腸彎曲菌",
+      "en": "Campylobacter jejuni",
+      "stars": 2,
+      "sys": "腸道",
+      "morph": "G⁻ **彎曲/海鷗翅形**桿。",
+      "oxy": "**微需氧**、**42℃**;oxidase(+)、catalase(+)。",
+      "media": "**Skirrow/CCDA 選擇培養**、42℃。",
+      "tests": "oxidase(+)、**hippurate(+)**、42℃ 生長。",
+      "vir": "侵入、毒素。",
+      "dis": "細菌性腸炎(最常見之一)、後遺症 **Guillain-Barré 症候群**。",
+      "resist": "macrolide(azithromycin);fluoroquinolone 抗藥上升。",
+      "hot": [
+        "**42℃ 微需氧、海鷗狀**",
+        "**GBS 關聯**",
+        "hippurate(+)"
+      ],
+      "qa": [
+        [
+          "110年 第75題",
+          "C. jejuni urease(−)(對比 H. pylori 強陽性)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "彎曲菌／弧菌",
+      "zh": "幽門螺旋桿菌",
+      "en": "Helicobacter pylori",
+      "stars": 3,
+      "sys": "腸道",
+      "morph": "G⁻ **螺旋/彎曲**桿、多鞭毛。",
+      "oxy": "**微需氧**;oxidase(+)、catalase(+)。",
+      "media": "含血選擇培養、微需氧、慢。",
+      "tests": "**urease 強(+++)**(尿素呼氣試驗 UBT)、oxidase(+)。",
+      "vir": "**urease**(中和胃酸)、VacA、CagA、鞭毛。",
+      "dis": "慢性胃炎、**消化性潰瘍**、**胃腺癌、MALT 淋巴瘤**。",
+      "resist": "clarithromycin 抗藥上升;三/四合一療法。",
+      "hot": [
+        "**urease 強(+)**(中和胃酸)",
+        "尿素呼氣試驗",
+        "胃癌/MALT 關聯"
+      ],
+      "qa": [
+        [
+          "110年 第75題",
+          "urease 強陽性＝H. pylori、Proteus"
+        ],
+        [
+          "105年 第26題",
+          "urease 區分 H. pylori 與 H. cinaedi"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "苛養／人畜共通",
+      "zh": "嗜肺退伍軍人菌",
+      "en": "Legionella pneumophila",
+      "stars": 2,
+      "sys": "呼吸道",
+      "morph": "G⁻ 桿(難染,需銀染 Dieterle)。",
+      "oxy": "需氧。",
+      "media": "**BCYE(需 L-cysteine + 鐵)**;不長一般培養基。",
+      "tests": "生長需 cysteine、弱氧化酶。",
+      "vir": "胞內(巨噬細胞內增殖)。",
+      "dis": "**退伍軍人症(肺炎)**(水塔/空調)、Pontiac fever;**尿液抗原**診斷。",
+      "resist": "macrolide/fluoroquinolone(β-lactam 無效)。",
+      "hot": [
+        "**BCYE 需半胱氨酸**、不長一般基",
+        "水源傳播、尿抗原",
+        "難染色"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "苛養／人畜共通",
+      "zh": "巴東體（漢賽巴東體等）",
+      "en": "Bartonella spp.",
+      "stars": 1,
+      "sys": "皮膚軟組織 / 血流",
+      "morph": "G⁻ 小桿、胞內、難培養。",
+      "oxy": "需氧、生長慢。",
+      "media": "含血培養(長)。",
+      "tests": "血清學/PCR。",
+      "vir": "胞內、誘導血管增生。",
+      "dis": "**貓抓病**(B. henselae)、戰壕熱(B. quintana)、**桿菌性血管瘤**(AIDS)。",
+      "resist": "azithromycin/doxycycline。",
+      "hot": [
+        "貓抓病",
+        "桿菌性血管瘤(免疫低下)"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "厭氧菌 Anaerobes",
+      "zh": "脆弱類桿菌",
+      "en": "Bacteroides fragilis",
+      "stars": 3,
+      "sys": "腸道 / 血流 / 皮膚軟組織",
+      "morph": "G⁻ **厭氧**桿、具**莢膜**。",
+      "oxy": "**絕對厭氧**(耐氧較佳);catalase(+)。",
+      "media": "**BBE(bile esculin)→黑色**;耐 20% 膽鹽。",
+      "tests": "**esculin(+)、耐膽鹽**、indole(−,fragilis)、**β-lactamase(+)**。",
+      "vir": "**莢膜(致膿瘍)**、鋅金屬蛋白酶腸毒素(BFT)、LPS 微毒。",
+      "dis": "腹腔內膿瘍、敗血症(腸道穿孔)──**最常見厭氧血流感染**。",
+      "resist": "**β-lactamase(penicillin 抗藥)**;metronidazole/carbapenem。",
+      "hot": [
+        "最常見厭氧血流感染",
+        "**BBE 黑色＝esculin 水解、耐膽鹽**",
+        "莢膜致膿瘍",
+        "β-lactamase(+)"
+      ],
+      "qa": [
+        [
+          "109年 第50題",
+          "B. fragilis indole(−);BBE 黑色"
+        ],
+        [
+          "114年 第41題",
+          "BBE 黑色代表水解 esculin"
+        ],
+        [
+          "107年 第1題",
+          "B. fragilis 不產芽孢(辨非特徵)"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "厭氧菌 Anaerobes",
+      "zh": "梭桿菌",
+      "en": "Fusobacterium spp.",
+      "stars": 1,
+      "sys": "呼吸道 / 血流",
+      "morph": "G⁻ **厭氧梭形(兩端尖)**桿。",
+      "oxy": "絕對厭氧。",
+      "media": "厭氧。",
+      "tests": "indole(+)、丁酸代謝。",
+      "vir": "內毒素、黏附。",
+      "dis": "口咽感染、**Lemierre 症候群**(頸內靜脈血栓性靜脈炎)、肺膿瘍。",
+      "resist": "metronidazole/β-lactam。",
+      "hot": [
+        "梭形尖端",
+        "**Lemierre 症候群**"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "h2": "厭氧菌 Anaerobes",
+      "zh": "普雷沃菌／卟啉單胞菌",
+      "en": "Prevotella / Porphyromonas",
+      "stars": 1,
+      "sys": "皮膚軟組織 / 呼吸道",
+      "morph": "G⁻ 厭氧短桿。",
+      "oxy": "絕對厭氧。",
+      "media": "厭氧;**產黑色素(black-pigmented)**。",
+      "tests": "色素、indole(Porphyromonas+)。",
+      "vir": "蛋白酶、牙周致病。",
+      "dis": "**牙周病**、口腔/咬傷感染、吸入性肺炎。",
+      "resist": "部分產 β-lactamase;metronidazole。",
+      "hot": [
+        "**產黑色素厭氧菌**",
+        "牙周病原"
+      ],
+      "qa": [
+        [
+          "112年 牙醫(二) 第53題",
+          "產黑色素厭氧菌:Porphyromonas/Prevotella/Tannerella(非螺旋體)"
+        ]
+      ]
+    },
+    {
+      "h1": "螺旋體（Spirochetes）",
+      "h2": "Spirochetes",
+      "zh": "梅毒密螺旋體",
+      "en": "Treponema pallidum",
+      "stars": 2,
+      "sys": "STI / 皮膚軟組織 / CNS",
+      "morph": "細密**螺旋體**、**不可體外培養**。",
+      "oxy": "微需氧。",
+      "media": "**暗視野顯微鏡/DFA** 觀察。",
+      "tests": "血清學:**非特異 VDRL/RPR** + **特異 TPHA/FTA-ABS**。",
+      "vir": "外膜蛋白少、免疫逃避。",
+      "dis": "梅毒(一期硬性下疳/二期皮疹/三期樹膠腫、神經/心血管;先天梅毒)。",
+      "resist": "**penicillin**(首選)。",
+      "hot": [
+        "**不可培養、暗視野**",
+        "VDRL(篩檢) vs TPHA(確認)",
+        "penicillin"
+      ],
+      "qa": [
+        [
+          "107年 牙醫(二) 第57題",
+          "Treponema 對氧敏感、暗視野觀察、引起梅毒"
+        ]
+      ]
+    },
+    {
+      "h1": "螺旋體（Spirochetes）",
+      "h2": "Spirochetes",
+      "zh": "疏螺旋體",
+      "en": "Borrelia spp.",
+      "stars": 1,
+      "sys": "皮膚軟組織 / CNS / 血流",
+      "morph": "較大**螺旋體**、**可 Giemsa/Wright 染**。",
+      "oxy": "微需氧;節肢動物媒介。",
+      "media": "Barbour-Stoenner-Kelly。",
+      "tests": "血清學、血液抹片(回歸熱)。",
+      "vir": "**抗原變異**(回歸熱)。",
+      "dis": "**萊姆病**(B. burgdorferi,蜱,**遊走性紅斑**)、**回歸熱**(B. recurrentis,體蝨)。",
+      "resist": "doxycycline/ceftriaxone。",
+      "hot": [
+        "萊姆病遊走性紅斑(蜱)",
+        "回歸熱抗原變異(蝨)",
+        "可染色(vs Treponema)"
+      ],
+      "qa": [
+        [
+          "113年 第22題",
+          "Bordetella(G⁻、有疫苗) vs Borrelia hermsii 比較"
+        ]
+      ]
+    },
+    {
+      "h1": "螺旋體（Spirochetes）",
+      "h2": "Spirochetes",
+      "zh": "鉤端螺旋體",
+      "en": "Leptospira spp.",
+      "stars": 1,
+      "sys": "血流 / 泌尿",
+      "morph": "細長螺旋、**末端鉤狀(問號形)**。",
+      "oxy": "需氧。",
+      "media": "**EMJH 培養**、暗視野。",
+      "tests": "暗視野、MAT 血清學。",
+      "vir": "侵入、毒素。",
+      "dis": "**鉤端螺旋體病**(鼠尿/疫水;**Weil 氏病**:肝腎衰竭、黃疸);台灣豪雨/洪水後。",
+      "resist": "penicillin/doxycycline。",
+      "hot": [
+        "**末端鉤狀**",
+        "疫水/鼠尿、Weil 病",
+        "EMJH/暗視野"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "無細胞壁菌",
+      "zh": "肺炎黴漿菌",
+      "en": "Mycoplasma pneumoniae",
+      "stars": 3,
+      "sys": "呼吸道",
+      "morph": "**無細胞壁**(膽固醇膜)、多形性、最小的自由生活菌。",
+      "oxy": "兼性厭氧;生長慢。",
+      "media": "**PPLO**、**煎蛋狀(fried-egg)菌落**。",
+      "tests": "血清學、PCR、**冷凝集素**。",
+      "vir": "P1 黏附素、附著呼吸道上皮。",
+      "dis": "**非典型肺炎(walking pneumonia)**、氣管支氣管炎(年輕族群)。",
+      "resist": "**β-lactam 無效**(無細胞壁);macrolide/doxycycline。",
+      "hot": [
+        "**無細胞壁→β-lactam 無效**",
+        "冷凝集素",
+        "油煎蛋菌落",
+        "非典型肺炎"
+      ],
+      "qa": [
+        [
+          "112年 第41題",
+          "Mycoplasma 與 Ureaplasma 皆屬 Mycoplasmataceae"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "無細胞壁菌",
+      "zh": "溶尿尿漿菌",
+      "en": "Ureaplasma urealyticum",
+      "stars": 1,
+      "sys": "STI / 泌尿",
+      "morph": "**無細胞壁**、極小。",
+      "oxy": "兼性厭氧。",
+      "media": "含尿素/血清培養。",
+      "tests": "**urease(+)**(水解尿素)。",
+      "vir": "附著泌尿生殖道。",
+      "dis": "非淋菌性尿道炎、絨毛膜羊膜炎、不孕關聯。",
+      "resist": "β-lactam 無效;macrolide/doxycycline。",
+      "hot": [
+        "**urease(+)**(Mycoplasma 無)",
+        "屬 Mycoplasmataceae、無細胞壁"
+      ],
+      "qa": [
+        [
+          "112年 第41題",
+          "Ureaplasma 具尿素酶"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "絕對胞內菌",
+      "zh": "砂眼披衣菌",
+      "en": "Chlamydia trachomatis",
+      "stars": 3,
+      "sys": "STI / 呼吸道",
+      "morph": "**絕對胞內**、雙相生活史:**EB(感染型)/RB(繁殖型)**。",
+      "oxy": "胞內。",
+      "media": "細胞培養(McCoy)、NAAT。",
+      "tests": "含**包涵體(肝醣染色+,僅 trachomatis)**、碘染。",
+      "vir": "EB 附著進入、胞內增殖。",
+      "dis": "砂眼、包涵體結膜炎、**性病(NGU/子宮頸炎/LGV)**、新生兒肺炎。",
+      "resist": "azithromycin/doxycycline。",
+      "hot": [
+        "**EB/RB 雙相**",
+        "**肝醣包涵體(僅 trachomatis)**",
+        "絕對胞內"
+      ],
+      "qa": [
+        [
+          "103年 第42題",
+          "僅 C. trachomatis 包涵體含 glycogen"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "絕對胞內菌",
+      "zh": "立克次體",
+      "en": "Rickettsia spp.",
+      "stars": 2,
+      "sys": "血流 / 皮膚軟組織",
+      "morph": "G⁻ 小桿、**絕對胞內**。",
+      "oxy": "胞內。",
+      "media": "細胞/胚胎培養;Giménez 染色。",
+      "tests": "**Weil-Felix**(與 Proteus OX 抗原交叉)、血清學。",
+      "vir": "血管內皮感染→血管炎。",
+      "dis": "流行性斑疹傷寒(R. prowazekii,體蝨)、地方性(R. typhi,鼠蚤)、**洛磯山斑點熱**(R. rickettsii,蜱)。",
+      "resist": "doxycycline。",
+      "hot": [
+        "**絕對胞內、節肢媒介**",
+        "Weil-Felix",
+        "斑疹/斑點熱"
+      ],
+      "qa": [
+        [
+          "114年 特考申論",
+          "立克次體/黴漿菌/黴菌特性與疾病"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "絕對胞內菌",
+      "zh": "伯氏考克斯菌",
+      "en": "Coxiella burnetii",
+      "stars": 1,
+      "sys": "呼吸道 / 血流",
+      "morph": "G⁻ 小桿、**絕對胞內**、**孢子樣型(耐環境)**。",
+      "oxy": "胞內。",
+      "media": "細胞培養;BSL-3。",
+      "tests": "血清學(相 I/II 抗原)。",
+      "vir": "胞內(吞噬溶酶體內存活)。",
+      "dis": "**Q 熱**(牛羊接觸、**氣溶膠吸入,不需病媒**)、非典型肺炎、慢性心內膜炎。",
+      "resist": "doxycycline(±hydroxychloroquine)。",
+      "hot": [
+        "**Q 熱、氣溶膠不需病媒**",
+        "耐環境孢子樣型",
+        "相 I/II 抗原"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    },
+    {
+      "h1": "非典型／胞內菌（Atypical / Intracellular）",
+      "h2": "絕對胞內菌",
+      "zh": "艾利希體／無形體",
+      "en": "Ehrlichia / Anaplasma",
+      "stars": 1,
+      "sys": "血流",
+      "morph": "G⁻ 小、**絕對胞內、感染白血球**。",
+      "oxy": "胞內。",
+      "media": "血液抹片找**桑椹體(morulae)**。",
+      "tests": "抹片 morulae、PCR、血清學。",
+      "vir": "胞內(白血球內)。",
+      "dis": "人類單核球艾利希體病(Ehrlichia,蜱)、顆粒球無形體病(Anaplasma,蜱);發燒、白血球/血小板低下。",
+      "resist": "doxycycline。",
+      "hot": [
+        "**白血球內桑椹體(morulae)**",
+        "蜱媒、血球減少"
+      ],
+      "qa": [
+        [
+          "—",
+          "代表考題待補"
+        ]
+      ]
+    }
+  ]
+}
