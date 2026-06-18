@@ -3,39 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
-<meta name="referrer" content="no-referrer">
-<title>醫檢師細菌分類大綱｜微生物學與臨床微生物學</title>
-<link rel="stylesheet" href="assets/style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+<title>醫檢師微生物學大綱｜總入口</title>
+<style>
+  :root{--bg:#faf8fc;--card:#fff;--ink:#1f2330;--muted:#6b6f80;
+    --gp:#7b3fa0;--gp-soft:#f3e9fb;--gp-line:#d9b8ee;
+    --teal:#0d9488;--teal-soft:#e3f6f1;--teal-line:#abe3d6;
+    --shadow:0 1px 3px rgba(30,20,50,.08),0 8px 22px rgba(30,20,50,.07)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:48px 22px}
+  .kicker{color:var(--muted);font-size:13px;letter-spacing:2px;font-weight:700}
+  h1{font-size:27px;margin:6px 0 4px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:30px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  a.tile{display:block;background:var(--card);border-radius:16px;padding:24px;text-decoration:none;
+    color:var(--ink);box-shadow:var(--shadow);border-top:5px solid var(--c);transition:.16s}
+  a.tile:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(30,20,50,.14)}
+  .badge{display:inline-block;color:#fff;background:var(--c);border-radius:8px;padding:3px 11px;font-size:13px;font-weight:700}
+  .tile h2{font-size:19px;margin:12px 0 6px}
+  .tile p{color:var(--muted);font-size:13.5px;margin:0}
+  .tile .meta{margin-top:12px;font-size:12.5px;color:var(--c);font-weight:700}
+  footer{color:var(--muted);font-size:12px;margin-top:34px;border-top:1px solid #e8e4ef;padding-top:14px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<header class="top">
-  <div class="title-row">
-    <span class="gp-badge">細菌分類</span>
-    <div>
-      <h1>醫事檢驗師細菌分類大綱</h1>
-      <div class="sub" id="sub">科目：微生物學與臨床微生物學（包括細菌與黴菌）</div>
-    </div>
+<div class="wrap">
+  <div class="kicker">醫事檢驗師國家考試</div>
+  <h1>微生物學與臨床微生物學 ‧ 複習大綱</h1>
+  <div class="sub">兩套互連的資料驅動大綱：依菌種查、依培養基查，點擊可互相跳轉。</div>
+  <div class="grid">
+    <a class="tile" style="--c:var(--gp)" href="bacteria/index.html">
+      <span class="badge">細菌</span>
+      <h2>細菌分類大綱</h2>
+      <p>依革蘭氏分類 → 屬科 → 菌種，含形態、鑑定試驗、毒素、疾病、抗藥性、高頻考點與鑑定流程圖。</p>
+      <div class="meta">63 菌種 ‧ 進入 →</div>
+    </a>
+    <a class="tile" style="--c:var(--teal)" href="media/index.html">
+      <span class="badge">培養基</span>
+      <h2>培養基成分與適用菌種大綱</h2>
+      <p>依九大功能類型分群，含成分處方表、功能角色、pH/滅菌、選擇/鑑別原理、接種後表現、適用菌種與判讀對照表。</p>
+      <div class="meta">9 大功能群 ‧ 35 張培養基 ‧ 進入 →</div>
+    </a>
   </div>
-  <div class="controls">
-    <input id="search" type="text" placeholder="🔍 即時搜尋：菌名、試驗、培養基、疾病、毒素…（例 coagulase、optochin、TCBS、urease、Shiga toxin）">
-    <button type="button" class="btn-mini" id="expandAll">全部展開</button>
-    <button type="button" class="btn-mini" id="collapseAll">全部收合</button>
-  </div>
-  <div class="tagbar" id="tagbar">
-    <span class="tagbar-label">臨床系統：</span>
-  </div>
-  <div class="legend">色塊：Gram⊕紫 / Gram⊖粉 / 抗酸·螺旋體·非典型 中性灰｜⭐⭐⭐ 極高頻 ⭐⭐ 高頻 ⭐ 常見（依已收錄之醫檢師考古題：民國 101–114 年完整年度＋115 年第一次試卷）</div>
-</header>
-<main>
-  <div id="cards"></div>
-  <div class="nohit" id="nohit">查無符合條件的菌種，請調整搜尋或篩選條件。</div>
-  <div class="ref">
-    <b>參考依據：</b>Mahon CR, Lehman DC. <i>Textbook of Diagnostic Microbiology</i>；Murray PR, et al. <i>Medical Microbiology</i>。
-    考題來源：考選部「醫事檢驗師」國家考試「微生物學與臨床微生物學（包括細菌與黴菌）」試卷（已收錄民國 101–114 年完整年度，及 115 年第一次試卷），經 twinkle-hub 國考資料庫檢索；原卷可於考選部考畢試題查詢系統 (wwwq.moex.gov.tw) 以年度與題號調閱。
-    <br>資料維護：編輯 <code>data/bacteria.json</code> 即可更新內容，詳見 README.md。
-  </div>
-</main>
-<script src="assets/app.js"></script>
+  <footer>
+    依據：Mahon <i>Textbook of Diagnostic Microbiology</i>、Murray <i>Medical Microbiology</i>；BD Difco/BBL、Oxoid 手冊（培養基成分）；
+    考選部醫檢師考題（科目 308，民國 103–115）。資料維護見各模組 <code>data/*.json</code> 與 README。
+  </footer>
+</div>
 </body>
 </html>

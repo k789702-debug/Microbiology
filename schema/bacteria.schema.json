@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "醫檢師細菌分類大綱 資料結構",
+  "type": "object",
+  "required": [
+    "meta",
+    "flows",
+    "species"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "subject",
+        "clinical_systems"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "clinical_systems": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "flows": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "species": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "h1",
+          "h2",
+          "zh",
+          "en",
+          "stars",
+          "sys",
+          "morph",
+          "oxy",
+          "media",
+          "tests",
+          "vir",
+          "dis",
+          "resist",
+          "hot",
+          "qa"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "h1": {
+            "type": "string"
+          },
+          "h2": {
+            "type": "string"
+          },
+          "zh": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "sys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "morph": {
+            "type": "string"
+          },
+          "oxy": {
+            "type": "string"
+          },
+          "media": {
+            "type": "string"
+          },
+          "tests": {
+            "type": "string"
+          },
+          "vir": {
+            "type": "string"
+          },
+          "dis": {
+            "type": "string"
+          },
+          "resist": {
+            "type": "string"
+          },
+          "hot": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "qa": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "description": "跨菌種比較矩陣（如 IMViC、X/V 因子）；scope 須對應某 h2 或 h1，渲染在該屬科標題下。",
+      "items": {
+        "type": "object",
+        "required": [
+          "scope",
+          "columns",
+          "rows"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string",
+            "description": "對應的 h2 或 h1 名稱"
+          },
+          "title": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "footnote": {
+            "type": "string"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "sys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "（選用）此表對應的臨床系統標籤；填了之後在該臨床標籤篩選時仍會顯示"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+<meta name="referrer" content="no-referrer">
+<title>培養基成分與適用菌種大綱｜微生物學與臨床微生物學</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="title-row">
+    <span class="th-badge">培養基</span>
+    <div>
+      <h1>培養基成分與適用菌種大綱</h1>
+      <div class="sub" id="sub">科目：微生物學與臨床微生物學（包括細菌與黴菌）</div>
+    </div>
+    <nav class="nav">
+      <a href="../index.html">總入口</a>
+      <a href="../bacteria/index.html">細菌大綱</a>
+      <a href="index.html" class="cur">培養基大綱</a>
+    </nav>
+  </div>
+  <div class="controls">
+    <input id="search" type="text" placeholder="🔍 即時搜尋：培養基、成分、菌名、原理、考點…（例 TCBS、deoxycholate、Salmonella、金屬光澤）">
+    <button type="button" class="btn-mini" id="expandAll">全部展開</button>
+    <button type="button" class="btn-mini" id="collapseAll">全部收合</button>
+  </div>
+  <div class="tagbar" id="tagbar">
+    <span class="tagbar-label">菌種反查：</span>
+  </div>
+  <div class="legend">色塊＝功能類型主題；成分表第三欄色塊＝功能角色（碳源/氮源/緩衝/滲透/選擇劑/指示劑/凝固劑/生長因子）。⭐⭐⭐ 極高頻 ⭐⭐ 高頻 ⭐ 常見（依醫檢師考古題，民國 103–115）。點菌名可跳到細菌大綱。</div>
+</header>
+<main>
+  <div id="cards"></div>
+  <div class="nohit" id="nohit">查無符合條件的培養基，請調整搜尋或篩選。</div>
+  <div class="ref">
+    <b>成分依據：</b>BD BBL/Difco Manual（2nd ed.）、Oxoid/Thermo Fisher Culture Media Manual。
+    <b>鑑定原理：</b>Mahon CR, Lehman DC. <i>Textbook of Diagnostic Microbiology</i>；Murray PR, et al. <i>Medical Microbiology</i>。
+    <b>考題：</b>考選部「醫事檢驗師」國家考試（科目代號 308），民國 103–115 年，經 twinkle-hub 國考資料庫檢索。
+    <br>⚠️ 不同廠牌／批號比例略有差異，配製以製造商手冊與 IFU 為準。資料維護：編輯 <code>data/media.json</code>，詳見 README。
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

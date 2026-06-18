@@ -1,99 +1,110 @@
-# 醫事檢驗師 細菌分類大綱
+# 醫檢師微生物學複習大綱（Microbiology）
 
-科目：**微生物學與臨床微生物學（包括細菌與黴菌）**
+醫事檢驗師國家考試「**微生物學與臨床微生物學（包括細菌與黴菌）**」複習網站。
+兩套**互相連結**的資料驅動大綱，共用同一套設計與編輯方式：
 
-互動式細菌分類複習網站：依 Gram 染色＋形態學分群、內嵌鑑定流程分流圖、可即時搜尋、依臨床系統標籤篩選，每菌附固定 9 欄位與歷年醫檢師考古題年度題號。
+| 模組 | 內容 | 入口 |
+|------|------|------|
+| 🦠 **bacteria** 細菌分類大綱 | 依革蘭氏分類→屬科→菌種，含形態、鑑定試驗、毒素、疾病、抗藥性、高頻考點、鑑定流程圖、比較表 | `bacteria/index.html` |
+| 🧫 **media** 培養基大綱 | 依功能類型分群，含成分處方表、功能角色、pH/滅菌、選擇/鑑別原理、接種後表現、適用菌種、判讀對照表 | `media/index.html` |
 
-## 線上瀏覽（GitHub Pages）
+兩者互連：細菌卡片的「④選擇/鑑別培養基」可點進對應培養基；培養基卡片的菌種可點回對應細菌。
 
-```
-https://<帳號>.github.io/Microbiology/
-```
-
-## 專案結構（資料與程式分離）
+## 資料夾結構
 
 ```
 Microbiology/
-├── index.html               前端入口（一般不需修改）
-├── assets/
-│   ├── style.css            樣式（色塊、版面）
-│   └── app.js               程式邏輯（搜尋／篩選／渲染）
-├── data/
-│   └── bacteria.json        ★ 資料庫——共編者只需改這裡 ★
-├── schema.json              資料結構定義（JSON Schema）
-├── scripts/
-│   └── validate.js          資料驗證器（零相依）
-├── .github/workflows/
-│   └── validate.yml         GitHub Actions：push/PR 時自動驗證
-└── README.md
+├── index.html                  總入口（細菌 / 培養基）
+├── README.md
+├── .gitignore
+├── bacteria/                   細菌模組
+│   ├── index.html
+│   ├── assets/{style.css, app.js}
+│   └── data/bacteria.json      ← 編這個
+├── media/                      培養基模組
+│   ├── index.html
+│   ├── assets/{style.css, app.js}
+│   ├── data/media.json         ← 編這個
+│   ├── print/培養基大綱_全9群.docx        A4 可列印 Word（全 9 群，內容與網頁一致）
+│   └── 培養基大綱_全9群_離線版.html         單檔離線版（file:// 可直接開）
+├── schema/{bacteria.schema.json, media.schema.json}
+├── scripts/{validate_bacteria.js, validate_media.js, build_offline.js}
+└── .github/workflows/validate.yml         push/PR 自動驗證
 ```
 
-## 共編者如何編輯內容
+## 如何新增 / 修改內容
 
-**所有菌種內容都在 `data/bacteria.json`，不需要碰程式。**
+只需編輯 `*/data/*.json`，不必寫 HTML。
 
-每個菌種是 `species` 陣列中的一筆物件：
+- 文字中的 `**重點**` 會自動變粗體；不要自己寫 HTML 標籤。
+- `qa` 格式為 `["115年 第27題", "題目說明"]`。
+- `stars`：1–3（⭐常見 / ⭐⭐高頻 / ⭐⭐⭐極高頻）。
 
-| 欄位 | 型別 | 說明 |
-|------|------|------|
-| `h1` | string | 第一層分群（Gram＋形態，須與 `flows` 的 key 對應） |
-| `h2` | string | 第二層屬科 |
-| `zh` / `en` | string | 菌名（中文／學名，學名不可重複） |
-| `stars` | number | 高頻程度，限 1–3 |
-| `sys` | **陣列** | 臨床系統標籤，如 `["腸道","泌尿"]`；每個值必須出現在 `meta.clinical_systems` |
-| `morph` `oxy` `media` `tests` `vir` `dis` `resist` | string | ②–⑧ 各欄位內容 |
-| `hot` | 陣列 | ⑨ 高頻考點，每項一條 |
-| `qa` | 陣列 | 代表考題，每筆為 `["年度 題號","題幹說明"]` |
+培養基一張卡的資料形狀（media.json → `media[]`）：
 
-### 粗體
-任何文字欄位用 `**文字**` 即為粗體，不要寫 HTML 標籤。
-
-### 新增菌種
-複製一筆現有物件貼到 `species`，改內容即可。`h1`／`h2` 文字相同者自動歸到同群、同屬科。新分群請同步在 `flows` 加上該 `h1` 的分流圖。
-
-### 臨床標籤
-若要新增臨床系統（如「周邊神經」），須先加到 `meta.clinical_systems`，菌種的 `sys` 才能使用——否則自動驗證會擋下。
-
-## 提交前自動驗證
-
-本機檢查：
-
-```
-node scripts/validate.js
+```jsonc
+{
+  "h1": "選擇兼鑑別（腸道）",      // 功能群（同群會收在一起）
+  "type": "enteric",            // 主題色：base/blood/enteric/gpos/bio/myco/diph/fungi/mha
+  "abbr": "XLD", "en": "...", "zh": "...", "stars": 3,
+  "comp": [["材料","比例","功能角色"], ...],  // 角色：碳源/氮源/緩衝/滲透/選擇劑/指示劑/凝固劑/生長因子
+  "ph": "...", "steril": "...",
+  "principle": "**選擇**：…**鑑別**：…",
+  "appear": "...",
+  "species": [["Salmonella","紅色菌落、**黑心**"], ...],  // 菌名會自動連到細菌大綱
+  "hot": ["...", "..."],
+  "qa": [["108年 第36題","..."]]
+}
 ```
 
-會檢查：JSON 格式、必填欄位、`stars` 限 1–3、`sys` 標籤是否都在 `clinical_systems`、`h1` 是否有對應分流圖、學名是否重複、`**粗體**` 是否成對、`qa` 結構、以及是否誤植 HTML 標籤。
+## 驗證（零相依，純 Node）
 
-GitHub 端：每次 push 或開 PR 變動 `data/`、`schema.json`、`scripts/` 時，`.github/workflows/validate.yml` 會自動跑同一支驗證；未通過會在 PR 顯示紅叉，避免壞資料上線。
-
-## 離線單檔版
-專案外另有 `細菌分類大綱_完整版.html`（資料已內嵌），可雙擊離線開啟；但**不會隨 `bacteria.json` 自動更新**，內容變更後需重新產生。
-
-## 資料依據
-- Mahon CR, Lehman DC. *Textbook of Diagnostic Microbiology*
-- Murray PR, et al. *Medical Microbiology*
-- 考選部「醫事檢驗師」國家考試試卷（已收錄民國 101–114 年完整年度，及 115 年第一次試卷），經 twinkle-hub 國考資料庫檢索；原卷可於考選部考畢試題查詢系統（wwwq.moex.gov.tw）以年度與題號調閱。
-
-> 資料版本見 `data/bacteria.json` 的 `meta.version` 與 `meta.updated`。
-
-## 比較表（tables，選用）
-跨菌種比較矩陣（如 IMViC、Haemophilus X/V 因子）放在 `bacteria.json` 頂層的 `tables` 陣列，會渲染在**對應屬科標題下、分流圖下方**：
-
-```json
-"tables": [
-  { "id":"imvic-enterobacterales",
-    "scope":"腸桿菌目 Enterobacterales",   // 須等於某 h2（或 h1）
-    "title":"IMViC 與常用鑑別表",
-    "note":"可用 **粗體**",
-    "columns":["菌種","Indole","MR","VP","Citrate","H₂S(TSI)","運動性","Lactose"],
-    "rows":[ ["E. coli","＋","＋","－","－","－","＋","＋"], ... ],
-    "footnote":"可用 **粗體**" }
-]
+```bash
+node scripts/validate_bacteria.js
+node scripts/validate_media.js
 ```
 
-規則：`scope` 必須對應現有的 `h2`／`h1`；每列 `rows` 的欄數須等於 `columns` 數；`＋`／`需` 自動顯示綠色、`－`／`不需` 顯示紅色（驗證器與前端皆已支援）。
+每次 push / PR 會由 GitHub Action 自動執行。
 
-### 比較表也可參與臨床標籤篩選（選用）
-比較表預設在「臨床系統」篩選開啟時隱藏。若希望某張表在特定臨床標籤下仍顯示，於該表加 `sys` 陣列即可，例如 X/V 表加 `"sys":["血流"]`，使用者篩「血流」時就會看到。
+## 重新產生單檔離線版
 
-> 註：`schema.json` 為「文件化規格」，實際 CI／本機驗證以 `scripts/validate.js`（零相依手寫驗證）為準；兩者若不同步，以 validate.js 為實際把關。
+```bash
+node scripts/build_offline.js     # 產生 media/培養基大綱_全9群_離線版.html
+node scripts/build_docx.js        # 產生 media/print/培養基大綱_全9群.docx
+```
+
+## 本機預覽
+
+資料驅動版需經 HTTP（瀏覽器禁止 file:// 載入 JSON）：
+
+```bash
+python -m http.server      # 然後開 http://localhost:8000/
+```
+
+離線單檔版（`*_離線版.html`）可直接雙擊開啟。
+
+## GitHub Pages
+
+repo Settings → Pages → 來源選 `main` 分支根目錄即可，入口為根目錄 `index.html`。
+
+## 進度
+
+- ✅ 細菌：63 菌種（民國 101–115 考題）
+- ✅ 培養基：**全 9 群、35 張**（含 5 張跨培養基比較矩陣）
+  - 基礎/增菌：NA、TSA、BHI、Thioglycollate、Selenite F、APW
+  - 含血/苛養：BAP、Chocolate、Thayer-Martin、Bordet-Gengou、BCYE
+  - 選擇兼鑑別(腸道)：MAC、EMB、XLD、HE、SS、TCBS、CIN
+  - G+選擇：MSA、CNA、PEA、Bile Esculin
+  - 鑑別生化管：TSI、KIA、Urea、SIM、Simmons Citrate
+  - 分枝桿菌：Löwenstein-Jensen、Middlebrook 7H10/7H11
+  - 特殊/類白喉：Loeffler、Cystine-Tellurite/Tinsdale
+  - 黴菌：Sabouraud(SDA)、PDA、CHROMagar Candida
+  - 藥敏：Mueller-Hinton(MHA)
+
+## 依據
+
+- 成分與比例：BD BBL/Difco Manual（2nd ed.）、Oxoid/Thermo Fisher Culture Media Manual
+- 鑑定原理：Mahon CR, Lehman DC. *Textbook of Diagnostic Microbiology*；Murray PR, et al. *Medical Microbiology*
+- 考題：考選部「醫事檢驗師」國家考試（科目代號 308），民國 103–115 年，經 twinkle-hub 國考資料庫檢索
+
+> ⚠️ 培養基成分比例依製造商手冊；不同廠牌／批號略有差異，實際配製以手冊與 IFU 為準。

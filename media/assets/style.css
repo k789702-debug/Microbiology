@@ -1,0 +1,122 @@
+:root{
+  /* 預設主題 = 選擇兼鑑別（腸道）teal */
+  --th:#0d9488; --th-soft:#e3f6f1; --th-line:#abe3d6;
+  --ink:#1f2330; --muted:#6b6f80; --bg:#faf8fc; --card:#fff;
+  --star:#e8a317; --ok:#1f9d57; --warn:#c0392b; --chip:#eef0f6;
+  --shadow:0 1px 3px rgba(30,20,50,.08),0 6px 18px rgba(30,20,50,.06);
+  /* 成分角色色（柔底深字）*/
+  --r-c:#fde2b3; --r-n:#bdeee2; --r-buf:#cdd5fb; --r-osm:#bfe3fa;
+  --r-sel:#fbd0d9; --r-ind:#f8d2ee; --r-sol:#e2e6ec; --r-gf:#e6d4fb; --r-x:#eef0f6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.65;font-size:15.5px}
+a{color:var(--th);text-decoration:none}
+a.xref{border-bottom:1px dashed var(--th)}
+a.xref:hover{background:var(--th-soft)}
+header.top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#fff,#f4fbf9);
+  border-bottom:2px solid var(--th-line);box-shadow:var(--shadow);padding:14px 20px}
+.title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.th-badge{background:var(--th);color:#fff;border-radius:8px;padding:4px 12px;font-weight:700;font-size:14px;letter-spacing:1px}
+h1{font-size:19px;margin:0;font-weight:800}
+.sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+.nav{margin-left:auto;display:flex;gap:8px}
+.nav a{border:1.5px solid var(--th-line);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--th)}
+.nav a:hover{background:var(--th-soft)}
+.nav a.cur{background:var(--th);color:#fff;border-color:var(--th)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+#search{flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--th-line);border-radius:10px;font-size:15px;outline:none}
+#search:focus{border-color:var(--th);box-shadow:0 0 0 3px var(--th-soft)}
+.tagbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.tagbar-label{font-size:13px;color:var(--muted);margin-right:2px}
+.tag-toggle{cursor:pointer;border:1.5px solid var(--th-line);background:var(--th-soft);color:var(--th);
+  border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;user-select:none}
+.tag-toggle:hover{background:#fff;border-color:var(--th)}
+/* 預設收合：僅顯示已選取的標籤；展開後全部顯示 */
+.tagbar:not(.open) .tagfilter:not(.active){display:none}
+.tagfilter{cursor:pointer;border:1.5px solid var(--th-line);background:#fff;border-radius:999px;padding:5px 13px;font-size:13px;user-select:none;transition:.15s;font-style:italic}
+.tagfilter:hover{border-color:var(--th)}
+.tagfilter.active{background:var(--th);color:#fff;border-color:var(--th)}
+.btn-mini{cursor:pointer;border:1.5px solid var(--th-line);background:#fff;border-radius:8px;padding:6px 12px;font-size:13px}
+.btn-mini:hover{border-color:var(--th)}
+.legend{font-size:12px;color:var(--muted);margin-top:8px}
+main{max-width:1080px;margin:0 auto;padding:22px 18px 80px}
+.flow{border-radius:14px;padding:16px 18px;margin:6px 0 22px;border:1.5px solid var(--th-line);background:var(--th-soft)}
+.flow h3{margin:0 0 10px;font-size:15.5px;color:var(--th);display:flex;align-items:center;gap:8px}
+.flow .ln{font-size:13.5px;margin:3px 0;white-space:pre-wrap}
+.group{margin-bottom:26px}
+.group-head{cursor:pointer;display:flex;align-items:center;gap:10px;color:#fff;padding:11px 16px;border-radius:10px;font-weight:800;font-size:16px;user-select:none;background:var(--th)}
+.group-head .arrow{transition:.2s;font-size:13px}
+.group.collapsed .group-head .arrow{transform:rotate(-90deg)}
+.group.collapsed .group-body{display:none}
+.group-body{padding-top:14px}
+.cards{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--th-line);border-left:6px solid var(--th);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.card-head{cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 16px;flex-wrap:wrap}
+.card-head .en{font-weight:800;font-size:15.5px}
+.card-head .abbr{background:var(--th);color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700}
+.card-head .zh{color:var(--muted);font-size:13.5px}
+.stars{color:var(--star);font-size:13px;letter-spacing:1px}
+.card-head .arrow{margin-left:auto;color:var(--muted);transition:.2s;font-size:13px}
+.card.collapsed .arrow{transform:rotate(-90deg)}
+.card.collapsed .card-body{display:none}
+.card-body{padding:4px 16px 16px;border-top:1px dashed var(--th-line)}
+.field{padding:8px 0;border-bottom:1px solid #f0eef5;display:grid;grid-template-columns:140px 1fr;gap:10px}
+.field:last-child{border-bottom:none}
+.field .k{font-weight:700;color:var(--th);font-size:13px}
+.field .v{font-size:14.5px}
+.v b,.v strong{color:var(--warn)}
+/* 成分表 */
+table.comp{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+table.comp th{background:var(--th-soft);color:var(--th);font-weight:700;padding:5px 8px;border:1px solid var(--th-line);text-align:left;font-size:12px}
+table.comp td{padding:5px 8px;border:1px solid #ece8f3;vertical-align:top}
+table.comp td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.role{display:inline-block;font-size:11px;padding:1px 8px;border-radius:5px;color:#3a2a14;font-weight:700;white-space:nowrap}
+.r-碳源{background:var(--r-c)} .r-氮源{background:var(--r-n)} .r-緩衝{background:var(--r-buf)}
+.r-滲透{background:var(--r-osm)} .r-選擇劑{background:var(--r-sel)} .r-指示劑{background:var(--r-ind)}
+.r-凝固劑{background:var(--r-sol)} .r-生長因子{background:var(--r-gf)} .r-x{background:var(--r-x)}
+.legend-roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.legend-roles span{font-size:11px;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+/* 菌種表 */
+table.sp{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:2px}
+table.sp td{border:1px solid #ece8f3;padding:5px 8px;vertical-align:top}
+table.sp td.nm{white-space:nowrap;font-style:italic;font-weight:600;width:200px}
+/* meta pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{background:var(--th-soft);border:1px solid var(--th-line);border-radius:8px;padding:5px 10px;font-size:13px}
+.pill b{color:var(--th)}
+.hot{background:#fff7e6;border:1px solid #ffe2a8;border-radius:8px;padding:10px 12px;margin-top:6px}
+.hot .k{color:#b9770e;font-weight:700;margin-bottom:4px}
+.hot ol{margin:0;padding-left:20px}
+.hot li{margin:2px 0;font-size:14px}
+table.qa{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+table.qa td{border:1px solid #ece8f3;padding:5px 8px;vertical-align:top}
+table.qa td.yr{white-space:nowrap;color:var(--th);font-weight:700;width:120px}
+.nohit{text-align:center;color:var(--muted);padding:40px;display:none}
+.ref{font-size:12px;color:var(--muted);border-top:1px solid var(--th-line);margin-top:24px;padding-top:14px}
+.err{background:#fff0f0;border:1px solid #f3b8b8;color:#a33;border-radius:10px;padding:16px;margin:20px 0;font-size:14px}
+/* 比較表 */
+.cmp{border:1.5px solid var(--th-line);border-radius:12px;padding:12px 14px;margin:4px 2px 16px;background:#fff;box-shadow:var(--shadow)}
+.cmp-title{font-weight:800;color:var(--th);font-size:14.5px;margin-bottom:4px}
+.cmp-note{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.cmp-foot{font-size:12px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--th-line);padding-top:6px}
+.cmp-scroll{overflow-x:auto}
+.cmp table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px}
+.cmp th{background:var(--th-soft);color:var(--th);font-weight:700;padding:6px 8px;border:1px solid var(--th-line);white-space:nowrap;text-align:center}
+.cmp td{padding:5px 8px;border:1px solid var(--th-line);text-align:center}
+.cmp td.name{text-align:left;font-weight:700;white-space:nowrap}
+.cmp tbody tr:nth-child(even){background:#f3fbf9}
+@media(max-width:640px){.field{grid-template-columns:1fr;gap:2px}h1{font-size:16px}table.sp td.nm{width:auto}}
+
+/* ===== 類型主題（未來各群）：以 .group[data-type] 覆寫 ===== */
+.group[data-type="base"]{--th:#5b6b7a;--th-soft:#eef2f6;--th-line:#cfd9e2}
+.group[data-type="blood"]{--th:#d2453f;--th-soft:#fdecea;--th-line:#f3bcb8}
+.group[data-type="enteric"]{--th:#0d9488;--th-soft:#e3f6f1;--th-line:#abe3d6}
+.group[data-type="gpos"]{--th:#7b3fa0;--th-soft:#f3e9fb;--th-line:#d9b8ee}
+.group[data-type="bio"]{--th:#c77d11;--th-soft:#fdf1dc;--th-line:#f0d29a}
+.group[data-type="myco"]{--th:#8a5a32;--th-soft:#f3ebe3;--th-line:#ddc6b2}
+.group[data-type="diph"]{--th:#4f46e5;--th-soft:#ebeafe;--th-line:#c3c0f6}
+.group[data-type="fungi"]{--th:#c0397b;--th-soft:#fdeaf3;--th-line:#f3b8d4}
+.group[data-type="mha"]{--th:#0284c7;--th-soft:#e4f3fc;--th-line:#aaddf3}

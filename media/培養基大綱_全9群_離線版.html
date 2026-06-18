@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>培養基成分與適用菌種大綱（全9群）｜單檔離線版</title>
+<style>
+:root{
+  /* 預設主題 = 選擇兼鑑別（腸道）teal */
+  --th:#0d9488; --th-soft:#e3f6f1; --th-line:#abe3d6;
+  --ink:#1f2330; --muted:#6b6f80; --bg:#faf8fc; --card:#fff;
+  --star:#e8a317; --ok:#1f9d57; --warn:#c0392b; --chip:#eef0f6;
+  --shadow:0 1px 3px rgba(30,20,50,.08),0 6px 18px rgba(30,20,50,.06);
+  /* 成分角色色（柔底深字）*/
+  --r-c:#fde2b3; --r-n:#bdeee2; --r-buf:#cdd5fb; --r-osm:#bfe3fa;
+  --r-sel:#fbd0d9; --r-ind:#f8d2ee; --r-sol:#e2e6ec; --r-gf:#e6d4fb; --r-x:#eef0f6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  line-height:1.65;font-size:15.5px}
+a{color:var(--th);text-decoration:none}
+a.xref{border-bottom:1px dashed var(--th)}
+a.xref:hover{background:var(--th-soft)}
+header.top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#fff,#f4fbf9);
+  border-bottom:2px solid var(--th-line);box-shadow:var(--shadow);padding:14px 20px}
+.title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.th-badge{background:var(--th);color:#fff;border-radius:8px;padding:4px 12px;font-weight:700;font-size:14px;letter-spacing:1px}
+h1{font-size:19px;margin:0;font-weight:800}
+.sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+.nav{margin-left:auto;display:flex;gap:8px}
+.nav a{border:1.5px solid var(--th-line);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--th)}
+.nav a:hover{background:var(--th-soft)}
+.nav a.cur{background:var(--th);color:#fff;border-color:var(--th)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+#search{flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--th-line);border-radius:10px;font-size:15px;outline:none}
+#search:focus{border-color:var(--th);box-shadow:0 0 0 3px var(--th-soft)}
+.tagbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.tagbar-label{font-size:13px;color:var(--muted);margin-right:2px}
+.tag-toggle{cursor:pointer;border:1.5px solid var(--th-line);background:var(--th-soft);color:var(--th);
+  border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;user-select:none}
+.tag-toggle:hover{background:#fff;border-color:var(--th)}
+/* 預設收合：僅顯示已選取的標籤；展開後全部顯示 */
+.tagbar:not(.open) .tagfilter:not(.active){display:none}
+.tagfilter{cursor:pointer;border:1.5px solid var(--th-line);background:#fff;border-radius:999px;padding:5px 13px;font-size:13px;user-select:none;transition:.15s;font-style:italic}
+.tagfilter:hover{border-color:var(--th)}
+.tagfilter.active{background:var(--th);color:#fff;border-color:var(--th)}
+.btn-mini{cursor:pointer;border:1.5px solid var(--th-line);background:#fff;border-radius:8px;padding:6px 12px;font-size:13px}
+.btn-mini:hover{border-color:var(--th)}
+.legend{font-size:12px;color:var(--muted);margin-top:8px}
+main{max-width:1080px;margin:0 auto;padding:22px 18px 80px}
+.flow{border-radius:14px;padding:16px 18px;margin:6px 0 22px;border:1.5px solid var(--th-line);background:var(--th-soft)}
+.flow h3{margin:0 0 10px;font-size:15.5px;color:var(--th);display:flex;align-items:center;gap:8px}
+.flow .ln{font-size:13.5px;margin:3px 0;white-space:pre-wrap}
+.group{margin-bottom:26px}
+.group-head{cursor:pointer;display:flex;align-items:center;gap:10px;color:#fff;padding:11px 16px;border-radius:10px;font-weight:800;font-size:16px;user-select:none;background:var(--th)}
+.group-head .arrow{transition:.2s;font-size:13px}
+.group.collapsed .group-head .arrow{transform:rotate(-90deg)}
+.group.collapsed .group-body{display:none}
+.group-body{padding-top:14px}
+.cards{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--th-line);border-left:6px solid var(--th);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.card-head{cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 16px;flex-wrap:wrap}
+.card-head .en{font-weight:800;font-size:15.5px}
+.card-head .abbr{background:var(--th);color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700}
+.card-head .zh{color:var(--muted);font-size:13.5px}
+.stars{color:var(--star);font-size:13px;letter-spacing:1px}
+.card-head .arrow{margin-left:auto;color:var(--muted);transition:.2s;font-size:13px}
+.card.collapsed .arrow{transform:rotate(-90deg)}
+.card.collapsed .card-body{display:none}
+.card-body{padding:4px 16px 16px;border-top:1px dashed var(--th-line)}
+.field{padding:8px 0;border-bottom:1px solid #f0eef5;display:grid;grid-template-columns:140px 1fr;gap:10px}
+.field:last-child{border-bottom:none}
+.field .k{font-weight:700;color:var(--th);font-size:13px}
+.field .v{font-size:14.5px}
+.v b,.v strong{color:var(--warn)}
+/* 成分表 */
+table.comp{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+table.comp th{background:var(--th-soft);color:var(--th);font-weight:700;padding:5px 8px;border:1px solid var(--th-line);text-align:left;font-size:12px}
+table.comp td{padding:5px 8px;border:1px solid #ece8f3;vertical-align:top}
+table.comp td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.role{display:inline-block;font-size:11px;padding:1px 8px;border-radius:5px;color:#3a2a14;font-weight:700;white-space:nowrap}
+.r-碳源{background:var(--r-c)} .r-氮源{background:var(--r-n)} .r-緩衝{background:var(--r-buf)}
+.r-滲透{background:var(--r-osm)} .r-選擇劑{background:var(--r-sel)} .r-指示劑{background:var(--r-ind)}
+.r-凝固劑{background:var(--r-sol)} .r-生長因子{background:var(--r-gf)} .r-x{background:var(--r-x)}
+.legend-roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.legend-roles span{font-size:11px;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+/* 菌種表 */
+table.sp{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:2px}
+table.sp td{border:1px solid #ece8f3;padding:5px 8px;vertical-align:top}
+table.sp td.nm{white-space:nowrap;font-style:italic;font-weight:600;width:200px}
+/* meta pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{background:var(--th-soft);border:1px solid var(--th-line);border-radius:8px;padding:5px 10px;font-size:13px}
+.pill b{color:var(--th)}
+.hot{background:#fff7e6;border:1px solid #ffe2a8;border-radius:8px;padding:10px 12px;margin-top:6px}
+.hot .k{color:#b9770e;font-weight:700;margin-bottom:4px}
+.hot ol{margin:0;padding-left:20px}
+.hot li{margin:2px 0;font-size:14px}
+table.qa{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+table.qa td{border:1px solid #ece8f3;padding:5px 8px;vertical-align:top}
+table.qa td.yr{white-space:nowrap;color:var(--th);font-weight:700;width:120px}
+.nohit{text-align:center;color:var(--muted);padding:40px;display:none}
+.ref{font-size:12px;color:var(--muted);border-top:1px solid var(--th-line);margin-top:24px;padding-top:14px}
+.err{background:#fff0f0;border:1px solid #f3b8b8;color:#a33;border-radius:10px;padding:16px;margin:20px 0;font-size:14px}
+/* 比較表 */
+.cmp{border:1.5px solid var(--th-line);border-radius:12px;padding:12px 14px;margin:4px 2px 16px;background:#fff;box-shadow:var(--shadow)}
+.cmp-title{font-weight:800;color:var(--th);font-size:14.5px;margin-bottom:4px}
+.cmp-note{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.cmp-foot{font-size:12px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--th-line);padding-top:6px}
+.cmp-scroll{overflow-x:auto}
+.cmp table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px}
+.cmp th{background:var(--th-soft);color:var(--th);font-weight:700;padding:6px 8px;border:1px solid var(--th-line);white-space:nowrap;text-align:center}
+.cmp td{padding:5px 8px;border:1px solid var(--th-line);text-align:center}
+.cmp td.name{text-align:left;font-weight:700;white-space:nowrap}
+.cmp tbody tr:nth-child(even){background:#f3fbf9}
+@media(max-width:640px){.field{grid-template-columns:1fr;gap:2px}h1{font-size:16px}table.sp td.nm{width:auto}}
+
+/* ===== 類型主題（未來各群）：以 .group[data-type] 覆寫 ===== */
+.group[data-type="base"]{--th:#5b6b7a;--th-soft:#eef2f6;--th-line:#cfd9e2}
+.group[data-type="blood"]{--th:#d2453f;--th-soft:#fdecea;--th-line:#f3bcb8}
+.group[data-type="enteric"]{--th:#0d9488;--th-soft:#e3f6f1;--th-line:#abe3d6}
+.group[data-type="gpos"]{--th:#7b3fa0;--th-soft:#f3e9fb;--th-line:#d9
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title-row">
+    <span class="th-badge">培養基</span>
+    <div>
+      <h1>培養基成分與適用菌種大綱（全9群）</h1>
+      <div class="sub" id="sub">科目：微生物學與臨床微生物學（包括細菌與黴菌）</div>
+    </div>
+  </div>
+  <div class="controls">
+    <input id="search" type="text" placeholder="🔍 即時搜尋：培養基、成分、菌名、原理、考點…">
+    <button type="button" class="btn-mini" id="expandAll">全部展開</button>
+    <button type="button" class="btn-mini" id="collapseAll">全部收合</button>
+  </div>
+  <div class="tagbar" id="tagbar"></div>
+  <div class="legend">單檔離線版（無外部連結）。色塊＝功能角色；⭐⭐⭐ 極高頻 ⭐⭐ 高頻 ⭐ 常見（醫檢師考古題，民國 103–115）。線上互連版見 GitHub Pages。</div>
+</header>
+<main>
+  <div id="cards"></div>
+  <div class="nohit" id="nohit">查無符合條件的培養基。</div>
+  <div class="ref">成分：BD Difco/BBL、Oxoid 手冊；原理：Mahon、Murray；考題：考選部醫檢師（科目 308），民國 102–115。⚠️ 比例依製造商手冊，廠牌批號略有差異。</div>
+</main>
+<script>window.__EMBED__ = {
+  "meta": {
+    "subject": "微生物學與臨床微生物學（包括細菌與黴菌）— 培養基成分與適用菌種大綱",
+    "version": "1.0.1",
+    "updated": "2026-06-18",
+    "source": "BD BBL/Difco Manual（2nd ed.）、Oxoid/Thermo Fisher Culture Media Manual（成分比例）；Mahon Textbook of Diagnostic Microbiology、Murray Medical Microbiology（鑑定原理）；考選部醫檢師考題（民國 102–115 年）",
+    "media_types": ["基礎／增菌", "含血／苛養", "選擇兼鑑別（腸道）", "G+ 選擇", "鑑別生化管", "分枝桿菌", "特殊／類白喉", "黴菌", "藥敏（MHA）"]
+  },
+  "flows": {
+    "基礎／增菌": [
+      "**基礎(basal)**：一般非苛養菌通用（Nutrient agar、TSA）；**增菌(enriched)**：補血/腦心浸液供苛養菌（BHI）。",
+      "**增菌液(enrichment broth)**：偏向目標菌——Selenite F／Tetrathionate／GN（Salmonella·Shigella）、Alkaline peptone water（弧菌）、Thioglycollate（厭氧/微需氧、含氧化還原梯度）。"
+    ],
+    "含血／苛養": [
+      "綿羊血 BAP：看溶血（α/β/γ）；不長者(Haemophilus、Neisseria、Legionella)改用巧克力或特殊盤。",
+      "巧克力（加熱血→釋出 X hemin + V NAD）→ Haemophilus、Neisseria；Thayer-Martin（VCN）→ 致病性 Neisseria；BCYE（cysteine+鐵）→ Legionella；Bordet-Gengou→ 百日咳。"
+    ],
+    "選擇兼鑑別（腸道）": [
+      "糞便 → 低選擇性盤（**MacConkey / EMB**：乳糖發酵分流）＋ 中～高選擇性盤（**XLD / HE / SS**：Salmonella·Shigella）",
+      "疑似 **霍亂/海產相關弧菌** → 鹼性 **TCBS**（pH 8.6）；疑似 **Yersinia** → **CIN**（25–28℃，牛眼菌落）"
+    ],
+    "G+ 選擇": [
+      "抑制 G(−)、留 G(+)：MSA（7.5% NaCl，葡萄球菌）、CNA／PEA（鏈球菌·葡萄球菌，可看溶血）。",
+      "Bile esculin（+6.5% NaCl）→ 區分 group D 鏈球菌 / 腸球菌。"
+    ],
+    "鑑別生化管": [
+      "TSI/KIA：醣發酵（斜面/底）＋ H₂S＋產氣；Urea：尿素酶；SIM：H₂S/indole/移動性；Simmons citrate：檸檬酸單一碳源。",
+      "酚紅(TSI/KIA/Urea) vs 溴瑞香草酚藍(Simmons citrate) 為常考指示劑對比。"
+    ],
+    "分枝桿菌": [
+      "蛋基 LJ（malachite green 抑雜菌，初代分離）vs 瓊脂 7H10/7H11（+OADC，較早判讀、藥敏比例法）。"
+    ],
+    "特殊／類白喉": [
+      "白喉桿菌：Loeffler 血清斜面（增殖＋異染顆粒）→ Cystine-tellurite／Tinsdale（還原 tellurite 呈灰黑、Tinsdale 棕暈）。"
+    ],
+    "黴菌": [
+      "Sabouraud dextrose agar（pH 5.6，真菌通用）；加 chloramphenicol+cycloheximide＝Mycosel（抑菌+腐生黴）；CHROMagar Candida 依顏色分種；PDA 促孢子/色素。"
+    ],
+    "藥敏（MHA）": [
+      "Kirby-Bauer 紙錠擴散標準盤；苛養菌加 5% 綿羊血或溶解馬血(+NAD)；酵母菌用 RPMI 1640。"
+    ]
+  },
+  "media": [
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "NA", "en": "Nutrient Agar", "zh": "營養瓊脂", "stars": 1,
+      "comp": [["Beef extract 牛肉萃取物","3 g/L","氮源"],["Peptone 蛋白腖","5 g/L","氮源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "6.8 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**基礎培養基**：只提供基本碳氮源與鹽分，供一般非苛養菌生長；**無選擇劑、無指示劑**。去掉洋菜即為 Nutrient broth。",
+      "appear": "一般菌呈乳白／灰白圓形菌落；不溶血、不變色。",
+      "species": [["Escherichia coli","可生長"],["Staphylococcus aureus","可生長"],["Bacillus subtilis","可生長"]],
+      "hot": ["**基礎/通用培養基代表**，無選擇或鑑別功能。","苛養菌(Haemophilus/Neisseria/Streptococcus 等)在 NA 上**長不好**，需增菌或含血盤。"],
+      "qa": [["概念","基礎培養基:僅供一般菌生長,無選擇劑/指示劑;與選擇、鑑別、增菌培養基對比"]]
+    },
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "TSA", "en": "Trypticase Soy Agar", "zh": "胰酶大豆瓊脂", "stars": 2,
+      "comp": [["Pancreatic digest of casein 酪蛋白胰酶消化物","15 g/L","氮源"],["Papaic digest of soybean meal 大豆木瓜酶消化物","5 g/L","氮源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "7.3 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**營養豐富的通用基礎盤**：雙重蛋白腖供大多數細菌（含部分苛養菌）生長；常作為**血液瓊脂的基底**（+5% 綿羊血）。",
+      "appear": "多數菌生長良好；加血後可觀察溶血。",
+      "species": [["Staphylococcus","可生長"],["Streptococcus","加血生長較佳"],["Enterobacterales","可生長"]],
+      "hot": ["TSA 常作為 **Blood agar 的基底**；TSB（湯）為常用一般增菌液。","115 年題:**trypticase soy broth 不是** Salmonella/Shigella 的選擇性增菌液(對比 selenite/tetrathionate/GN)。"],
+      "qa": [["115年 第3題","下列何者不是 Salmonella/Shigella 增菌液(TSB 為選項,非增菌)"]]
+    },
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "BHI", "en": "Brain Heart Infusion", "zh": "腦心浸液", "stars": 2,
+      "comp": [["Calf brain infusion solids 小牛腦浸出物","7.7 g/L","氮源／生長因子"],["Beef heart infusion solids 牛心浸出物","9.8 g/L","氮源／生長因子"],["Proteose peptone 蛋白腖","10 g/L","氮源"],["Dextrose 葡萄糖","2 g/L","碳源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Disodium phosphate 磷酸氫二鈉","2.5 g/L","緩衝"],["Agar（製盤時）洋菜","13.5 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**高營養增菌培養基**：腦、心浸出物供苛養菌與真菌生長；常用於血液培養、鏈球菌/酵母菌增殖與保存。",
+      "appear": "苛養菌、酵母菌皆生長良好。",
+      "species": [["Streptococcus pneumoniae","生長良好"],["Candida","可生長"],["血液培養常見菌","廣泛支持"]],
+      "hot": ["**高營養增菌**代表；可培養苛養菌與真菌。","CLSI Candida 紙錠擴散(M44)曾以 **BHI+2% glucose** 為選項之一。"],
+      "qa": [["106年 第58題","Candida 紙錠擴散培養基(BHI+2% glucose 為選項)"]]
+    },
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "Thio", "en": "Fluid Thioglycollate Medium", "zh": "硫醇乙酸鹽液體培養基", "stars": 2,
+      "comp": [["Pancreatic digest of casein 酪蛋白胰酶消化物","15 g/L","氮源"],["Yeast extract 酵母萃取物","5 g/L","生長因子"],["Dextrose 葡萄糖","5.5 g/L","碳源"],["Sodium chloride 氯化鈉","2.5 g/L","滲透"],["L-Cystine 胱胺酸","0.5 g/L","生長因子"],["Sodium thioglycollate 硫醇乙酸鈉","0.5 g/L","生長因子"],["Resazurin 試鹵靈","0.001 g/L","指示劑"],["Agar 洋菜","0.75 g/L","凝固劑"]],
+      "ph": "7.1 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌；使用前煮沸驅氧",
+      "principle": "**氧化還原梯度增菌液**：thioglycollate＋cystine 降低氧化還原電位、半固態洋菜限制氧擴散，管內由上(有氧)到下(厭氧)形成梯度；**resazurin** 上層粉紅(有氧)、下層無色(厭氧)。",
+      "appear": "依需氧性分布：絕對需氧菌長上層、厭氧菌長底部、兼性/微需氧菌全管或特定帶。",
+      "species": [["Pseudomonas aeruginosa","上層(需氧)"],["Clostridium","底部(厭氧)"],["Enterobacterales","全管(兼性)"]],
+      "hot": ["**指示劑為 resazurin**（粉紅=有氧），不是 phenol red；**thioglycollate/cystine 為還原劑**降低氧化還原電位。","可同時培養需氧、厭氧、微需氧菌，依生長位置判斷需氧性。"],
+      "qa": [["105年 第46題","有關 thioglycollate broth 之敘述(可培養需氧/厭氧、resazurin 指示)"],["106年 第46題","加入何者使培養基具較低氧化還原電位(thioglycollate)"]]
+    },
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "Selenite F", "en": "Selenite F Broth", "zh": "亞硒酸鹽 F 增菌液", "stars": 2,
+      "comp": [["Casitone／Peptone 蛋白腖","5 g/L","氮源"],["Lactose 乳糖","4 g/L","碳源"],["Sodium hydrogen selenite 亞硒酸氫鈉","4 g/L","選擇劑"],["Sodium phosphate 磷酸鈉(緩衝系)","10 g/L","緩衝"]],
+      "ph": "7.0 ± 0.2 (25℃)", "steril": "流動蒸氣/沸水浴加熱；**不可高壓滅菌**(亞硒酸鹽會分解)",
+      "principle": "**選擇性增菌液**：亞硒酸鹽於培養初期抑制大腸菌群與腸球菌，使 Salmonella（部分 Shigella）相對增殖；增菌後再接種 XLD/HE/SS。",
+      "appear": "液體增菌，無菌落判讀；增菌 12–18 小時後轉種選擇盤。",
+      "species": [["Salmonella","選擇性增殖(佳)"],["Shigella","部分可增殖"],["大腸菌群","早期被抑制"]],
+      "hot": ["**Salmonella/Shigella 前增菌**代表(與 Tetrathionate、GN broth 同類)。","不可高壓滅菌;115 年題以 selenite 為正確增菌液、TSB 為非增菌對比。"],
+      "qa": [["115年 第3題","Salmonella/Shigella 增菌液(selenite 為正確,TSB 非增菌)"]]
+    },
+    {
+      "h1": "基礎／增菌", "type": "base", "abbr": "APW", "en": "Alkaline Peptone Water", "zh": "鹼性蛋白腖水", "stars": 1,
+      "comp": [["Peptone 蛋白腖","10 g/L","氮源"],["Sodium chloride 氯化鈉","10 g/L","滲透"]],
+      "ph": "**8.4–8.6（鹼性）**", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**弧菌選擇性增菌液**：高 pH 8.6 利於耐鹼的 Vibrio 快速增殖、抑制多數腸內菌；增菌 6–8 小時後轉種 TCBS。",
+      "appear": "表面薄膜(pellicle)生長(弧菌好氧、嗜鹼);液體增菌無菌落。",
+      "species": [["Vibrio cholerae","表面增殖(佳)"],["Vibrio parahaemolyticus","增殖(可加 1% NaCl)"]],
+      "hot": ["**弧菌專用增菌液**，pH 8.6 與 TCBS 同走鹼性策略。","常與 TCBS 搭配:APW 增菌 → TCBS 分離。"],
+      "qa": [["概念","弧菌前增菌:鹼性蛋白腖水(pH 8.6)→ 再轉種 TCBS"]]
+    },
+    {
+      "h1": "含血／苛養", "type": "blood", "abbr": "BAP", "en": "Blood Agar (5% Sheep Blood)", "zh": "血液瓊脂(5%綿羊血)", "stars": 3,
+      "comp": [["TSA/Columbia base 蛋白腖基底","≈ 40 g/L","氮源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Agar 洋菜","15 g/L","凝固劑"],["Defibrinated sheep blood 去纖維綿羊血","50 mL/L (5%)","生長因子"]],
+      "ph": "7.3 ± 0.2 (25℃)", "steril": "基底 121℃ 滅菌，冷卻至約 50℃ 再加入無菌綿羊血",
+      "principle": "**增菌＋鑑別(溶血)**：血液供苛養菌生長；依菌分泌之溶血素分 **α(草綠)／β(完全透明)／γ(不溶血)**。綿羊血用於抑制 Haemophilus haemolyticus 的偽溶血。",
+      "appear": "α：菌落周圍草綠色；β：透明清澈溶血環；γ：無變化。",
+      "species": [["Streptococcus pyogenes","β 溶血"],["Streptococcus pneumoniae","α 溶血、臍狀凹陷"],["Staphylococcus aureus","β 溶血、金黃"],["Enterococcus","多為 γ"]],
+      "hot": ["**判溶血型(α/β/γ)的標準盤**；用**綿羊血**(非馬血,避免 Haemophilus 偽溶血)。","部分菌在 BAP **長不好/不長**:Neisseria gonorrhoeae、Haemophilus influenzae、Legionella、Francisella、披衣菌(細胞內,完全不長)。"],
+      "qa": [["115年 第45題","下列何者無法培養於 blood agar(Chlamydia trachomatis)"],["112年 第79題","在 BAP 通常無法生長者(Neisseria gonorrhoeae)"]]
+    },
+    {
+      "h1": "含血／苛養", "type": "blood", "abbr": "Choc", "en": "Chocolate Agar", "zh": "巧克力瓊脂", "stars": 3,
+      "comp": [["GC II / BHI agar base 基底","≈ 36 g/L","氮源"],["Hemoglobin 血紅素(提供 X 因子 hemin)","10 g/L","生長因子"],["IsoVitaleX/CVA 補充劑(提供 V 因子 NAD)","10 mL/L","生長因子"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Agar 洋菜","12 g/L","凝固劑"]],
+      "ph": "7.2 ± 0.2 (25℃)", "steril": "基底滅菌後於約 80℃ 加血加熱(血球破裂釋出因子→巧克力色)",
+      "principle": "**增菌(苛養)**：加熱使紅血球破裂、釋出 **X 因子(hemin)與 V 因子(NAD)**，供 Haemophilus、Neisseria 生長(這些菌在一般 BAP 長不好)。",
+      "appear": "棕褐(巧克力)色不透明盤；Haemophilus 呈灰白色細小菌落。",
+      "species": [["Haemophilus influenzae","灰白色小菌落(需 X+V)"],["Neisseria gonorrhoeae","可生長(需巧克力/強化)"],["Neisseria meningitidis","可生長"]],
+      "hot": ["**提供 X(hemin)+V(NAD)** 給 Haemophilus／Neisseria 是核心；加熱血→巧克力色。","H. influenzae 在綿羊血 BAP 長不好(V 因子被血球內 NADase 分解)，故需巧克力盤。"],
+      "qa": [["115年 第61題","CSF:BAP 不長、巧克力長灰白小菌落、需 X+V→ H. influenzae"],["111年 第25題","最適培養 Haemophilus 之培養基(含血/巧克力供 X·V)"]]
+    },
+    {
+      "h1": "含血／苛養", "type": "blood", "abbr": "TM", "en": "Modified Thayer-Martin Agar (VCN)", "zh": "改良式塞耶-馬丁瓊脂", "stars": 3,
+      "comp": [["Chocolate(GC base+hemoglobin+IsoVitaleX) 巧克力基底","—","生長因子"],["Vancomycin 萬古黴素","3 mg/L","選擇劑(抗生素)"],["Colistin 克痢黴素","7.5 mg/L","選擇劑(抗生素)"],["Nystatin 制黴菌素","12.5 mg/L","選擇劑(抗生素)"],["Trimethoprim 三甲氧苄啶(改良式)","5 mg/L","選擇劑(抗生素)"]],
+      "ph": "7.2 ± 0.2 (25℃)", "steril": "巧克力基底滅菌後加入無菌抗生素補充劑",
+      "principle": "**選擇性巧克力盤**：在巧克力上加 **VCN**——Vancomycin 抑 G(+)、Colistin 抑 G(−)、Nystatin 抑真菌(改良式再加 Trimethoprim 抑 Proteus)；專分離致病性 Neisseria。",
+      "appear": "Neisseria 灰白色菌落；雜菌大多被抑制。",
+      "species": [["Neisseria gonorrhoeae","選擇性生長"],["Neisseria meningitidis","選擇性生長"]],
+      "hot": ["**VCN = Vancomycin + Colistin + Nystatin**(改良式 +Trimethoprim)，分離致病性 Neisseria。","屬選擇性培養基(考題常以 Thayer-Martin 為選擇性盤代表)。"],
+      "qa": [["104年 第5題","下列何者為選擇性培養基(Thayer-Martin)"]]
+    },
+    {
+      "h1": "含血／苛養", "type": "blood", "abbr": "BG", "en": "Bordet-Gengou Agar", "zh": "波德-江古瓊脂", "stars": 2,
+      "comp": [["Potato infusion 馬鈴薯浸液","—","氮源／生長因子"],["Glycerol 甘油","10 mL/L","碳源"],["Sodium chloride 氯化鈉","5.5 g/L","滲透"],["Defibrinated blood 去纖維血(馬/綿羊)","150 mL/L (15%)","生長因子"],["Methicillin/Cephalexin 半合成青黴素(抑雜菌)","—","選擇劑(抗生素)"],["Agar 洋菜","20 g/L","凝固劑"]],
+      "ph": "6.7 ± 0.2 (25℃)", "steril": "基底滅菌後加入無菌血與抗生素",
+      "principle": "**百日咳選擇/增菌盤**：高比例血＋馬鈴薯浸液供 Bordetella pertussis 生長；加 cephalexin 抑制呼吸道雜菌。",
+      "appear": "B. pertussis 呈細小、光亮、隆起如**汞滴(mercury-drop)**菌落，周圍輕微溶血。",
+      "species": [["Bordetella pertussis","汞滴狀小菌落"],["Bordetella parapertussis","較大、生長較快"]],
+      "hot": ["**百日咳桿菌**經典培養基(替代:Regan-Lowe 木炭盤)；菌落如汞滴。","抑雜菌用 cephalexin;**erythromycin 不適合加入**(會抑制 Bordetella 本身)。"],
+      "qa": [["104年 第30題","不適合加於分離 Bordetella pertussis 之培養基成分(erythromycin)"]]
+    },
+    {
+      "h1": "含血／苛養", "type": "blood", "abbr": "BCYE", "en": "Buffered Charcoal Yeast Extract Agar", "zh": "緩衝木炭酵母萃取瓊脂", "stars": 2,
+      "comp": [["Yeast extract 酵母萃取物","10 g/L","氮源／生長因子"],["Activated charcoal 活性碳","2 g/L","生長因子"],["ACES buffer ACES 緩衝劑","10 g/L","緩衝"],["L-Cysteine 半胱胺酸","0.4 g/L","生長因子"],["Ferric pyrophosphate 焦磷酸鐵","0.25 g/L","生長因子"],["α-Ketoglutarate α-酮戊二酸","1 g/L","生長因子"],["Agar 洋菜","17 g/L","凝固劑"]],
+      "ph": "6.9 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌(冷卻後加 cysteine 與鐵)",
+      "principle": "**軍團菌專用增菌盤**：提供 **L-cysteine 與鐵離子**(Legionella 必需)；活性碳吸附毒性過氧化物、ACES 緩衝；選擇版另加 polymyxin B/anisomycin/cefamandole。",
+      "appear": "Legionella 呈灰白帶虹彩、毛玻璃狀菌落(3–5 天)。",
+      "species": [["Legionella pneumophila","灰白虹彩菌落(需 cysteine)"],["Legionella spp.","生長"]],
+      "hot": ["**Legionella 必需 L-cysteine + 鐵**;在 BAP 不長、BCYE 才長為標誌題型。","活性碳吸附毒性自由基、ACES 提供緩衝。"],
+      "qa": [["110年 第36題","可長 BCYE 但不長 blood agar→ Legionella spp."]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "MAC", "en": "MacConkey Agar", "zh": "麥康奇瓊脂", "stars": 3,
+      "comp": [["Pancreatic digest of gelatin 明膠胰酶消化物","17 g/L","氮源"],["Peptone（casein/meat）混合蛋白腖","3 g/L","氮源"],["Lactose 乳糖","10 g/L","碳源"],["Bile salts 膽鹽","1.5 g/L","選擇劑"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Crystal violet 結晶紫","0.001 g/L","選擇劑"],["Neutral red 中性紅","0.03 g/L","指示劑"],["Agar 洋菜","13.5 g/L","凝固劑"]],
+      "ph": "7.1 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**選擇**：膽鹽＋結晶紫抑制 G(+) 菌，僅 G(−) 腸內菌生長。**鑑別**：乳糖＋中性紅指示劑區分乳糖發酵與否；產酸使 pH<6.8，中性紅轉紅。",
+      "appear": "乳糖發酵菌(LF)→**粉紅至紅色**菌落、周圍常見膽鹽沉澱暈環；不發酵菌(NLF)→**無色透明**。MAC-SOR 以 sorbitol 取代乳糖篩 O157。",
+      "species": [["Escherichia coli","LF，粉紅、有膽鹽沉澱暈"],["Klebsiella pneumoniae","LF，黏液狀粉紅菌落"],["Enterobacter","LF，粉紅"],["Salmonella","NLF，無色透明"],["Shigella","NLF，無色透明"],["Proteus","NLF 無色，swarming 被抑制"],["Pseudomonas aeruginosa","NLF，無色"],["Yersinia enterocolitica","NLF，無色(25℃較佳)"]],
+      "hot": ["MAC 為**低選擇性**腸內菌通用盤；以是否乳糖發酵作第一線分流（LF 粉紅 / NLF 無色）。","指示劑為**中性紅**（非酚紅）；抑制劑為**膽鹽＋結晶紫**。","MAC 抑制 Proteus 之 swarming，便於分離單一菌落。","易混淆：MAC 與 EMB 皆**僅含乳糖**無蔗糖；HE/XLD 另含蔗糖。","Sorbitol-MacConkey(SMAC)：E. coli O157:H7 不發酵 sorbitol→無色，與一般 E. coli 區別。"],
+      "qa": [["111年 第23題","下列何種培養基僅含乳糖而無蔗糖？（MAC／EMB 對比）"],["107年 第21題","MacConkey 抑制 G(+) 的成分(crystal violet＋bile salts)"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "EMB", "en": "Eosin Methylene Blue Agar (Levine)", "zh": "伊紅亞甲藍瓊脂", "stars": 3,
+      "comp": [["Peptone 蛋白腖","10 g/L","氮源"],["Lactose 乳糖","10 g/L","碳源"],["Dipotassium phosphate 磷酸氫二鉀 (K₂HPO₄)","2 g/L","緩衝"],["Eosin Y 伊紅 Y","0.4 g/L","選擇劑／指示劑"],["Methylene blue 亞甲藍","0.065 g/L","選擇劑／指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "7.1 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**選擇**：伊紅＋亞甲藍於酸性下抑制 G(+) 菌。**鑑別**：強乳糖發酵產大量酸→染料沉澱於菌落形成**綠色金屬光澤**；弱發酵者呈粉棕色。（Levine 配方僅含乳糖）",
+      "appear": "E. coli→帶**綠色金屬光澤**(fish-eye)；Enterobacter/Klebsiella→粉棕色「魚眼」大菌落、無金屬光澤；NLF→無色透明。",
+      "species": [["Escherichia coli","**綠色金屬光澤**菌落(典型)"],["Enterobacter","粉棕、魚眼狀、無金屬光澤"],["Klebsiella pneumoniae","粉棕、魚眼狀"],["Salmonella","無色透明"],["Shigella","無色透明"]],
+      "hot": ["**綠色金屬光澤＝E. coli**為最經典考點（強乳糖發酵產酸）。","Levine EMB **僅含乳糖**；Holt-Harris-Teague 原始配方另含蔗糖—注意配方版本差異。","染料（伊紅／亞甲藍）**同時兼具選擇劑與指示劑**雙重角色。","EMB 屬選擇兼鑑別培養基；常與 MAC 並列為腸內菌第一線分離盤。"],
+      "qa": [["112年 第4題","下列何者屬於選擇性培養基？（含 EMB）"],["115年 第27題","可分離鑑別 E. coli O157:H7 之培養基（EMB 為選項）"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "XLD", "en": "Xylose Lysine Deoxycholate Agar", "zh": "木糖離胺酸去氧膽酸鹽瓊脂", "stars": 3,
+      "comp": [["Yeast extract 酵母萃取物","3 g/L","氮源／生長因子"],["L-Lysine 離胺酸","5 g/L","鑑別基質"],["Xylose 木糖","3.5 g/L","碳源"],["Lactose 乳糖","7.5 g/L","碳源"],["Sucrose 蔗糖","7.5 g/L","碳源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Sodium deoxycholate 去氧膽酸鈉","2.5 g/L","選擇劑"],["Sodium thiosulfate 硫代硫酸鈉","6.8 g/L","H₂S 受質"],["Ferric ammonium citrate 檸檬酸鐵銨","0.8 g/L","H₂S 指示劑"],["Phenol red 酚紅","0.08 g/L","指示劑"],["Agar 洋菜","13.5 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "加熱至沸；**不可高壓滅菌**（去氧膽酸鹽過熱降解）",
+      "principle": "**選擇**：去氧膽酸鈉抑制 G(+)。**鑑別**：三醣發酵(木糖／乳糖／蔗糖)＋酚紅；木糖發酵後若能行離胺酸脫羧(LDC)使環境回鹼(紅)；硫代硫酸＋鐵銨偵測 H₂S(黑)。",
+      "appear": "Salmonella→**紅色菌落、中心黑**(木糖發酵→LDC回鹼＋H₂S)；Shigella→**紅色、不變黑**；E. coli/Coliform→**黃色**。",
+      "species": [["Salmonella","紅色菌落、**黑色中心**(H₂S⁺)"],["Shigella","紅色／粉紅菌落、無黑心"],["Escherichia coli","黃色菌落(產酸)"],["Proteus","黃色或紅、部分黑心"],["Citrobacter","黃色、可有黑心(與 Salmonella 易混)"]],
+      "hot": ["**紅心黑點＝Salmonella；全紅無黑＝Shigella；黃色＝大腸桿菌**為三大判讀核心。","指示劑為**酚紅**（與 TCBS 的 bromothymol/thymol blue 不同）。","**不可高壓滅菌**，僅加熱煮沸，與 HE/SS/TCBS 同屬「煮沸即可」型。","Citrobacter freundii 在 XLD 與 Salmonella 菌落相似，需以 LDC／indole／citrate 區分。"],
+      "qa": [["108年 第36題","自腹瀉糞便分離 Shigella 較適選擇性培養基（XLD）"],["107年 第76題","酸鹼指示劑與其他三者不同（XLD 用酚紅）"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "HE", "en": "Hektoen Enteric Agar", "zh": "海克頓腸內菌瓊脂", "stars": 2,
+      "comp": [["Yeast extract 酵母萃取物","3 g/L","氮源／生長因子"],["Proteose peptone 蛋白腖","12 g/L","氮源"],["Lactose 乳糖","12 g/L","碳源"],["Sucrose 蔗糖","12 g/L","碳源"],["Salicin 水楊苷","2 g/L","碳源"],["Bile salts 膽鹽","9 g/L","選擇劑"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Sodium thiosulfate 硫代硫酸鈉","5 g/L","H₂S 受質"],["Ferric ammonium citrate 檸檬酸鐵銨","1.5 g/L","H₂S 指示劑"],["Bromothymol blue 溴瑞香草酚藍","0.065 g/L","指示劑"],["Acid fuchsin 酸性復紅","0.1 g/L","指示劑"],["Agar 洋菜","14 g/L","凝固劑"]],
+      "ph": "7.5 ± 0.2 (25℃)", "steril": "加熱至沸；**不可高壓滅菌**",
+      "principle": "**選擇**：高量膽鹽抑制 G(+) 與部分腸內菌。**鑑別**：三種醣(乳糖／蔗糖／水楊苷)發酵＋溴瑞香草酚藍／酸性復紅指示；H₂S 以硫代硫酸＋鐵銨偵測(黑)。",
+      "appear": "發酵菌(E. coli)→**橙黃／鮭肉色**；Salmonella→**藍綠色、中心黑**(H₂S⁺)；Shigella→**綠色、無黑心**。",
+      "species": [["Salmonella","藍綠菌落、**黑色中心**"],["Shigella","綠色菌落、無黑心"],["Escherichia coli","橙黃／鮭肉色(發酵)"],["Proteus","可有黑心"]],
+      "hot": ["判讀：**藍綠＋黑心＝Salmonella；綠色無黑＝Shigella；黃橙＝發酵菌**。","HE 含**乳糖＋蔗糖＋水楊苷**三種醣，與「僅乳糖」的 MAC/EMB 對比。","指示劑為 bromothymol blue＋acid fuchsin；H₂S 指示為檸檬酸鐵銨。","與 XLD、SS 並列為 Salmonella/Shigella 中等～高選擇性盤。"],
+      "qa": [["110年 第22題","下列何種培養基主要不是偵測醣類發酵（含 HE 為對照）"],["112年 第73題","膽鹽濃度由低到高排序(HE/XLD/EMB/MAC)"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "SS", "en": "Salmonella Shigella Agar", "zh": "沙門志賀氏菌瓊脂", "stars": 2,
+      "comp": [["Beef extract 牛肉萃取物","5 g/L","氮源／生長因子"],["Proteose peptone 蛋白腖","5 g/L","氮源"],["Lactose 乳糖","10 g/L","碳源"],["Bile salts 膽鹽","8.5 g/L","選擇劑"],["Sodium citrate 檸檬酸鈉","8.5 g/L","選擇劑"],["Sodium thiosulfate 硫代硫酸鈉","8.5 g/L","H₂S 受質"],["Brilliant green 亮綠","0.00033 g/L","選擇劑"],["Ferric citrate 檸檬酸鐵","1 g/L","H₂S 指示劑"],["Neutral red 中性紅","0.025 g/L","指示劑"],["Agar 洋菜","13.5 g/L","凝固劑"]],
+      "ph": "7.0 ± 0.2 (25℃)", "steril": "加熱至沸；**不可高壓滅菌**",
+      "principle": "**選擇**：高量膽鹽＋檸檬酸鈉＋亮綠強力抑制 G(+) 與大腸菌群。**鑑別**：乳糖＋中性紅區分發酵與否；硫代硫酸＋檸檬酸鐵偵測 H₂S。",
+      "appear": "Salmonella→**無色菌落、黑色中心**(H₂S⁺)；Shigella→**無色透明、無黑心**；乳糖發酵菌(E. coli)→粉紅／紅，多被抑制。",
+      "species": [["Salmonella","無色菌落、**黑色中心**"],["Shigella","無色透明(部分被亮綠抑制)"],["Escherichia coli","粉紅～紅，多受抑制"]],
+      "hot": ["SS 為**高選擇性**盤；亮綠強，**部分 Shigella 也被抑制**，故不建議單用於 Shigella 分離。","判讀：Salmonella＝無色＋黑心；Shigella＝無色無黑；LF＝粉紅。","指示劑為中性紅(與 MAC 同)，H₂S 指示為檸檬酸鐵。","與 HE/XLD 相比選擇性更強，回收率較低。"],
+      "qa": [["110年 第22題","下列何種培養基主要不是偵測醣類發酵（含 SS 為選項）"],["103年 第29題","下列何者不用於培養 Salmonella 與 Shigella（SS 適用）"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "TCBS", "en": "Thiosulfate Citrate Bile Salts Sucrose Agar", "zh": "硫代硫酸檸檬酸膽鹽蔗糖瓊脂", "stars": 3,
+      "comp": [["Yeast extract 酵母萃取物","5 g/L","氮源／生長因子"],["Proteose peptone 蛋白腖","10 g/L","氮源"],["Sodium thiosulfate 硫代硫酸鈉","10 g/L","H₂S 受質"],["Sodium citrate 檸檬酸鈉","10 g/L","選擇劑"],["Oxgall（牛膽汁）","8 g/L","選擇劑"],["Sucrose 蔗糖","20 g/L","碳源"],["Sodium chloride 氯化鈉","10 g/L","滲透"],["Ferric citrate 檸檬酸鐵","1 g/L","H₂S 指示劑"],["Bromothymol blue 溴瑞香草酚藍","0.04 g/L","指示劑"],["Thymol blue 瑞香草酚藍","0.04 g/L","指示劑"],["Agar 洋菜","14 g/L","凝固劑"]],
+      "ph": "**8.6 ± 0.2（鹼性）**", "steril": "加熱至沸；**不可高壓滅菌**",
+      "principle": "**選擇**：高 pH 8.6＋牛膽汁＋檸檬酸鈉抑制腸內菌與 G(+)；高 NaCl 利於嗜鹽弧菌。**鑑別**：蔗糖發酵＋溴瑞香草酚藍／瑞香草酚藍指示。",
+      "appear": "V. cholerae→**黃色**菌落(蔗糖⁺產酸轉黃)；V. parahaemolyticus→**藍綠色**菌落(蔗糖⁻)；V. vulnificus→藍綠(多數蔗糖⁻)。",
+      "species": [["Vibrio cholerae","大、**黃色**菌落(蔗糖發酵)"],["Vibrio parahaemolyticus","**藍綠色**菌落(不發酵蔗糖)"],["Vibrio vulnificus","藍綠色(多數)"],["Vibrio alginolyticus","黃色(蔗糖⁺)"]],
+      "hot": ["**黃色＝V. cholerae(蔗糖⁺)；綠色＝V. parahaemolyticus(蔗糖⁻)**為核心判讀。","唯一**鹼性 pH 8.6**的腸道選擇盤；指示劑為 bromothymol blue＋thymol blue(與 XLD 酚紅不同)。","高鹽(NaCl 10 g/L)為嗜鹽性弧菌設計；**不適用於 Salmonella/Shigella**。","V. cholerae 可在 0% NaCl 生長(非嗜鹽)，與 V. parahaemolyticus(嗜鹽)區別。"],
+      "qa": [["105年 第34題","不適合作 Salmonella 選擇培養基者（TCBS）"],["106年 第33題","可在 TCBS 與 0% NaCl 皆良好生長者(V. cholerae)"]]
+    },
+    {
+      "h1": "選擇兼鑑別（腸道）", "type": "enteric", "abbr": "CIN", "en": "Cefsulodin-Irgasan-Novobiocin Agar", "zh": "頭孢磺啶-三氯沙-新生黴素瓊脂（Yersinia 選擇盤）", "stars": 2,
+      "comp": [["Special peptone 特殊蛋白腖","20 g/L","氮源"],["Yeast extract 酵母萃取物","2 g/L","生長因子"],["Mannitol 甘露醇","20 g/L","碳源"],["Sodium pyruvate 丙酮酸鈉","2 g/L","生長因子"],["Bile salts No.3 膽鹽","1.5 g/L","選擇劑"],["Sodium deoxycholate 去氧膽酸鈉","0.5 g/L","選擇劑"],["Sodium chloride 氯化鈉","1 g/L","滲透"],["Neutral red 中性紅","0.03 g/L","指示劑"],["Crystal violet 結晶紫","0.001 g/L","選擇劑"],["Agar 洋菜","12 g/L","凝固劑"],["Cefsulodin 頭孢磺啶","0.015 g/L","選擇劑(抗生素)"],["Irgasan（triclosan 三氯沙）","0.004 g/L","選擇劑"],["Novobiocin 新生黴素","0.0025 g/L","選擇劑(抗生素)"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "基底 121℃ 滅菌；抗生素補充劑無菌過濾後加入",
+      "principle": "**選擇**：頭孢磺啶＋三氯沙＋新生黴素＋膽鹽／去氧膽酸＋結晶紫強力抑制其他腸內菌。**鑑別**：甘露醇發酵＋中性紅指示。",
+      "appear": "Yersinia enterocolitica→**「牛眼」菌落(bull's eye)**：紅色中心、透明邊緣(甘露醇發酵中心產酸轉紅)。最佳 **25–28℃** 培養。",
+      "species": [["Yersinia enterocolitica","**牛眼狀菌落**(紅心透明邊)"],["Yersinia pseudotuberculosis","類似牛眼菌落"],["Aeromonas","可生長，需鑑別"]],
+      "hot": ["**牛眼菌落(bull's eye)＝Yersinia enterocolitica**為標誌性考點。","Yersinia 嗜冷，**25–28℃**培養較佳(冷增菌 cold enrichment)。","CIN 三抗生素：**C**efsulodin、**I**rgasan、**N**ovobiocin(縮寫記憶)。","鑑別基質為甘露醇(非乳糖)＋中性紅指示。"],
+      "qa": [["108年 第36題","糞便分離菌選擇培養基（CIN 對應 Yersinia，非 Shigella）"],["106年 第36題","選擇培養基用途配對（CIN 為 Yersinia，非 H. pylori）"]]
+    },
+    {
+      "h1": "G+ 選擇", "type": "gpos", "abbr": "MSA", "en": "Mannitol Salt Agar", "zh": "甘露醇鹽瓊脂", "stars": 3,
+      "comp": [["Beef extract 牛肉萃取物","1 g/L","氮源"],["Proteose peptone 蛋白腖","10 g/L","氮源"],["Sodium chloride 氯化鈉","75 g/L (7.5%)","選擇劑"],["D-Mannitol 甘露醇","10 g/L","碳源"],["Phenol red 酚紅","0.025 g/L","指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**選擇**：7.5% 高鹽抑制多數細菌、僅耐鹽葡萄球菌生長。**鑑別**：甘露醇發酵＋酚紅；產酸使培養基由紅轉**黃**。",
+      "appear": "S. aureus→**黃色菌落＋黃暈**(發酵甘露醇)；S. epidermidis→粉紅/紅、培養基不變色(多不發酵)。",
+      "species": [["Staphylococcus aureus","黃色菌落、周圍變黃"],["Staphylococcus epidermidis","紅/粉、不變色(多數)"],["Staphylococcus saprophyticus","常發酵→偏黃"]],
+      "hot": ["**黃色＝S. aureus(發酵甘露醇)**為核心判讀;選擇劑為 **7.5% NaCl**、指示劑為酚紅。","屬**選擇＋鑑別**雙功能培養基(選擇 G(+) 葡萄球菌、鑑別甘露醇發酵)。","注意:並非所有 CoNS 都不發酵甘露醇(S. saprophyticus 可發酵)。"],
+      "qa": [["111年 第1題","Mannitol Salt Agar 屬 selective＋differential"],["109年 第7題","MSA 敘述何者錯誤(凝固酶陰性葡萄球菌皆發酵甘露醇→錯)"]]
+    },
+    {
+      "h1": "G+ 選擇", "type": "gpos", "abbr": "CNA", "en": "Columbia CNA Agar (Colistin-Nalidixic Acid)", "zh": "哥倫比亞 CNA 瓊脂", "stars": 3,
+      "comp": [["Columbia agar base 哥倫比亞基底","≈ 39 g/L","氮源"],["Colistin 克痢黴素","10 mg/L","選擇劑(抗生素)"],["Nalidixic acid 萘啶酸","10 mg/L","選擇劑(抗生素)"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Defibrinated sheep blood 綿羊血","50 mL/L (5%)","生長因子"],["Agar 洋菜","13.5 g/L","凝固劑"]],
+      "ph": "7.3 ± 0.2 (25℃)", "steril": "基底 121℃ 滅菌，冷卻後加無菌綿羊血",
+      "principle": "**選擇**：colistin＋nalidixic acid 抑制 G(−)（尤其 swarming Proteus），留下 G(+)。加 5% 綿羊血→**仍可觀察溶血**。**不含膽鹽/結晶紫**。",
+      "appear": "G(+) 球菌正常生長並顯溶血型；G(−) 多被抑制。",
+      "species": [["Streptococcus","生長、可看溶血"],["Staphylococcus","生長"],["Enterococcus","生長"],["Klebsiella pneumoniae","通常被抑制"]],
+      "hot": ["**colistin + nalidixic acid 抑制 G(−)**，分離混合檢體中的 G(+) 球菌。","**含 5% 綿羊血→可看溶血**;不含膽鹽(與腸道選擇盤不同)。","考題常考其錯誤敘述(如「供應 V factor」為錯)。"],
+      "qa": [["108年 第1題","5% 綿羊血 Columbia CNA 之敘述何者錯誤(供應 V factor→錯)"],["110年 第77題","Columbia CNA agar 之正確敘述(需加 5% 綿羊血)"]]
+    },
+    {
+      "h1": "G+ 選擇", "type": "gpos", "abbr": "PEA", "en": "Phenylethyl Alcohol Agar", "zh": "苯乙醇瓊脂", "stars": 2,
+      "comp": [["Pancreatic digest of casein 酪蛋白胰酶消化物","15 g/L","氮源"],["Papaic digest of soybean 大豆木瓜酶消化物","5 g/L","氮源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Phenylethyl alcohol 苯乙醇","2.5 g/L","選擇劑"],["Defibrinated sheep blood 綿羊血(常加)","50 mL/L (5%)","生長因子"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "7.3 ± 0.2 (25℃)", "steril": "基底 121℃ 滅菌，冷卻後可加無菌綿羊血",
+      "principle": "**選擇**：苯乙醇干擾 G(−) 的 DNA 合成、抑制其生長(尤其抑制 Proteus swarming)，使 G(+) 球菌與桿菌得以分離。**不含膽鹽**。",
+      "appear": "G(+) 正常生長(溶血較 BAP 不明顯)；G(−) 受抑制。",
+      "species": [["Staphylococcus","生長"],["Streptococcus","生長"],["Bacillus cereus","大型 β 溶血 G(+) 桿菌"],["Proteus","swarming 被抑制"]],
+      "hot": ["**抑制 G(−)、留 G(+)**；機制為苯乙醇干擾 G(−) DNA 合成。","**不含膽鹽**為常考點(112 年題:不含膽鹽者＝PEA)。","抑制 Proteus 擴散，利於分離單一菌落。"],
+      "qa": [["113年 第1題","Phenylethyl alcohol（PEA）agar 屬 selective media"],["112年 第8題","下列何者不含膽鹽（PEA）"]]
+    },
+    {
+      "h1": "G+ 選擇", "type": "gpos", "abbr": "BEA", "en": "Bile Esculin Agar", "zh": "膽汁七葉苷瓊脂", "stars": 2,
+      "comp": [["Beef extract 牛肉萃取物","3 g/L","氮源"],["Peptone 蛋白腖","5 g/L","氮源"],["Esculin 七葉苷","1 g/L","鑑別基質"],["Oxgall（bile 牛膽汁）","40 g/L","選擇劑"],["Ferric ammonium citrate 檸檬酸鐵銨","0.5 g/L","指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "6.6 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**選擇**：40% 膽汁(oxgall)抑制多數 G(+)，僅 group D 鏈球菌/腸球菌耐受。**鑑別**：水解七葉苷→七葉素＋Fe³⁺ → **黑色**。常配合 6.5% NaCl 區分 Enterococcus(耐) 與 S. bovis(不耐)。",
+      "appear": "陽性→培養基(斜面/半量)≥1/2 變**黑色**；陰性→不變黑。",
+      "species": [["Enterococcus faecalis","bile esculin＋、6.5% NaCl＋"],["Streptococcus bovis (group D)","bile esculin＋、6.5% NaCl－"],["其他 viridans 鏈球菌","多為陰性"]],
+      "hot": ["**bile-esculin 陽性(變黑)＝group D 鏈球菌/腸球菌**;指示為檸檬酸鐵銨。","**bile esculin＋且 6.5% NaCl＋ → Enterococcus**;6.5% NaCl－ 則偏 S. bovis。","選擇劑為高濃度膽汁(oxgall)。"],
+      "qa": [["108年 第18題","bile-esculin＋、6.5% NaCl＋ G(+) 球菌→ Enterococcus faecalis"],["114年 第11題","catalase(−)、optochin R、bile esculin(＋)、PYR(−)→ 鑑別 group D/腸球菌"]]
+    },
+    {
+      "h1": "鑑別生化管", "type": "bio", "abbr": "TSI", "en": "Triple Sugar Iron Agar", "zh": "三糖鐵瓊脂", "stars": 3,
+      "comp": [["Peptone（casein/animal）混合蛋白腖","20 g/L","氮源"],["Beef extract 牛肉萃取物","3 g/L","氮源"],["Yeast extract 酵母萃取物","3 g/L","生長因子"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Lactose 乳糖","10 g/L","碳源"],["Sucrose 蔗糖","10 g/L","碳源"],["Dextrose 葡萄糖","1 g/L","碳源"],["Ferrous sulfate 硫酸亞鐵","0.2 g/L","H₂S 指示劑"],["Sodium thiosulfate 硫代硫酸鈉","0.3 g/L","H₂S 受質"],["Phenol red 酚紅","0.024 g/L","指示劑"],["Agar 洋菜","13 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌；製成斜面(slant＋butt)",
+      "principle": "**鑑別**：葡萄糖:乳糖:蔗糖＝1:10:10。只發酵葡萄糖→斜面回鹼(K)、底部酸(A)＝**K/A**；另發酵乳糖/蔗糖→**A/A**；都不發酵＝**K/K**。產氣裂瓊脂；硫代硫酸＋亞鐵→H₂S **黑色**。",
+      "appear": "斜面/底部以酚紅顯色(紅=鹼、黃=酸)；黑色＝H₂S；裂縫/氣泡＝產氣。",
+      "species": [["Escherichia coli","A/A、氣＋、H₂S－"],["Salmonella (典型)","K/A、H₂S＋、氣＋"],["Shigella","K/A、H₂S－、氣－"],["Klebsiella pneumoniae","A/A、氣多"],["Pseudomonas aeruginosa","K/K(不發酵醣)"]],
+      "hot": ["**指示劑為酚紅**;斜面 K(鹼)/底 A(酸) 判讀為核心。","**K/A＋H₂S＋＝典型 Salmonella；K/A 無 H₂S＝Shigella；A/A＝大腸菌群**。","葡萄糖僅 0.1%(1 g/L)，乳糖蔗糖各 1%——這個比例使「只發酵葡萄糖者」斜面回鹼。","與 KIA 差異:TSI 多了**蔗糖**(KIA 只有葡萄糖+乳糖)。"],
+      "qa": [["114年 第73題","TSI 使用的酸鹼指示劑(酚紅)"],["106年 第72題","TSI K/A、H₂S＋、citrate＋、urease－ → Salmonella"]]
+    },
+    {
+      "h1": "鑑別生化管", "type": "bio", "abbr": "KIA", "en": "Kligler Iron Agar", "zh": "克氏鐵瓊脂", "stars": 1,
+      "comp": [["Peptone 混合蛋白腖","20 g/L","氮源"],["Beef extract 牛肉萃取物","3 g/L","氮源"],["Yeast extract 酵母萃取物","3 g/L","生長因子"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Lactose 乳糖","10 g/L","碳源"],["Dextrose 葡萄糖","1 g/L","碳源"],["Ferric ammonium citrate 檸檬酸鐵銨","0.5 g/L","H₂S 指示劑"],["Sodium thiosulfate 硫代硫酸鈉","0.5 g/L","H₂S 受質"],["Phenol red 酚紅","0.025 g/L","指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌；製成斜面",
+      "principle": "**鑑別**：與 TSI 原理相同，但**只含葡萄糖＋乳糖(無蔗糖)**。判讀 K/A、A/A、K/K＋H₂S＋產氣，酚紅指示。",
+      "appear": "同 TSI(紅=鹼、黃=酸、黑=H₂S)。",
+      "species": [["Escherichia coli","A/A"],["Salmonella","K/A、H₂S＋"],["Shigella","K/A、H₂S－"]],
+      "hot": ["**KIA 與 TSI 唯一差別＝有無蔗糖**(KIA 無蔗糖)；其餘判讀相同。","只測葡萄糖、乳糖兩醣;部分發酵蔗糖的菌在 KIA 與 TSI 結果可能不同。"],
+      "qa": [["概念","KIA 僅含葡萄糖+乳糖(無蔗糖),為與 TSI 對比之常見題型;判讀 K/A、A/A、H₂S、產氣同 TSI"]]
+    },
+    {
+      "h1": "鑑別生化管", "type": "bio", "abbr": "Urea", "en": "Christensen's Urea Agar", "zh": "克氏尿素瓊脂", "stars": 2,
+      "comp": [["Peptone 蛋白腖","1 g/L","氮源"],["Dextrose 葡萄糖","1 g/L","碳源"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Monopotassium phosphate 磷酸二氫鉀","2 g/L","緩衝"],["Urea 尿素","20 g/L","鑑別基質"],["Phenol red 酚紅","0.012 g/L","指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "6.8 ± 0.2 (25℃)", "steril": "基底滅菌後加入**過濾除菌的尿素**(尿素不耐熱)",
+      "principle": "**鑑別**：具尿素酶(urease)者分解尿素→氨→培養基鹼化，酚紅由橙黃轉**粉紅/洋紅**。Proteus 快速強陽(數小時)。",
+      "appear": "陽性→斜面變粉紅/洋紅;陰性→維持橙黃。",
+      "species": [["Proteus","強陽性(快速變紅)"],["Klebsiella pneumoniae","弱～中陽性"],["Helicobacter pylori","強陽性(快速 urease)"],["Salmonella / Shigella / E. coli","陰性"]],
+      "hot": ["**urease 陽性快速強陽＝Proteus**;指示劑為酚紅(鹼性轉粉紅)。","**尿素需過濾除菌**後加入(不可一起高壓滅菌)。","H. pylori urease 強陽是其快速尿素試驗/呼氣試驗的基礎。"],
+      "qa": [["102年 第25題","TSIA K/A、H₂S＋、urease＋ → Proteus mirabilis"],["104年 第78題","A/A、H₂S＋、indole＋、urease＋、motility＋ → Proteus vulgaris"]]
+    },
+    {
+      "h1": "鑑別生化管", "type": "bio", "abbr": "SIM", "en": "Sulfide Indole Motility Medium", "zh": "硫化氫-吲哚-運動性半固態培養基", "stars": 2,
+      "comp": [["Pancreatic digest of casein 酪蛋白胰酶消化物","20 g/L","氮源"],["Peptic digest of animal tissue 動物組織蛋白腖","6.1 g/L","氮源"],["Ferrous ammonium sulfate 硫酸亞鐵銨","0.2 g/L","H₂S 指示劑"],["Sodium thiosulfate 硫代硫酸鈉","0.2 g/L","H₂S 受質"],["Agar 洋菜","3.5 g/L","凝固劑"]],
+      "ph": "7.3 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌；製成半固態直立管",
+      "principle": "**三合一鑑別(半固態)**：①Sulfide—硫代硫酸＋亞鐵→H₂S **黑色**；②Indole—色胺酸分解，滴 Kovac's 試劑→上層**紅環**；③Motility—有動性者沿穿刺線**擴散混濁**。",
+      "appear": "黑色＝H₂S＋;穿刺線外擴散混濁＝有動性;加 Kovac 後紅環＝indole＋。",
+      "species": [["Escherichia coli","indole＋、motility＋、H₂S－"],["Salmonella","H₂S＋、motility＋、indole－"],["Shigella","motility－、indole 視種、H₂S－"],["Proteus","H₂S＋、motility＋(強)"]],
+      "hot": ["**一管測 H₂S、indole、運動性**三項;indole 需另滴 Kovac's(p-DMAB)試劑顯紅。","葡萄糖不發酵菌/厭氧菌 indole 量少，宜改用更靈敏的 Ehrlich 試劑。","半固態(低洋菜)才能判讀運動性。"],
+      "qa": [["110年 第25題","葡萄糖不發酵菌以 SIM 測 indole,試藥以何者較佳(Kovac/Ehrlich)"],["104年 第78題","生化組合含 motility＋ 之判讀(Proteus)"]]
+    },
+    {
+      "h1": "鑑別生化管", "type": "bio", "abbr": "Citrate", "en": "Simmons Citrate Agar", "zh": "西蒙氏檸檬酸鹽瓊脂", "stars": 2,
+      "comp": [["Sodium citrate 檸檬酸鈉","2 g/L","鑑別基質"],["Sodium chloride 氯化鈉","5 g/L","滲透"],["Ammonium dihydrogen phosphate 磷酸二氫銨","1 g/L","氮源"],["Dipotassium phosphate 磷酸氫二鉀","1 g/L","緩衝"],["Magnesium sulfate 硫酸鎂","0.2 g/L","生長因子"],["Bromothymol blue 溴瑞香草酚藍","0.08 g/L","指示劑"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "6.9 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌；製成斜面",
+      "principle": "**鑑別**：以**檸檬酸鹽為唯一碳源**、銨鹽為唯一氮源。能利用者產鹼→培養基鹼化，溴瑞香草酚藍由**綠轉深藍(普魯士藍)**。",
+      "appear": "陽性→由綠變**藍**(常伴生長);陰性→維持綠色、無生長。",
+      "species": [["Klebsiella pneumoniae","citrate＋(藍)"],["Enterobacter","citrate＋"],["Salmonella (多數)","citrate＋"],["Escherichia coli","citrate－(綠)"],["Shigella","citrate－"]],
+      "hot": ["**指示劑為溴瑞香草酚藍(BTB)**——與 TSI/KIA/Urea 的酚紅不同，常考指示劑對比。","**陽性＝變藍**(檸檬酸利用產鹼);E. coli citrate－、Klebsiella/Enterobacter citrate＋(IMViC 區分)。"],
+      "qa": [["103年 第27題","Simmon's citrate agar 使用的 pH 指示劑(Bromothymol blue)"],["110年 第78題","以 bromothymol blue 為指示劑之生化培養基(Simmon's citrate)"]]
+    },
+    {
+      "h1": "分枝桿菌", "type": "myco", "abbr": "LJ", "en": "Löwenstein-Jensen Medium", "zh": "羅文斯坦-詹森培養基", "stars": 3,
+      "comp": [["Coagulated whole egg 全蛋(凝固基質)","≈ 1000 mL","氮源／生長因子"],["Potato flour 馬鈴薯澱粉","30 g/L","碳源"],["Glycerol 甘油","12 mL/L","碳源"],["L-Asparagine 天門冬醯胺","3.6 g/L","氮源"],["Monopotassium phosphate 磷酸二氫鉀","2.4 g/L","緩衝"],["Magnesium sulfate 硫酸鎂","0.24 g/L","生長因子"],["Malachite green 孔雀綠","0.4 g/L","選擇劑"]],
+      "ph": "≈ 7.0", "steril": "**inspissation 凝固法**:85℃ 加熱約 45 分鐘使蛋凝固(非高壓滅菌)",
+      "principle": "**選擇性蛋基培養基**：蛋白與甘油供分枝桿菌生長；**孔雀綠**抑制雜菌。M. tuberculosis 生長慢(3–6 週)。",
+      "appear": "M. tuberculosis 呈**乾燥、粗糙、淡黃(buff)、菜花樣**菌落(慢長)；甘油有利人型結核、不利牛型。",
+      "species": [["Mycobacterium tuberculosis","buff、乾粗、慢長(3–6 週)"],["Mycobacterium avium complex","平滑/光亮"],["非結核分枝桿菌(NTM)","部分有色素"]],
+      "hot": ["**蛋基＋孔雀綠**為特徵;孔雀綠抑雜菌(考題答案)。","**inspissation 凝固**(85℃)製備，不是高壓滅菌。","Luria-Bertani(LB)、巧克力等**不適合**培養結核;LJ/7H10/7H11/Petragnani 才適合。"],
+      "qa": [["113年 第15題","LJ medium 加入何者抑制雜菌(Malachite green)"],["114年 第15題","下列何者不適用於培養結核分枝桿菌(Luria-Bertani)"]]
+    },
+    {
+      "h1": "分枝桿菌", "type": "myco", "abbr": "MB", "en": "Middlebrook 7H10 / 7H11 Agar", "zh": "米德布魯克 7H10／7H11 瓊脂", "stars": 3,
+      "comp": [["Ammonium sulfate 硫酸銨","0.5 g/L","氮源"],["Monosodium glutamate 麩胺酸鈉","0.5 g/L","氮源"],["Phosphate buffer 磷酸鹽緩衝","≈ 3 g/L","緩衝"],["Glycerol 甘油","5 mL/L","碳源"],["Casein hydrolysate 酪蛋白水解物(僅 7H11)","1 g/L","氮源"],["Malachite green 孔雀綠","0.25 mg/L","選擇劑"],["OADC 補充劑(油酸/白蛋白/葡萄糖/觸酶)","100 mL/L","生長因子"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "6.6 ± 0.2 (25℃)", "steril": "121℃ 高壓滅菌(冷卻後無菌加入 OADC)",
+      "principle": "**合成瓊脂培養基**：明確成分＋OADC 供分枝桿菌生長；透明瓊脂可較早(10–14 天)觀察微菌落。**7H11** 另加酪蛋白水解物，利於 INH 抗藥株。為**藥敏比例法**的標準固態盤。",
+      "appear": "顯微/低倍可見早期微菌落;成熟為粗糙或平滑菌落(依菌種)。",
+      "species": [["Mycobacterium tuberculosis","微菌落較 LJ 早可見"],["分枝桿菌屬","廣泛支持"]],
+      "hot": ["**結核藥敏首選固態盤(比例法)＝Middlebrook 7H10/7H11**;7H9 為其對應**液態**(快速培養/藥敏)。","7H11 含酪蛋白水解物→利於 isoniazid 抗藥株生長。","透明瓊脂→比 LJ 蛋基更早判讀。"],
+      "qa": [["102年 第64題","結核桿菌藥敏最適培養基(Middlebrook 7H10)"],["107年 第58題","最理想之結核桿菌藥敏培養基(Middlebrook 7H10)"]]
+    },
+    {
+      "h1": "特殊／類白喉", "type": "diph", "abbr": "Loeffler", "en": "Loeffler Serum Medium", "zh": "勒夫勒血清斜面", "stars": 1,
+      "comp": [["Animal serum (horse/beef) 動物血清","750 mL/L (3 份)","生長因子"],["Beef heart infusion broth 牛心浸液","250 mL/L (1 份)","氮源"],["Dextrose 葡萄糖","2.5 g/L","碳源"]],
+      "ph": "≈ 7.6", "steril": "**inspissation 凝固法**:80–85℃ 使血清凝固成斜面",
+      "principle": "**增殖/促分化培養基**：高血清供白喉桿菌快速生長，並促進**異染顆粒(metachromatic / Babès-Ernst granules)**形成，利於 Albert/亞甲藍染色觀察。非選擇性。",
+      "appear": "C. diphtheriae 生長迅速(灰白小菌落);抹片染色見異染顆粒(柵欄/中文字排列)。",
+      "species": [["Corynebacterium diphtheriae","快速生長、顯異染顆粒"],["其他 Corynebacterium","可生長"]],
+      "hot": ["**Loeffler 血清斜面→增殖白喉桿菌並顯現異染顆粒**(metachromatic granules)。","常與 cystine-tellurite/Tinsdale 搭配:Loeffler 增殖、tellurite 選擇/鑑別。"],
+      "qa": [["概念","白喉桿菌:Loeffler 血清斜面增殖並顯異染顆粒;再以 tellurite/Tinsdale 選擇分離"]]
+    },
+    {
+      "h1": "特殊／類白喉", "type": "diph", "abbr": "Tinsdale", "en": "Cystine-Tellurite / Tinsdale Agar", "zh": "胱胺酸-亞碲酸鹽／廷斯代爾瓊脂", "stars": 2,
+      "comp": [["Agar base（peptone/NaCl）基底","≈ 25 g/L","氮源"],["L-Cystine 胱胺酸","0.24 g/L","鑑別基質"],["Sodium thiosulfate 硫代硫酸鈉","0.43 g/L","H₂S 受質"],["Potassium tellurite 亞碲酸鉀","0.33 g/L","選擇劑／指示劑"],["Bovine serum 牛血清","100 mL/L","生長因子"],["Agar 洋菜","20 g/L","凝固劑"]],
+      "ph": "7.4 ± 0.2 (25℃)", "steril": "基底滅菌後加入無菌血清與亞碲酸鉀",
+      "principle": "**選擇＋鑑別**：亞碲酸鉀抑制多數正常菌叢；棒狀桿菌**還原碲→灰黑色菌落**；Tinsdale 另以 cystine＋thiosulfate 形成**棕黑色暈環**(cystinase)鑑別 C. diphtheriae。",
+      "appear": "C. diphtheriae→**灰黑色菌落＋棕色暈環**(Tinsdale);其他多被抑制或無暈環。",
+      "species": [["Corynebacterium diphtheriae","灰黑菌落、棕色暈環"],["C. ulcerans / C. pseudotuberculosis","亦可有暈環"],["正常咽喉菌叢","多被抑制"]],
+      "hot": ["**還原 tellurite→灰黑色菌落**;Tinsdale 的**棕色暈環(halo)＝cystinase**為 C. diphtheriae 標誌。","亞碲酸鉀兼具選擇與顯色(灰黑)雙重作用。"],
+      "qa": [["114年 第77題","Corynebacterium diphtheriae／Tinsdale agar／灰黑色菌落(配對)"]]
+    },
+    {
+      "h1": "黴菌", "type": "fungi", "abbr": "SDA", "en": "Sabouraud Dextrose Agar", "zh": "沙保羅葡萄糖瓊脂", "stars": 3,
+      "comp": [["Dextrose 葡萄糖","40 g/L (4%)","碳源"],["Peptone（casein/animal）混合蛋白腖","10 g/L","氮源"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "**5.6 ± 0.2（酸性）**", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**真菌通用培養基**：高糖＋**低 pH 5.6** 利於黴菌/酵母菌、抑制多數細菌。加 **chloramphenicol＋cycloheximide**(＝Mycosel/Mycobiotic)進一步抑制細菌與腐生性黴菌。",
+      "appear": "酵母菌呈奶油狀菌落;絲狀真菌呈絨毛/棉絮狀，正反面色素具鑑別意義。",
+      "species": [["Candida albicans","奶油色酵母菌落"],["Trichophyton rubrum","絨毛狀、背面酒紅色"],["Aspergillus / Mucor","絲狀絨毛菌落"]],
+      "hot": ["**真菌通用盤**;特徵為**pH 5.6 偏酸＋4% 葡萄糖**。","**SDA＋chloramphenicol＋cycloheximide＝Mycosel/Mycobiotic**(抑細菌與腐生黴)。","抗黴菌藥敏(液態)改用 RPMI 1640;紙錠擴散(酵母菌)用 MH＋glucose＋methylene blue。"],
+      "qa": [["112年 第71題","最常用來培養真菌之培養基(Sabouraud's dextrose agar)"],["103年 第72題","SDA＋chloramphenicol＋cycloheximide＝Mycosel agar"]]
+    },
+    {
+      "h1": "黴菌", "type": "fungi", "abbr": "PDA", "en": "Potato Dextrose Agar", "zh": "馬鈴薯葡萄糖瓊脂", "stars": 2,
+      "comp": [["Potato infusion 馬鈴薯浸液(200 g 馬鈴薯)","4 g/L","氮源／生長因子"],["Dextrose 葡萄糖","20 g/L (2%)","碳源"],["Agar 洋菜","15 g/L","凝固劑"],["Tartaric acid 酒石酸(計數時加,降 pH)","適量","選擇劑"]],
+      "ph": "5.6 ± 0.2（計數時以酒石酸降至約 3.5）", "steril": "121℃ 高壓滅菌 15 分鐘",
+      "principle": "**促孢子/色素培養基**：馬鈴薯浸液＋葡萄糖促進絲狀真菌產孢與色素表現，利於形態鑑定;食品黴菌計數時加酒石酸降 pH 抑制細菌。",
+      "appear": "絲狀真菌孢子與色素豐富，利於顯微與正反面顏色判讀。",
+      "species": [["Aspergillus","產孢、色素佳"],["Penicillium","產孢佳"],["皮癬菌 Dermatophytes","形態/色素表現佳"]],
+      "hot": ["**促進真菌產孢與色素**，常用於形態鑑定;pH 5.6。","計數用 PDA 以**酒石酸**降 pH(約 3.5)抑制細菌;不含 pH 指示劑(考題常考此錯誤敘述)。"],
+      "qa": [["107年 第69題","有關 PDA 之敘述何者錯誤(含 pH 指示劑→錯;以酒石酸抑菌、pH 5.6)"]]
+    },
+    {
+      "h1": "黴菌", "type": "fungi", "abbr": "CHROMagar", "en": "CHROMagar Candida", "zh": "念珠菌顯色瓊脂", "stars": 2,
+      "comp": [["Peptone 蛋白腖","10 g/L","氮源"],["Glucose 葡萄糖","20 g/L","碳源"],["Chromogenic mix 顯色受質","2 g/L","指示劑"],["Chloramphenicol 氯黴素","0.5 g/L","選擇劑(抗生素)"],["Agar 洋菜","15 g/L","凝固劑"]],
+      "ph": "≈ 6.1", "steril": "不可高壓滅菌(顯色劑不耐熱);加熱溶解後傾盤",
+      "principle": "**顯色鑑別培養基**：各念珠菌之酵素作用於顯色受質→**不同菌種呈不同顏色**，可直接初步分種;chloramphenicol 抑制細菌。",
+      "appear": "C. albicans→**綠色**;C. tropicalis→**藍/鋼藍色**;C. krusei→**粉紅、乾糙邊緣**;C. glabrata→紫/粉。",
+      "species": [["Candida albicans","綠色菌落"],["Candida tropicalis","藍/鋼藍色"],["Candida krusei","粉紅、粗糙"],["Candida glabrata","紫紅/粉色"]],
+      "hot": ["**依顏色直接分念珠菌種**:albicans 綠、tropicalis 藍、krusei 粉糙為記憶重點。","用於混合感染快速辨識多種念珠菌;含 chloramphenicol 抑細菌。"],
+      "qa": [["概念","CHROMagar Candida:依顏色分種(albicans 綠/tropicalis 藍/krusei 粉);與 Mycosel、Bird seed agar 對比"]]
+    },
+    {
+      "h1": "藥敏（MHA）", "type": "mha", "abbr": "MHA", "en": "Mueller-Hinton Agar", "zh": "穆勒-辛頓瓊脂", "stars": 3,
+      "comp": [["Beef extract 牛肉萃取物","2 g/L","氮源"],["Acid hydrolysate of casein 酪蛋白酸水解物","17.5 g/L","氮源"],["Starch 澱粉","1.5 g/L","生長因子"],["Agar 洋菜","17 g/L","凝固劑"]],
+      "ph": "7.3 ± 0.1 (25℃)", "steril": "121℃ 高壓滅菌；傾注厚度約 4 mm",
+      "principle": "**藥敏標準培養基**：低 thymidine/thymine、可重現性高、批間一致;澱粉吸附毒性代謝物。為 **Kirby-Bauer 紙錠擴散法**標準盤;液態(broth)需做**陽離子調整(CAMHB)**。",
+      "appear": "均勻菌苔(lawn);藥錠周圍形成抑菌圈，量徑對照 CLSI 折點判 S/I/R。",
+      "species": [["Staphylococcus aureus","常規藥敏(MRSA 加 2% NaCl 偵測)"],["Enterobacterales","常規藥敏"],["Pseudomonas aeruginosa","常規藥敏"],["Neisseria gonorrhoeae","不適用一般 MH(需 GC 瓊脂)"]],
+      "hot": ["**Kirby-Bauer 紙錠擴散標準盤**;厚度 4 mm、pH 7.2–7.4、低 thymidine 為品管重點。","**苛養菌需強化**:鏈球菌加 5% 綿羊血(MH-F)、嗜血/腦膜炎雙球菌加溶解馬血＋NAD;淋病雙球菌用 GC 瓊脂。","偵測 MRSA:培養基加 **2% NaCl**;酵母菌藥敏改用 RPMI 1640。"],
+      "qa": [["113年 第58題","不適合使用一般 Mueller-Hinton agar 之菌(Neisseria gonorrhoeae)"],["108年 第59題","broth dilution 偵測 MRSA 需於 MH 額外加(2% NaCl)"]]
+    }
+  ],
+  "tables": [
+    {
+      "id": "enteric-readout", "scope": "選擇兼鑑別（腸道）",
+      "title": "腸道選擇盤判讀對照（Salmonella / Shigella / E. coli）",
+      "note": "同一檢體在不同盤上的典型菌落顏色，便於交叉確認。",
+      "columns": ["培養基", "指示劑", "Salmonella", "Shigella", "E. coli (LF)", "H₂S 黑心"],
+      "rows": [
+        ["MacConkey", "中性紅", "無色", "無色", "粉紅", "—"],
+        ["EMB(Levine)", "伊紅/亞甲藍", "無色", "無色", "綠色金屬光澤", "—"],
+        ["XLD", "酚紅", "紅+黑心", "紅(無黑)", "黃色", "＋(Salmonella)"],
+        ["HE", "BTB/酸性復紅", "藍綠+黑心", "綠(無黑)", "橙黃", "＋(Salmonella)"],
+        ["SS", "中性紅", "無色+黑心", "無色", "粉紅(多被抑)", "＋(Salmonella)"]
+      ],
+      "footnote": "**XLD/HE 同時看顏色＋黑心**最能一步分流 Salmonella 與 Shigella；MAC/EMB 僅能分乳糖發酵與否，無 H₂S 判讀。"
+    },
+    {
+      "id": "enteric-vs", "scope": "選擇兼鑑別（腸道）",
+      "title": "腸道盤關鍵特徵速記",
+      "note": "易混淆對比。",
+      "columns": ["培養基", "碳源(醣)", "指示劑", "pH", "滅菌", "標的"],
+      "rows": [
+        ["MacConkey", "乳糖", "中性紅", "7.1", "高壓", "腸內菌(LF/NLF)"],
+        ["EMB", "乳糖(Levine)", "伊紅/亞甲藍", "7.1", "高壓", "E. coli 金屬光澤"],
+        ["XLD", "木糖/乳糖/蔗糖", "酚紅", "7.4", "煮沸", "Salmonella/Shigella"],
+        ["HE", "乳糖/蔗糖/水楊苷", "BTB/酸性復紅", "7.5", "煮沸", "Salmonella/Shigella"],
+        ["SS", "乳糖", "中性紅", "7.0", "煮沸", "Salmonella(高選擇)"],
+        ["TCBS", "蔗糖", "BTB/thymol blue", "8.6", "煮沸", "Vibrio"],
+        ["CIN", "甘露醇", "中性紅", "7.4", "高壓+抗生素", "Yersinia 牛眼"]
+      ],
+      "footnote": "唯一鹼性盤＝**TCBS(8.6)**；唯一用甘露醇＝**CIN**；MAC 是唯一高壓滅菌的乳糖盤(EMB 亦高壓)。"
+    },
+    {
+      "id": "haemophilus-xv", "scope": "含血／苛養",
+      "title": "Haemophilus 的 X／V 因子需求",
+      "note": "X＝hemin、V＝NAD；巧克力盤兩者皆供應。",
+      "columns": ["菌種", "X 因子(hemin)", "V 因子(NAD)", "綿羊血 BAP"],
+      "rows": [
+        ["H. influenzae", "需", "需", "不長(需巧克力)"],
+        ["H. parainfluenzae", "不需", "需", "不長"],
+        ["H. ducreyi", "需", "不需", "不長"]
+      ],
+      "footnote": "**綿羊血 BAP 內 V 因子被血球 NADase 分解**，故 H. influenzae 在 BAP 長不好；加熱成巧克力盤後 X/V 釋出即可生長。可用 S. aureus 周圍的衛星現象(satellitism)輔助判讀。"
+    },
+    {
+      "id": "tsi-reactions", "scope": "鑑別生化管",
+      "title": "TSI 常見腸內菌反應對照",
+      "note": "斜面(slant)/底部(butt)：K＝鹼(紅)、A＝酸(黃)。",
+      "columns": ["菌種", "TSI", "H₂S", "氣體", "urease"],
+      "rows": [
+        ["Escherichia coli", "A/A", "－", "＋", "－"],
+        ["Salmonella (典型)", "K/A", "＋", "＋", "－"],
+        ["Shigella", "K/A", "－", "－", "－"],
+        ["Proteus", "K/A 或 A/A", "＋", "±", "＋"],
+        ["Klebsiella", "A/A", "－", "＋", "±"],
+        ["Pseudomonas", "K/K", "－", "－", "－"]
+      ],
+      "footnote": "**K/A＋H₂S＝典型 Salmonella；K/A 無 H₂S＝Shigella；A/A＝大腸菌群；K/K＝不發酵醣(如 Pseudomonas)**。"
+    },
+    {
+      "id": "myco-media", "scope": "分枝桿菌",
+      "title": "結核培養基比較（蛋基 vs 瓊脂）",
+      "note": "初代分離與藥敏選擇。",
+      "columns": ["培養基", "型態", "抑雜菌", "判讀速度", "主要用途"],
+      "rows": [
+        ["Löwenstein-Jensen", "蛋基(不透明)", "孔雀綠", "慢(3–6 週)", "初代分離"],
+        ["Middlebrook 7H10/7H11", "瓊脂(透明)+OADC", "孔雀綠(微量)", "較快(10–14 天)", "分離＋藥敏(比例法)"],
+        ["Middlebrook 7H9", "液態", "—", "最快", "快速培養/藥敏"]
+      ],
+      "footnote": "**藥敏比例法首選固態＝7H10/7H11**；液態 7H9 最快。Luria-Bertani、巧克力等不適合培養結核。"
+    }
+  ]
+}
+;</script>
+<script>
+/* 培養基成分與適用菌種大綱 — 前端渲染
+   資料來源：data/media.json（共編者只需編輯該檔）
+   ** 文字 ** → 粗體；菌種會自動連到 ../bacteria/index.html?q=菌名 */
+(function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const md = s => esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+  const ROLES=["碳源","氮源","緩衝","滲透","選擇劑","指示劑","凝固劑","生長因子"];
+  const roleKey={"碳源":"碳源","氮源":"氮源","緩衝":"緩衝","滲透":"滲透","選擇劑":"選擇劑","指示劑":"指示劑","凝固劑":"凝固劑","生長因子":"生長因子","鑑別基質":"碳源","H₂S 受質":"碳源","H₂S 受質／選擇":"選擇劑","H₂S 指示劑":"指示劑"};
+  function roleClass(role){
+    const first=String(role).split('／')[0].split('/')[0].trim();
+    return roleKey[first]||'x';
+  }
+  function spKey(name){return String(name).split('（')[0].split('(')[0].replace(/\s+(spp\.|sp\.)$/,'').trim();}
+  function genusOf(name){const m=String(name).match(/^([A-Z][a-z]+)/);return m?m[1]:null;}
+
+  let DATA=null, activeTags=new Set();
+
+  const boot = window.__EMBED__
+    ? Promise.resolve(window.__EMBED__)
+    : fetch('data/media.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+  boot.then(d=>{ DATA=d; render(); })
+    .catch(e=>{
+      $('#cards').innerHTML='<div class="err">無法載入 <b>data/media.json</b>（'+esc(e.message)+'）。<br>'+
+      '若以 file:// 直接開啟，瀏覽器會擋住載入；請用 GitHub Pages 網址，或本機伺服器（<code>python -m http.server</code>），'+
+      '或改用單檔離線版 <b>培養基大綱_全9群_離線版.html</b>。</div>';
+    });
+
+  function rolesLegend(){
+    return '<div class="legend-roles">'+ROLES.map(r=>{
+      return '<span><span class="dot r-'+r+'"></span>'+r+'</span>';
+    }).join('')+'</div>';
+  }
+
+  function compTable(comp){
+    const rows=comp.map(c=>{
+      const rc=roleClass(c[2]);
+      return '<tr><td>'+esc(c[0])+'</td><td class="num">'+esc(c[1])+'</td>'+
+             '<td><span class="role r-'+rc+'">'+esc(c[2])+'</span></td></tr>';
+    }).join('');
+    return '<table class="comp"><thead><tr><th>材料</th><th>比例</th><th>功能角色</th></tr></thead><tbody>'+rows+'</tbody></table>'+rolesLegend();
+  }
+
+  function spTable(species){
+    const rows=species.map(s=>{
+      const key=spKey(s[0]);
+      const link='../bacteria/index.html?q='+encodeURIComponent(key);
+      return '<tr><td class="nm"><a class="xref" href="'+link+'" title="到細菌大綱查 '+esc(key)+'">'+esc(s[0])+'</a></td>'+
+             '<td>'+md(s[1])+'</td></tr>';
+    }).join('');
+    return '<table class="sp"><tbody>'+rows+'</tbody></table>';
+  }
+
+  function cmpTable(t){
+    const wrap=document.createElement('div');
+    wrap.className='cmp'; wrap.dataset.scope=t.scope||'';
+    const head=t.title?'<div class="cmp-title">📊 '+esc(t.title)+'</div>':'';
+    const note=t.note?'<div class="cmp-note">'+md(t.note)+'</div>':'';
+    const thead='<tr>'+(t.columns||[]).map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>';
+    const body=(t.rows||[]).map(r=>'<tr>'+r.map((cell,ci)=>
+      '<td class="'+(ci===0?'name':'')+'">'+(ci===0?md(cell):esc(cell))+'</td>').join('')+'</tr>').join('');
+    const foot=t.footnote?'<div class="cmp-foot">'+md(t.footnote)+'</div>':'';
+    wrap.innerHTML=head+note+'<div class="cmp-scroll"><table><thead>'+thead+'</thead><tbody>'+body+'</tbody></table></div>'+foot;
+    return wrap;
+  }
+
+  function mediaCard(d){
+    const card=document.createElement('article');
+    card.className='card'; card.id=d.abbr;
+    card.dataset.species=d.species.map(s=>spKey(s[0])).join('|');
+    card.dataset.genus=[...new Set(d.species.map(s=>genusOf(s[0])).filter(Boolean))].join('|');
+    const fields=
+      '<div class="field"><div class="k">① 成分處方表</div><div class="v">'+compTable(d.comp)+'</div></div>'+
+      '<div class="field"><div class="k">② pH／滅菌</div><div class="v"><div class="pills">'+
+        '<span class="pill"><b>pH：</b>'+md(d.ph)+'</span><span class="pill"><b>滅菌：</b>'+md(d.steril)+'</span></div></div></div>'+
+      '<div class="field"><div class="k">③ 選擇／鑑別原理</div><div class="v">'+md(d.principle)+'</div></div>'+
+      '<div class="field"><div class="k">④ 接種後表現</div><div class="v">'+md(d.appear)+'</div></div>'+
+      '<div class="field"><div class="k">⑤ 對應菌種與典型反應</div><div class="v">'+spTable(d.species)+'</div></div>';
+    const hot=(d.hot||[]).map(h=>'<li>'+md(h)+'</li>').join('');
+    const qa=(d.qa||[]).map(q=>'<tr><td class="yr">'+esc(q[0])+'</td><td>'+esc(q[1])+'</td></tr>').join('');
+    card.innerHTML=
+      '<div class="card-head"><span class="en">'+esc(d.en)+'</span>'+
+      '<span class="abbr">'+esc(d.abbr)+'</span>'+
+      '<span class="zh">'+esc(d.zh)+'</span>'+
+      '<span class="stars">'+'★'.repeat(d.stars||0)+'</span>'+
+      '<span class="arrow">▼</span></div>'+
+      '<div class="card-body">'+fields+
+      '<div class="hot"><div class="k">⭐ 高頻考點與易混淆對比</div><ol>'+hot+'</ol>'+
+      '<table class="qa"><tbody>'+qa+'</tbody></table></div></div>';
+    card.querySelector('.card-head').onclick=()=>card.classList.toggle('collapsed');
+    return card;
+  }
+
+  function buildTags(){
+    const bar=$('#tagbar'); bar.innerHTML='';
+    const set=new Set();
+    DATA.media.forEach(m=>m.species.forEach(s=>{const g=genusOf(s[0]); if(g)set.add(g);}));
+    const genera=[...set].sort();
+    const toggle=document.createElement('button');
+    toggle.type='button'; toggle.className='tag-toggle';
+    toggle.textContent='🔖 菌種反查（'+genera.length+' 屬）▾';
+    toggle.onclick=()=>{ bar.classList.toggle('open');
+      toggle.textContent='🔖 菌種反查（'+genera.length+' 屬）'+(bar.classList.contains('open')?'▴':'▾'); };
+    bar.appendChild(toggle);
+    genera.forEach(g=>{
+      const b=document.createElement('span');
+      b.className='tagfilter'; b.textContent=g;
+      b.onclick=()=>{ b.classList.toggle('active');
+        activeTags.has(g)?activeTags.delete(g):activeTags.add(g); applyFilter(); };
+      bar.appendChild(b);
+    });
+  }
+
+  function render(){
+    $('#sub').textContent='科目：'+DATA.meta.subject.split('—')[0].trim()+'｜共 '+DATA.media.length+' 張培養基';
+    buildTags();
+    const wrap=$('#cards'); wrap.innerHTML='';
+    const tables=DATA.tables||[];
+    const h1order=[...new Set(DATA.media.map(m=>m.h1))];
+    h1order.forEach(h1=>{
+      const first=DATA.media.find(m=>m.h1===h1);
+      const g=document.createElement('section');
+      g.className='group'; g.dataset.group=h1; g.dataset.type=(first&&first.type)||'enteric';
+      const flow=(DATA.flows&&DATA.flows[h1]||[]).map(l=>'<div class="ln">'+md(l)+'</div>').join('');
+      g.innerHTML='<div class="group-head"><span class="arrow">▼</span><span>'+esc(h1)+'</span></div>'+
+        '<div class="group-body">'+(flow?'<div class="flow"><h3>🧭 採檢與分流</h3>'+flow+'</div>':'')+'</div>';
+      const body=g.querySelector('.group-body');
+      g.querySelector('.group-head').onclick=()=>g.classList.toggle('collapsed');
+      const cc=document.createElement('div'); cc.className='cards';
+      DATA.media.filter(m=>m.h1===h1).forEach(m=>cc.appendChild(mediaCard(m)));
+      body.appendChild(cc);
+      tables.filter(t=>t.scope===h1).forEach(t=>body.appendChild(cmpTable(t)));
+      wrap.appendChild(g);
+    });
+    $('#search').addEventListener('input',applyFilter);
+    $('#expandAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.remove('collapsed'));
+    $('#collapseAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.add('collapsed'));
+    const q=new URLSearchParams(location.search).get('q');
+    if(q){ $('#search').value=q; }
+    applyFilter();
+  }
+
+  function applyFilter(){
+    const q=$('#search').value.trim().toLowerCase();
+    let any=false;
+    document.querySelectorAll('.group').forEach(g=>{
+      let gHas=false;
+      g.querySelectorAll('.card').forEach(card=>{
+        const txt=card.textContent.toLowerCase();
+        const genusArr=(card.dataset.genus||'').toLowerCase().split('|');
+        const okText=!q||txt.includes(q);
+        const okTag=activeTags.size===0||[...activeTags].some(t=>genusArr.includes(t.toLowerCase()));
+        const show=okText&&okTag;
+        card.style.display=show?'':'none';
+        if(show){gHas=true;any=true;}
+      });
+      g.querySelectorAll('.cmp').forEach(t=>{
+        const show=(!q||t.textContent.toLowerCase().includes(q))&&activeTags.size===0;
+        t.style.display=show?'':'none';
+      });
+      g.style.display=gHas?'':'none';
+    });
+    $('#nohit').style.display=any||(!q&&activeTags.size===0)?'none':'block';
+  }
+})();
+
+</script>
+</body>
+</html>
