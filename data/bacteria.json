@@ -12,7 +12,7 @@
       "皮膚軟組織",
       "周邊神經"
     ],
-    "version": "1.0.0",
+    "version": "1.3.0",
     "updated": "2026-06-17"
   },
   "flows": {
@@ -2069,6 +2069,346 @@
           "代表考題待補"
         ]
       ]
+    }
+  ],
+  "tables": [
+    {
+      "id": "imvic-enterobacterales",
+      "scope": "腸桿菌目 Enterobacterales",
+      "title": "IMViC 與常用鑑別表",
+      "note": "IMViC = **I**ndole／**M**ethyl Red／**V**oges-Proskauer／**C**itrate；v = 反應不定。",
+      "columns": [
+        "菌種",
+        "Indole",
+        "MR",
+        "VP",
+        "Citrate",
+        "H₂S(TSI)",
+        "運動性",
+        "Lactose"
+      ],
+      "rows": [
+        [
+          "E. coli",
+          "＋",
+          "＋",
+          "－",
+          "－",
+          "－",
+          "＋",
+          "＋"
+        ],
+        [
+          "Klebsiella pneumoniae",
+          "－",
+          "－",
+          "＋",
+          "＋",
+          "－",
+          "－",
+          "＋"
+        ],
+        [
+          "Enterobacter",
+          "－",
+          "－",
+          "＋",
+          "＋",
+          "－",
+          "＋",
+          "＋"
+        ],
+        [
+          "Salmonella",
+          "－",
+          "＋",
+          "－",
+          "＋",
+          "＋",
+          "＋",
+          "－"
+        ],
+        [
+          "Shigella",
+          "v",
+          "＋",
+          "－",
+          "－",
+          "－",
+          "－",
+          "－"
+        ],
+        [
+          "Proteus mirabilis",
+          "－",
+          "＋",
+          "－",
+          "＋",
+          "＋",
+          "＋",
+          "－"
+        ],
+        [
+          "Proteus vulgaris",
+          "＋",
+          "＋",
+          "－",
+          "－",
+          "＋",
+          "＋",
+          "－"
+        ],
+        [
+          "Serratia marcescens",
+          "－",
+          "v",
+          "＋",
+          "＋",
+          "－",
+          "＋",
+          "－/慢"
+        ],
+        [
+          "Yersinia enterocolitica",
+          "v",
+          "＋",
+          "＋(25℃)",
+          "－",
+          "－",
+          "＋(25℃)",
+          "－"
+        ],
+        [
+          "Citrobacter freundii",
+          "－",
+          "＋",
+          "－",
+          "＋",
+          "＋",
+          "＋",
+          "＋/慢"
+        ]
+      ],
+      "footnote": "記憶：**E. coli ＋＋－－ ↔ Klebsiella／Enterobacter －－＋＋**（相反）。Proteus mirabilis citrate＋、vulgaris citrate－。**Yersinia 之 VP／運動性 25℃ 為＋、37℃ 轉－**。部分反應(citrate、MR、indole)因菌株/溫度/方法而異，以指定教材為準；Proteus 強 urease＋swarming 見各菌卡片。"
+    },
+    {
+      "id": "haemophilus-xv",
+      "scope": "苛養球桿菌",
+      "title": "Haemophilus X／V 因子需求（含 HACEK 提醒）",
+      "note": "巧克力培養基同時提供 X+V；BAP 上靠 **S. aureus** 提供 V 而生**衛星現象**。",
+      "columns": [
+        "菌種",
+        "X 因子(hemin)",
+        "V 因子(NAD)",
+        "BAP 溶血",
+        "衛星現象",
+        "臨床"
+      ],
+      "rows": [
+        [
+          "H. influenzae",
+          "需",
+          "需",
+          "－",
+          "＋",
+          "腦膜炎/會厭炎(Hib)"
+        ],
+        [
+          "H. parainfluenzae",
+          "不需",
+          "需",
+          "－",
+          "＋",
+          "心內膜炎(HACEK)"
+        ],
+        [
+          "H. haemolyticus",
+          "需",
+          "需",
+          "＋",
+          "＋",
+          "少致病/易誤判"
+        ],
+        [
+          "H. ducreyi",
+          "需",
+          "不需",
+          "—",
+          "－",
+          "軟性下疳(STI)"
+        ]
+      ],
+      "footnote": "**HACEK** = Haemophilus／Aggregatibacter、Cardiobacterium、Eikenella、Kingella；苛養 G⁻、慢生長、培養（陰性）性心內膜炎。"
+    },
+    {
+      "id": "gnr-reclassify",
+      "scope": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "title": "G⁻ 桿菌再分類總表（發酵／Oxidase／運動性／Urease）",
+      "note": "先看 **Oxidase**：陰性多為腸桿菌目；陽性想到非發酵的 Pseudomonas/Burkholderia 與彎曲菌。再以 **發酵 glucose** 區分腸桿菌目(發酵) vs 非發酵菌。",
+      "columns": [
+        "菌屬／群",
+        "發酵 glucose",
+        "Oxidase",
+        "運動性(鞭毛)",
+        "Urease",
+        "備註"
+      ],
+      "rows": [
+        [
+          "腸桿菌目(總則)",
+          "發酵",
+          "－",
+          "多數＋",
+          "視菌種",
+          "nitrate 還原＋、catalase＋"
+        ],
+        [
+          "E. coli",
+          "發酵",
+          "－",
+          "＋(周鞭毛)",
+          "－",
+          "indole＋、lactose＋"
+        ],
+        [
+          "Klebsiella",
+          "發酵",
+          "－",
+          "－(無鞭毛)",
+          "＋(弱)",
+          "大黏液莢膜"
+        ],
+        [
+          "Proteus",
+          "發酵",
+          "－",
+          "＋(swarming)",
+          "＋＋＋",
+          "H₂S＋、PDA＋"
+        ],
+        [
+          "Salmonella",
+          "發酵",
+          "－",
+          "＋",
+          "－",
+          "H₂S＋、不發酵乳糖"
+        ],
+        [
+          "Shigella",
+          "發酵",
+          "－",
+          "－",
+          "－",
+          "不運動、H₂S－"
+        ],
+        [
+          "Yersinia enterocolitica",
+          "發酵",
+          "－",
+          "25℃＋／37℃－",
+          "＋",
+          "冷增菌、CIN"
+        ],
+        [
+          "Pseudomonas aeruginosa",
+          "不發酵(氧化)",
+          "＋",
+          "＋(單鞭毛)",
+          "－",
+          "pyocyanin、42℃"
+        ],
+        [
+          "Acinetobacter baumannii",
+          "不發酵",
+          "－",
+          "－(無鞭毛)",
+          "－",
+          "球桿、MDR"
+        ],
+        [
+          "Stenotrophomonas maltophilia",
+          "不發酵",
+          "－",
+          "＋",
+          "－",
+          "DNase＋、SXT 首選"
+        ],
+        [
+          "Burkholderia pseudomallei",
+          "不發酵(氧化)",
+          "＋",
+          "＋",
+          "v",
+          "safety-pin、類鼻疽"
+        ],
+        [
+          "Vibrio cholerae",
+          "發酵",
+          "＋",
+          "＋(單鞭毛)",
+          "－",
+          "TCBS 黃、嗜鹼、0% NaCl 可長"
+        ],
+        [
+          "Campylobacter jejuni",
+          "不發酵",
+          "＋",
+          "＋(單鞭毛)",
+          "－",
+          "42℃ 微需氧、海鷗狀"
+        ],
+        [
+          "Helicobacter pylori",
+          "不發酵",
+          "＋",
+          "＋(多鞭毛)",
+          "＋＋＋",
+          "胃、微需氧"
+        ],
+        [
+          "Bacteroides fragilis",
+          "發酵",
+          "－",
+          "－",
+          "－",
+          "絕對厭氧、耐膽鹽"
+        ]
+      ],
+      "footnote": "**運動性≈有無鞭毛**：Klebsiella／Shigella／Acinetobacter／Bacteroides 無鞭毛不運動；腸桿菌多為周鞭毛、弧菌/彎曲菌為單極鞭毛。"
+    },
+    {
+      "id": "gnr-quicklists",
+      "scope": "革蘭氏陰性桿菌（G⁻ Bacilli）",
+      "title": "Oxidase／Urease／發酵 速記分組",
+      "note": "考前快速記憶用；詳細特性見上方總表與各菌卡片。",
+      "columns": [
+        "分類",
+        "代表 G⁻ 桿菌"
+      ],
+      "rows": [
+        [
+          "Oxidase 陽性",
+          "Pseudomonas、Burkholderia、Vibrio、Aeromonas、Campylobacter、Helicobacter"
+        ],
+        [
+          "Oxidase 陰性",
+          "全部腸桿菌目(E. coli/Klebsiella/Salmonella…)、Acinetobacter、Stenotrophomonas"
+        ],
+        [
+          "非發酵菌(non-fermenter)",
+          "Pseudomonas、Acinetobacter、Stenotrophomonas、Burkholderia"
+        ],
+        [
+          "Urease 強陽性",
+          "Proteus、Morganella、Helicobacter pylori（Klebsiella／Yersinia 弱～中）"
+        ],
+        [
+          "無鞭毛／不運動",
+          "Klebsiella、Shigella、Acinetobacter、Bacteroides"
+        ]
+      ],
+      "footnote": "跨群 urease 強陽性還有：S. saprophyticus、Ureaplasma、Brucella（非 G⁻ 腸道桿菌，另記）。"
     }
   ]
 }

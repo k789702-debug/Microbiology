@@ -78,3 +78,30 @@ table.qa td.yr{white-space:nowrap;color:var(--gp);font-weight:700;width:110px}
 .group[data-gram="other"] .flow{background:var(--neutral-soft);border-color:var(--neutral-line)}
 .group[data-gram="other"] .field .k,.group[data-gram="other"] .card-head .en{color:var(--neutral)}
 @media(max-width:640px){.field{grid-template-columns:1fr;gap:2px}h1{font-size:16px}}
+
+/* ===== 比較表（IMViC / X-V 等矩陣） ===== */
+.cmp{border:1.5px solid var(--gp-line);border-radius:12px;padding:12px 14px;margin:4px 2px 16px;background:#fff;box-shadow:var(--shadow)}
+.cmp-title{font-weight:800;color:var(--gp);font-size:14.5px;margin-bottom:4px}
+.cmp-note{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.cmp-foot{font-size:12px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--gp-line);padding-top:6px}
+.cmp-scroll{overflow-x:auto}
+.cmp table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}
+.cmp th{background:var(--gp-soft);color:var(--gp);font-weight:700;padding:6px 8px;border:1px solid var(--gp-line);white-space:nowrap;text-align:center}
+.cmp td{padding:5px 8px;border:1px solid var(--gp-line);text-align:center}
+.cmp td.name{text-align:left;font-style:italic;font-weight:600;white-space:nowrap}
+.cmp td.pos{color:var(--ok);font-weight:700}
+.cmp td.neg{color:var(--warn);font-weight:700}
+.cmp tbody tr:nth-child(even){background:#faf7fd}
+.group[data-gram="neg"] .cmp{border-color:var(--gn-line)}
+.group[data-gram="neg"] .cmp-title{color:var(--gn)}
+.group[data-gram="neg"] .cmp th{background:var(--gn-soft);color:var(--gn);border-color:var(--gn-line)}
+.group[data-gram="neg"] .cmp td{border-color:var(--gn-line)}
+.group[data-gram="neg"] .cmp tbody tr:nth-child(even){background:#fdf3f8}
+.group[data-gram="other"] .cmp{border-color:var(--neutral-line)}
+.group[data-gram="other"] .cmp-title{color:var(--neutral)}
+.group[data-gram="other"] .cmp th{background:var(--neutral-soft);color:var(--neutral);border-color:var(--neutral-line)}
+.group[data-gram="other"] .cmp td{border-color:var(--neutral-line)}
+
+/* P1 修正：移除 HTML inline style，改用 class（配合嚴格 CSP style-src 'self'） */
+.tagbar-label{font-size:13px;color:var(--muted);margin-right:2px}
+.nohit{display:none}

@@ -1,0 +1,26 @@
+name: Validate bacteria data
+
+# 每次 push 或 PR 變動資料/程式時，自動驗證 data/bacteria.json
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'schema.json'
+      - 'scripts/**'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'schema.json'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 驗證資料格式與內容規則
+        run: node scripts/validate.js

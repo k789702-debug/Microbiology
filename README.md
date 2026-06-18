@@ -75,3 +75,25 @@ GitHub 端：每次 push 或開 PR 變動 `data/`、`schema.json`、`scripts/` �
 - 考選部「醫事檢驗師」國家考試試卷（已收錄民國 101–114 年完整年度，及 115 年第一次試卷），經 twinkle-hub 國考資料庫檢索；原卷可於考選部考畢試題查詢系統（wwwq.moex.gov.tw）以年度與題號調閱。
 
 > 資料版本見 `data/bacteria.json` 的 `meta.version` 與 `meta.updated`。
+
+## 比較表（tables，選用）
+跨菌種比較矩陣（如 IMViC、Haemophilus X/V 因子）放在 `bacteria.json` 頂層的 `tables` 陣列，會渲染在**對應屬科標題下、分流圖下方**：
+
+```json
+"tables": [
+  { "id":"imvic-enterobacterales",
+    "scope":"腸桿菌目 Enterobacterales",   // 須等於某 h2（或 h1）
+    "title":"IMViC 與常用鑑別表",
+    "note":"可用 **粗體**",
+    "columns":["菌種","Indole","MR","VP","Citrate","H₂S(TSI)","運動性","Lactose"],
+    "rows":[ ["E. coli","＋","＋","－","－","－","＋","＋"], ... ],
+    "footnote":"可用 **粗體**" }
+]
+```
+
+規則：`scope` 必須對應現有的 `h2`／`h1`；每列 `rows` 的欄數須等於 `columns` 數；`＋`／`需` 自動顯示綠色、`－`／`不需` 顯示紅色（驗證器與前端皆已支援）。
+
+### 比較表也可參與臨床標籤篩選（選用）
+比較表預設在「臨床系統」篩選開啟時隱藏。若希望某張表在特定臨床標籤下仍顯示，於該表加 `sys` 陣列即可，例如 X/V 表加 `"sys":["血流"]`，使用者篩「血流」時就會看到。
+
+> 註：`schema.json` 為「文件化規格」，實際 CI／本機驗證以 `scripts/validate.js`（零相依手寫驗證）為準；兩者若不同步，以 validate.js 為實際把關。

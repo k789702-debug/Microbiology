@@ -6,16 +6,20 @@
   const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const md = s => esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
 
-  // Gram 類別判定（決定色塊：陽性紫 / 陰性粉 / 其他中性）
   function gramOf(h1){
     if(h1.includes('陽性')) return 'pos';
     if(h1.includes('陰性')) return 'neg';
-    return 'other'; // 抗酸菌 / 螺旋體 / 非典型胞內
+    return 'other';
+  }
+  function symClass(v){
+    v=String(v).trim();
+    if(v==='＋'||v==='+'||v==='需') return 'pos';
+    if(v==='－'||v==='-'||v==='−'||v==='不需') return 'neg';
+    return '';
   }
 
   let DATA=null, activeTags=new Set();
 
-  // 若為單檔離線版會預先注入 window.__EMBED__；否則向 data/bacteria.json 取資料
   const boot = window.__EMBED__
     ? Promise.resolve(window.__EMBED__)
     : fetch('data/bacteria.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
@@ -38,6 +42,22 @@
         activeTags.has(s)?activeTags.delete(s):activeTags.add(s); applyFilter(); };
       bar.appendChild(b);
     });
+  }
+
+  function cmpTable(t){
+    const wrap=document.createElement('div');
+    wrap.className='cmp'; wrap.dataset.scope=t.scope||''; wrap.dataset.sys=(t.sys||[]).join(',');
+    const head=t.title?`<div class="cmp-title">📊 ${esc(t.title)}</div>`:'';
+    const note=t.note?`<div class="cmp-note">${md(t.note)}</div>`:'';
+    const thead='<tr>'+(t.columns||[]).map(c=>`<th>${esc(c)}</th>`).join('')+'</tr>';
+    const body=(t.rows||[]).map(r=>'<tr>'+r.map((cell,ci)=>{
+      const cls=ci===0?'name':symClass(cell);
+      return `<td class="${cls}">${ci===0?md(cell):esc(cell)}</td>`;
+    }).join('')+'</tr>').join('');
+    const foot=t.footnote?`<div class="cmp-foot">${md(t.footnote)}</div>`:'';
+    wrap.innerHTML=head+note+`<div class="cmp-scroll"><table>`+
+      `<thead>${thead}</thead><tbody>${body}</tbody></table></div>`+foot;
+    return wrap;
   }
 
   function speciesCard(d){
@@ -70,6 +90,7 @@
     $('#sub').textContent='科目：'+DATA.meta.subject+'｜共 '+DATA.species.length+' 菌種';
     buildTags();
     const wrap=$('#cards'); wrap.innerHTML='';
+    const tables=DATA.tables||[];
     const h1order=[...new Set(DATA.species.map(s=>s.h1))];
     h1order.forEach(h1=>{
       const g=document.createElement('section');
@@ -79,9 +100,11 @@
         `<div class="group-body">${flow?`<div class="flow"><h3>🧭 鑑定流程分流圖</h3>${flow}</div>`:''}</div>`;
       const body=g.querySelector('.group-body');
       g.querySelector('.group-head').onclick=()=>g.classList.toggle('collapsed');
+      tables.filter(t=>t.scope===h1).forEach(t=>body.appendChild(cmpTable(t)));
       const h2order=[...new Set(DATA.species.filter(s=>s.h1===h1).map(s=>s.h2))];
       h2order.forEach(h2=>{
         const sh=document.createElement('div'); sh.className='subhead'; sh.textContent=h2; body.appendChild(sh);
+        tables.filter(t=>t.scope===h2).forEach(t=>body.appendChild(cmpTable(t)));
         const cc=document.createElement('div'); cc.className='cards';
         DATA.species.filter(s=>s.h1===h1&&s.h2===h2).forEach(s=>cc.appendChild(speciesCard(s)));
         body.appendChild(cc);
@@ -99,8 +122,13 @@
     document.querySelectorAll('.group').forEach(g=>{
       let gHas=false;
       g.querySelectorAll('.subhead').forEach(sh=>{
-        const cc=sh.nextElementSibling; let sHas=false;
-        cc.querySelectorAll('.card').forEach(card=>{
+        const cc=sh.nextElementSibling && sh.nextElementSibling.classList.contains('cmp')
+          ? null : sh.nextElementSibling;
+        // 找到此 subhead 之後的 .cards 容器
+        let el=sh.nextElementSibling, cards=null;
+        while(el && !el.classList.contains('subhead')){ if(el.classList.contains('cards')) cards=el; el=el.nextElementSibling; }
+        let sHas=false;
+        if(cards) cards.querySelectorAll('.card').forEach(card=>{
           const txt=card.textContent.toLowerCase();
           const sysArr=card.dataset.sys.split(',');
           const okText=!q||txt.includes(q);
@@ -109,10 +137,19 @@
           card.style.display=show?'':'none';
           if(show){sHas=true;gHas=true;any=true;}
         });
-        sh.style.display=sHas?'':'none'; cc.style.display=sHas?'':'none';
+        sh.style.display=sHas?'':'none'; if(cards) cards.style.display=sHas?'':'none';
+      });
+      // 比較表：無臨床標籤可篩，故僅依文字搜尋顯示（有 tag 篩選時隱藏）
+      g.querySelectorAll('.cmp').forEach(t=>{
+        const okText=!q||t.textContent.toLowerCase().includes(q);
+        const tsys=(t.dataset.sys||'').split(',').filter(Boolean);
+        const okTag=activeTags.size===0||tsys.some(s=>activeTags.has(s));
+        const show=okText&&okTag;
+        t.style.display=show?'':'none';
+        if(show){ gHas=true; any=true; }
       });
       g.style.display=gHas?'':'none';
     });
-    $('#nohit').style.display=any?'none':'block';
-  }})();
-
+    $('#nohit').style.display=any||(!q&&activeTags.size===0)?'none':'block';
+  }
+})();
