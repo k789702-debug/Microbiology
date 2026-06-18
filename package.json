@@ -1,6 +1,14 @@
 {
+  "name": "microbiology-exam-outline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "醫事檢驗師微生物學：細菌分類大綱 + 培養基成分大綱（資料驅動、零相依驗證器）",
+  "scripts": {
+    "validate": "node scripts/validate_bacteria.js && node scripts/validate_media.js",
+    "build:offline": "node scripts/build_offline.js",
+    "build:docx": "node scripts/build_docx.js"
+  },
   "dependencies": {
-    "docx": "^9.7.1",
-    "jsdom": "^29.1.1"
+    "docx": "^9.5.1"
   }
 }

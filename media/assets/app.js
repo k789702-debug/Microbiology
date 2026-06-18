@@ -1,6 +1,6 @@
 /* 培養基成分與適用菌種大綱 — 前端渲染
    資料來源：data/media.json（共編者只需編輯該檔）
-   ** 文字 ** → 粗體；菌種會自動連到 ../bacteria/index.html?q=菌名 */
+   ** 文字 ** → 粗體；菌種若存在於細菌大綱才連到 ../bacteria/index.html?q=屬名 */
 (function(){
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -13,6 +13,8 @@
   }
   function spKey(name){return String(name).split('（')[0].split('(')[0].replace(/\s+(spp\.|sp\.)$/,'').trim();}
   function genusOf(name){const m=String(name).match(/^([A-Z][a-z]+)/);return m?m[1]:null;}
+  // 細菌大綱已收錄的屬（xref 白名單；只連得到的才做超連結）
+  const BACT_GENERA=new Set(["Acinetobacter","Actinomyces","Bacillus","Bacteroides","Bartonella","Bordetella","Borrelia","Brucella","Burkholderia","Campylobacter","Chlamydia","Citrobacter","Clostridioides","Clostridium","Corynebacterium","Coxiella","Ehrlichia","Enterobacter","Enterococcus","Erysipelothrix","Escherichia","Francisella","Fusobacterium","Haemophilus","Helicobacter","Klebsiella","Lactobacillus","Legionella","Leptospira","Listeria","Moraxella","Mycobacterium","Mycoplasma","Neisseria","Nocardia","Pasteurella","Prevotella","Proteus","Pseudomonas","Rickettsia","Salmonella","Serratia","Shigella","Staphylococcus","Stenotrophomonas","Streptococcus","Treponema","Ureaplasma","Vibrio","Yersinia"]);
 
   let DATA=null, activeTags=new Set();
 
@@ -43,10 +45,11 @@
 
   function spTable(species){
     const rows=species.map(s=>{
-      const key=spKey(s[0]);
-      const link='../bacteria/index.html?q='+encodeURIComponent(key);
-      return '<tr><td class="nm"><a class="xref" href="'+link+'" title="到細菌大綱查 '+esc(key)+'">'+esc(s[0])+'</a></td>'+
-             '<td>'+md(s[1])+'</td></tr>';
+      const g=genusOf(s[0]);
+      const nameCell=(g && BACT_GENERA.has(g))
+        ? '<a class="xref" href="../bacteria/index.html?q='+encodeURIComponent(g)+'" title="到細菌大綱查 '+esc(g)+'">'+esc(s[0])+'</a>'
+        : esc(s[0]);
+      return '<tr><td class="nm">'+nameCell+'</td><td>'+md(s[1])+'</td></tr>';
     }).join('');
     return '<table class="sp"><tbody>'+rows+'</tbody></table>';
   }
@@ -67,7 +70,6 @@
   function mediaCard(d){
     const card=document.createElement('article');
     card.className='card'; card.id=d.abbr;
-    card.dataset.species=d.species.map(s=>spKey(s[0])).join('|');
     card.dataset.genus=[...new Set(d.species.map(s=>genusOf(s[0])).filter(Boolean))].join('|');
     const fields=
       '<div class="field"><div class="k">① 成分處方表</div><div class="v">'+compTable(d.comp)+'</div></div>'+
@@ -154,11 +156,14 @@
         card.style.display=show?'':'none';
         if(show){gHas=true;any=true;}
       });
+      let cmpAny=false;
       g.querySelectorAll('.cmp').forEach(t=>{
         const show=(!q||t.textContent.toLowerCase().includes(q))&&activeTags.size===0;
         t.style.display=show?'':'none';
+        if(show)cmpAny=true;
       });
-      g.style.display=gHas?'':'none';
+      if(cmpAny&&q) any=true;
+      g.style.display=(gHas||cmpAny)?'':'none';
     });
     $('#nohit').style.display=any||(!q&&activeTags.size===0)?'none':'block';
   }

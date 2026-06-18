@@ -421,19 +421,19 @@
         ["TCBS", "蔗糖", "BTB/thymol blue", "8.6", "煮沸", "Vibrio"],
         ["CIN", "甘露醇", "中性紅", "7.4", "高壓+抗生素", "Yersinia 牛眼"]
       ],
-      "footnote": "唯一鹼性盤＝**TCBS(8.6)**；唯一用甘露醇＝**CIN**；MAC 是唯一高壓滅菌的乳糖盤(EMB 亦高壓)。"
+      "footnote": "唯一鹼性盤＝**TCBS(8.6)**；唯一用甘露醇＝**CIN**；**MAC/EMB 皆高壓滅菌**，XLD/HE/SS/TCBS 多為加熱煮沸、不高壓。"
     },
     {
       "id": "haemophilus-xv", "scope": "含血／苛養",
       "title": "Haemophilus 的 X／V 因子需求",
       "note": "X＝hemin、V＝NAD；巧克力盤兩者皆供應。",
-      "columns": ["菌種", "X 因子(hemin)", "V 因子(NAD)", "綿羊血 BAP"],
+      "columns": ["菌種", "X 因子(hemin)", "V 因子(NAD)", "血液瓊脂 (BAP)"],
       "rows": [
         ["H. influenzae", "需", "需", "不長(需巧克力)"],
-        ["H. parainfluenzae", "不需", "需", "不長"],
+        ["H. parainfluenzae", "不需", "需", "可長(僅需 V)"],
         ["H. ducreyi", "需", "不需", "不長"]
       ],
-      "footnote": "**綿羊血 BAP 內 V 因子被血球 NADase 分解**，故 H. influenzae 在 BAP 長不好；加熱成巧克力盤後 X/V 釋出即可生長。可用 S. aureus 周圍的衛星現象(satellitism)輔助判讀。"
+      "footnote": "X/V 需求是關鍵鑑別（以無因子培養基＋X、V、XV 紙錠測定）。**H. influenzae 需 X+V，在一般血平板長不好、需巧克力**；H. parainfluenzae 僅需 V 故可生長，為兩者鑑別點；臨床亦可見 S. aureus 旁的衛星現象（satellitism）。"
     },
     {
       "id": "tsi-reactions", "scope": "鑑別生化管",
