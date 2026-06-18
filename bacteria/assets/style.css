@@ -105,6 +105,8 @@ table.qa td.yr{white-space:nowrap;color:var(--gp);font-weight:700;width:110px}
 /* P1 修正：移除 HTML inline style，改用 class（配合嚴格 CSP style-src 'self'） */
 .tagbar-label{font-size:13px;color:var(--muted);margin-right:2px}
 .nohit{display:none}
-/* 跨頁連結：培養基 → media 模組 */
-a.medlink{color:#0d9488;text-decoration:none;border-bottom:1px dashed #0d9488;font-weight:600}
-a.medlink:hover{background:#e3f6f1}
+/* 跨模組切換鈕（總入口 / 細菌 / 培養基），沿用 Gram⊕ 紫主題 */
+.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.nav a{border:1.5px solid var(--gp-line);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--gp);text-decoration:none;background:#fff;white-space:nowrap}
+.nav a:hover{background:var(--gp-soft)}
+.nav a.cur{background:var(--gp);color:#fff;border-color:var(--gp)}
