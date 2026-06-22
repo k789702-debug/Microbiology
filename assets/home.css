@@ -9,12 +9,13 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .kicker{color:var(--muted);font-size:13px;letter-spacing:2px;font-weight:700}
 h1{font-size:27px;margin:6px 0 4px}
 .sub{color:var(--muted);font-size:14.5px;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 a.tile{display:block;background:var(--card);border-radius:16px;padding:24px;text-decoration:none;
   color:var(--ink);box-shadow:var(--shadow);border-top:5px solid var(--c);transition:.16s}
 a.tile:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(30,20,50,.14)}
 a.tile.bact{--c:var(--gp)}
 a.tile.media{--c:var(--teal)}
+a.tile.fungi{--c:#2f9e44}
 .badge{display:inline-block;color:#fff;background:var(--c);border-radius:8px;padding:3px 11px;font-size:13px;font-weight:700}
 .tile h2{font-size:19px;margin:12px 0 6px}
 .tile p{color:var(--muted);font-size:13.5px;margin:0}

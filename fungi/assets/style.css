@@ -15,10 +15,14 @@ header.top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#f
 .gp-badge{background:var(--gp);color:#fff;border-radius:8px;padding:4px 12px;font-weight:700;font-size:14px;letter-spacing:1px}
 h1{font-size:19px;margin:0;font-weight:800}
 .sub{color:var(--muted);font-size:12.5px;margin-top:2px}
-.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .nav a{border:1.5px solid var(--gp-line);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--gp);text-decoration:none;background:#fff;white-space:nowrap}
 .nav a:hover{background:var(--gp-soft)}
 .nav a.cur{background:var(--gp);color:#fff;border-color:var(--gp)}
+@media(max-width:640px){
+  .nav{width:100%;margin-left:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .nav a{text-align:center;padding:6px 8px}
+}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
 #search{flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--gp-line);border-radius:10px;font-size:15px;outline:none}
 #search:focus{border-color:var(--gp);box-shadow:0 0 0 3px var(--gp-soft)}
