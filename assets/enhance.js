@@ -1,5 +1,5 @@
 /* P1 閱讀性增強（三個模組共用，疊加於各模組 app.js 之後執行）
-   功能：搜尋高亮、只看高頻(⭐⭐+)、記住展開/收合(localStorage)、Enter 捲到命中。
+   功能：搜尋高亮、只看極高頻(⭐⭐⭐)、記住展開/收合(localStorage)、Enter 捲到命中。
    以泛用方式操作已渲染的 DOM（.card / #search / .controls），不改動各 app.js 邏輯。 */
 (function(){
   function ready(cb,n){n=n||0;var c=document.getElementById('cards');
@@ -26,10 +26,13 @@
       try{localStorage.setItem(KEY,JSON.stringify({cards:cards,groups:groups}));}catch(e){}
     }
 
-    // 2) 只看高頻 按鈕（⭐⭐ 以上）
-    if(controls){var btn=document.createElement('button');btn.type='button';btn.className='hf-btn';btn.textContent='⭐ 只看高頻';
+    // 2) 只看極高頻：只顯示並展開 ⭐⭐⭐ 卡片
+    if(controls){var btn=document.createElement('button');btn.type='button';btn.className='hf-btn';btn.textContent='⭐⭐⭐ 只看極高頻';
+      btn.setAttribute('aria-pressed','false');
       controls.appendChild(btn);
-      btn.onclick=function(){hf=!hf;btn.classList.toggle('on',hf);btn.textContent=hf?'⭐ 高頻 ON':'⭐ 只看高頻';
+      btn.onclick=function(){hf=!hf;btn.classList.toggle('on',hf);btn.setAttribute('aria-pressed',hf?'true':'false');
+        btn.textContent=hf?'⭐⭐⭐ 極高頻 ON':'⭐⭐⭐ 只看極高頻';
+        if(hf&&search)search.value='';
         if(search)search.dispatchEvent(new Event('input'));else post();};}
 
     // 2b) 手機標籤抽屜（bacteria/fungi 臨床標籤；media 已自帶 toggle 故略過）
@@ -84,9 +87,14 @@
       var q=search?search.value.trim():'';
       document.querySelectorAll('#cards .card').forEach(function(card){
         clearMarks(card);
-        if(card.style.display==='none')return;
-        if(hf&&starCount(card)<2){card.style.display='none';return;}
+        if(hf){
+          if(starCount(card)!==3){card.style.display='none';return;}
+          card.style.display='';
+          card.classList.remove('collapsed');
+          var cardGroup=card.closest('.group');if(cardGroup)cardGroup.classList.remove('collapsed');
+        }else if(card.style.display==='none')return;
         if(q)highlight(card,q);});
+      document.querySelectorAll('#cards .cmp').forEach(function(table){if(hf)table.style.display='none';});
       refreshSections();
     });}
 
