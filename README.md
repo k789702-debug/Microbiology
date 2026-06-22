@@ -7,6 +7,7 @@
 |------|------|------|
 | 🦠 **bacteria** 細菌分類大綱 | 依革蘭氏分類→屬科→菌種，含形態、鑑定試驗、毒素、疾病、抗藥性、高頻考點、鑑定流程圖、比較表 | `bacteria/index.html` |
 | 🧫 **media** 培養基大綱 | 依功能類型分群，含成分處方表、功能角色、pH/滅菌、選擇/鑑別原理、接種後表現、適用菌種、判讀對照表 | `media/index.html` |
+| 🍄 **fungi** 真菌大綱 | 依真菌「門」（子囊/擔子/接合）→ 形態/臨床次分群 → 物種，含形態、培養特徵、關鍵鑑定、疾病、抗真菌藥、高頻考點 | `fungi/index.html` |
 
 兩者互連：細菌卡片的「④選擇/鑑別培養基」可點進對應培養基；培養基卡片的菌種可點回對應細菌。
 
@@ -14,7 +15,7 @@
 
 ```
 Microbiology/
-├── index.html                  總入口（細菌 / 培養基）
+├── index.html                  總入口（細菌 / 培養基 / 真菌）
 ├── README.md
 ├── .gitignore
 ├── bacteria/                   細菌模組
@@ -27,8 +28,12 @@ Microbiology/
 │   ├── data/media.json         ← 編這個
 │   ├── print/培養基大綱_全9群.docx        A4 可列印 Word（全 9 群，內容與網頁一致）
 │   └── 培養基大綱_全9群_離線版.html         單檔離線版（file:// 可直接開）
-├── schema/{bacteria.schema.json, media.schema.json}
-├── scripts/{validate_bacteria.js, validate_media.js, build_offline.js}
+├── fungi/                      真菌模組
+│   ├── index.html
+│   ├── assets/{style.css, app.js}
+│   └── data/fungi.json         ← 編這個
+├── schema/{bacteria, media, fungi}.schema.json
+├── scripts/{validate_bacteria, validate_media, validate_fungi}.js、build_offline.js、build_docx.js
 └── .github/workflows/validate.yml         push/PR 自動驗證
 ```
 
@@ -90,6 +95,7 @@ repo Settings → Pages → 來源選 `main` 分支根目錄即可，入口為�
 ## 進度
 
 - ✅ 細菌：63 菌種（民國 101–115 考題）
+- ✅ 真菌：**3 門、28 種**（子囊/擔子/接合；含 3 張比較矩陣）
 - ✅ 培養基：**全 9 群、35 張**（含 5 張跨培養基比較矩陣）
   - 基礎/增菌：NA、TSA、BHI、Thioglycollate、Selenite F、APW
   - 含血/苛養：BAP、Chocolate、Thayer-Martin、Bordet-Gengou、BCYE

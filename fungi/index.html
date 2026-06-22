@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+<meta name="referrer" content="no-referrer">
+<title>醫檢師真菌分類大綱｜微生物學與臨床微生物學</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="title-row">
+    <span class="gp-badge">真菌</span>
+    <div>
+      <h1>醫事檢驗師真菌分類大綱</h1>
+      <div class="sub" id="sub">科目：微生物學與臨床微生物學（包括細菌與黴菌）</div>
+    </div>
+    <nav class="nav">
+      <a href="../index.html">總入口</a>
+      <a href="../bacteria/index.html">細菌大綱</a>
+      <a href="../media/index.html">培養基大綱</a>
+      <a href="index.html" class="cur">真菌大綱</a>
+    </nav>
+  </div>
+  <div class="controls">
+    <input id="search" type="text" placeholder="🔍 即時搜尋：菌名、形態、鑑定、疾病…（例 germ tube、India ink、雙相、毛黴、Pneumocystis）">
+    <button type="button" class="btn-mini" id="expandAll">全部展開</button>
+    <button type="button" class="btn-mini" id="collapseAll">全部收合</button>
+  </div>
+  <div class="tagbar" id="tagbar">
+    <span class="tagbar-label">感染部位：</span>
+  </div>
+  <div class="legend">大類＝真菌「門」：子囊菌（綠）/ 擔子菌（琥珀）/ 接合菌·毛黴（棕）；⭐⭐⭐ 極高頻 ⭐⭐ 高頻 ⭐ 常見（依醫檢師考古題）。培養基名可點到培養基大綱。</div>
+</header>
+<main>
+  <div id="cards"></div>
+  <div class="nohit" id="nohit">查無符合條件的菌種，請調整搜尋或篩選。</div>
+  <div class="ref">
+    <b>參考依據：</b>Mahon CR, Lehman DC. <i>Textbook of Diagnostic Microbiology</i>；Murray PR, et al. <i>Medical Microbiology</i>。
+    考題來源：考選部「醫事檢驗師」國家考試（科目代號 308 及相關醫學科目），經 twinkle-hub 國考資料庫檢索。
+    <br>資料維護：編輯 <code>data/fungi.json</code> 即可更新，詳見 README。
+  </div>
+</main>
+<script src="assets/app.js"></script>
+</body>
+</html>

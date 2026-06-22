@@ -1,0 +1,433 @@
+{
+  "meta": {
+    "subject": "微生物學與臨床微生物學（包括細菌與黴菌）",
+    "version": "1.0.1",
+    "updated": "2026-06-22",
+    "source": "Mahon Textbook of Diagnostic Microbiology；Murray Medical Microbiology；考選部醫檢師考題（科目 308 及相關醫學科目）",
+    "clinical_systems": ["淺表","皮膚/毛髮/甲","皮下","黏膜","肺","系統性","中樞神經","血流","眼","伺機性"]
+  },
+  "flows": {
+    "子囊菌門（Ascomycota）": [
+      "醫學最大宗的門；底下依形態/臨床再分：**酵母菌、雙相型、皮癬菌、透明絲狀菌(麴菌)、暗色絲狀菌、肺囊蟲**。",
+      "酵母菌看 **germ tube／CHROMagar 顏色／azole 抗藥**；雙相型看 **25℃黴菌相↔37℃(組織)酵母相** 的形態。"
+    ],
+    "擔子菌門（Basidiomycota）": [
+      "醫學上多為**酵母型**：Cryptococcus（莢膜＋urease＋黑色素）、Malassezia（嗜脂）、Trichosporon（關節孢子＋urease）。"
+    ],
+    "接合菌門／毛黴門（Zygomycota）": [
+      "毛黴目：**寬大、少/無分隔菌絲（coenocytic）＋90°直角分枝**，強血管侵犯；對比 Aspergillus 的分隔菌絲、45°銳角。",
+      "治療以 **amphotericin B＋手術清創**；voriconazole 無效。"
+    ]
+  },
+  "species": [
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "酵母菌（Candida 等）", "zh": "白色念珠菌", "en": "Candida albicans", "stars": 3,
+      "sys": ["黏膜","血流","伺機性"],
+      "morph": "卵圓酵母＋假菌絲；組織內可見芽生孢子與假菌絲。",
+      "oxy": "SDA 25–37℃ 1–2 天奶油色菌落；37℃ 於血清中形成芽管。",
+      "media": "SDA；**CHROMagar Candida 呈綠色**；cornmeal-Tween80 觀察厚膜孢子。",
+      "tests": "**germ tube（芽管）＋**、cornmeal 上產**厚膜孢子（chlamydospore）＋**。",
+      "vir": "黏附、芽管/菌絲侵襲、生物膜形成。",
+      "dis": "鵝口瘡、外陰陰道炎、念珠菌血症、播散性念珠菌病。",
+      "resist": "多數對 fluconazole 敏感；嚴重者用 echinocandin/amphotericin B。",
+      "hot": ["**germ tube(+)＝C. albicans**（與 C. dubliniensis 外）為最經典鑑定。","CHROMagar **綠色**；cornmeal 產**厚膜孢子**為特徵。"],
+      "qa": [["113年 第73題","芽管試驗陽性之酵母菌（Candida albicans）"],["111年 第65題","germ tube test 常用來鑑定（Candida albicans）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "酵母菌（Candida 等）", "zh": "光滑念珠菌", "en": "Candida glabrata", "stars": 2,
+      "sys": ["黏膜","血流","伺機性"],
+      "morph": "小型酵母，**不形成假菌絲**、不形成芽管。",
+      "oxy": "SDA 生長；CHROMagar 呈紫紅/粉色。",
+      "media": "SDA；CHROMagar（紫/粉）。",
+      "tests": "germ tube(−)、無假菌絲；以醣同化（assimilation）鑑定。",
+      "vir": "伺機性，常見於免疫低下、泌尿道與黏膜。",
+      "dis": "黏膜、泌尿道、血流感染。",
+      "resist": "**對 azole（fluconazole）常見抗藥**，多以 echinocandin 治療。",
+      "hot": ["**C. glabrata 不形成假菌絲、germ tube(−)**；azole 抗藥性高。"],
+      "qa": [["概念","非 albicans 念珠菌（glabrata/krusei）azole 抗藥性高，經驗治療需留意"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "酵母菌（Candida 等）", "zh": "熱帶念珠菌", "en": "Candida tropicalis", "stars": 2,
+      "sys": ["血流","伺機性"],
+      "morph": "酵母＋假菌絲；血清培養較久可出現**假芽管（pseudo-germ tube）**易誤判。",
+      "oxy": "SDA 生長；CHROMagar 藍/鋼藍色。",
+      "media": "SDA；CHROMagar（藍）。",
+      "tests": "真正 germ tube(−)，但會有 pseudo-germ tube（基部有縊縮）。",
+      "vir": "癌症/嗜中性球低下者易播散。",
+      "dis": "念珠菌血症（血液腫瘤病患常見）。",
+      "resist": "多對 azole 敏感，部分抗藥。",
+      "hot": ["**C. tropicalis 易出現假芽管（pseudo-germ tube）**，勿誤判為 albicans；CHROMagar 藍色。"],
+      "qa": [["102年 第73題","germ tube 出現假芽管之酵母菌（Candida tropicalis）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "酵母菌（Candida 等）", "zh": "克魯斯念珠菌", "en": "Candida krusei", "stars": 2,
+      "sys": ["血流","伺機性"],
+      "morph": "細長酵母，可有假菌絲（火柴棒/水滴狀排列）。",
+      "oxy": "SDA；CHROMagar 粉紅、乾糙、邊緣模糊。",
+      "media": "SDA；CHROMagar（粉糙）。",
+      "tests": "germ tube(−)。",
+      "vir": "伺機性。",
+      "dis": "血流感染。",
+      "resist": "**天生對 fluconazole 抗藥（intrinsic）**；用 echinocandin/voriconazole/amphotericin。",
+      "hot": ["**C. krusei 天生對 fluconazole 抗藥**；CHROMagar 粉紅粗糙。"],
+      "qa": [["概念","C. krusei 對 fluconazole 內在抗藥，經驗治療需避開 fluconazole"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "酵母菌（Candida 等）", "zh": "耳念珠菌", "en": "Candida auris", "stars": 2,
+      "sys": ["血流","伺機性"],
+      "morph": "酵母，多數**不形成假菌絲**。",
+      "oxy": "**42℃ 可生長**；傳統生化/儀器易誤判。",
+      "media": "SDA；CHROMagar 顏色多變，需 MALDI-TOF/分子確認。",
+      "tests": "germ tube(−)；**MALDI-TOF 或分子鑑定**為準。",
+      "vir": "**院內群聚、環境存活久、多重抗藥**。",
+      "dis": "血流/院內感染（全球警示菌）。",
+      "resist": "**常多重抗藥**（azole、部分 amphotericin、甚至 echinocandin）。",
+      "hot": ["**C. auris：多重抗藥＋院內群聚**，傳統鑑定易誤判，需 MALDI-TOF/分子確認。"],
+      "qa": [["概念","C. auris 為新興多重抗藥念珠菌，為感染管制重點"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "莢膜組織胞漿菌", "en": "Histoplasma capsulatum", "stars": 3,
+      "sys": ["肺","系統性","伺機性"],
+      "morph": "黴菌相(25℃)產**結節狀大分生孢子（tuberculate macroconidia）**＋小分生孢子；酵母相(37℃/組織)為**巨噬細胞內小酵母**。",
+      "oxy": "SDA 25℃ 黴菌相（慢）；BHI 37℃ 轉酵母相。",
+      "media": "SDA（25℃）、BHI（37℃）；組織用 GMS/PAS。",
+      "tests": "雙相轉換、tuberculate macroconidia；尿/血抗原檢測。",
+      "vir": "胞內寄生（巨噬細胞）。",
+      "dis": "組織胞漿菌病（肺、播散）；接觸鳥、蝙蝠糞/洞穴。",
+      "resist": "itraconazole；重症 amphotericin B。",
+      "hot": ["**結節狀大分生孢子（tuberculate macroconidia）＝Histoplasma 黴菌相**；組織內為巨噬細胞內小酵母。"],
+      "qa": [["105年 第69題","分枝分節菌絲中末端產厚膜/結節孢子之全身性黴菌（Histoplasma）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "皮炎芽生菌", "en": "Blastomyces dermatitidis", "stars": 2,
+      "sys": ["肺","系統性","皮膚/毛髮/甲"],
+      "morph": "酵母相為**寬基底單芽（broad-based budding）厚壁酵母**；黴菌相小梨形分生孢子。",
+      "oxy": "SDA 25℃ 黴菌；37℃/BHI 酵母。",
+      "media": "SDA、BHI。",
+      "tests": "**寬基底出芽**、雙相轉換。",
+      "vir": "肺、皮膚、骨侵犯。",
+      "dis": "芽生菌病（北美）。",
+      "resist": "itraconazole；重症 amphotericin B。",
+      "hot": ["**寬基底出芽厚壁酵母（broad-based budding）＝Blastomyces**（對比 Cryptococcus 窄基底）。"],
+      "qa": [["109年 第76題","yeast form 寬底出芽厚壁之雙相型黴菌（Blastomyces dermatitidis）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "粗球黴菌", "en": "Coccidioides immitis", "stars": 2,
+      "sys": ["肺","系統性"],
+      "morph": "組織內為**含內孢子的球囊（spherule with endospores）**；黴菌相產**關節孢子（arthroconidia）**，高傳染性。",
+      "oxy": "SDA 黴菌相（具高度感染性，須 BSL-3 操作）。",
+      "media": "SDA；組織病理觀察 spherule。",
+      "tests": "**spherule（球囊）/arthroconidia**；血清學。",
+      "vir": "arthroconidia 吸入致病。",
+      "dis": "球黴菌病（美國西南沙漠，Valley fever）。",
+      "resist": "azole/amphotericin B。",
+      "hot": ["**組織內球囊（spherule）含內孢子＝Coccidioides**；培養之關節孢子高傳染性（BSL-3）。"],
+      "qa": [["概念","組織內 spherule 含 endospores＝Coccidioides immitis；關節孢子吸入感染"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "巴西副球黴菌", "en": "Paracoccidioides brasiliensis", "stars": 1,
+      "sys": ["肺","系統性","黏膜"],
+      "morph": "酵母相呈**多重出芽如舵輪（mariner's wheel / pilot's wheel）**。",
+      "oxy": "SDA 25℃ 黴菌；37℃ 酵母。",
+      "media": "SDA、BHI。",
+      "tests": "**舵輪狀多芽**酵母。",
+      "vir": "肺、口鼻黏膜。",
+      "dis": "副球黴菌病（中南美）。",
+      "resist": "itraconazole。",
+      "hot": ["**舵輪狀多重出芽（mariner's wheel）＝Paracoccidioides**。"],
+      "qa": [["106年 第14題","酵母相舵輪樣多重出芽之全身性黴菌（Paracoccidioides）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "申克孢子絲菌", "en": "Sporothrix schenckii", "stars": 2,
+      "sys": ["皮下","皮膚/毛髮/甲"],
+      "morph": "黴菌相(25℃)細菌絲＋**花朵狀（rosette）排列分生孢子**；酵母相(37℃)**雪茄形（cigar-shaped）酵母**；組織可見星狀體（asteroid body）。",
+      "oxy": "SDA 25℃ 黴菌（漸深色）；BHI 37℃ 酵母。",
+      "media": "SDA、BHI。",
+      "tests": "雙相、雪茄形酵母、玫瑰花環分生孢子。",
+      "vir": "創傷植入（玫瑰刺、苔蘚、園藝）。",
+      "dis": "孢子絲菌病（淋巴皮膚型，「rose gardener」）。",
+      "resist": "itraconazole；傳統用碘化鉀（KI）。",
+      "hot": ["**雪茄形酵母＋玫瑰園丁淋巴皮膚型＝Sporothrix schenckii**；雙相型、皮下植入。"],
+      "qa": [["概念","Sporothrix：雙相型，玫瑰刺扎傷→淋巴皮膚型；雪茄形酵母"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "雙相型真菌（Dimorphic）", "zh": "馬爾尼菲塔拉羅菌", "en": "Talaromyces (Penicillium) marneffei", "stars": 1,
+      "sys": ["系統性","伺機性","肺"],
+      "morph": "唯一雙相型 Penicillium 樣；黴菌相產帚狀枝（penicillus）＋**紅色擴散色素**；酵母相**橫向分裂（fission）**繁殖。",
+      "oxy": "SDA 25℃ 黴菌（紅色色素）；37℃ 酵母。",
+      "media": "SDA。",
+      "tests": "紅色色素、fission 酵母、雙相。",
+      "vir": "AIDS 相關播散感染。",
+      "dis": "馬爾尼菲病（東南亞 HIV 病患）。",
+      "resist": "amphotericin B 後 itraconazole。",
+      "hot": ["**產紅色色素＋橫裂（fission）酵母＝Talaromyces marneffei**；東南亞 HIV 相關。"],
+      "qa": [["112年 第66題","具 dimorphic 現象、造成全身性感染之 Penicillium＝P. marneffei（Talaromyces marneffei）"],["104年 第59題（醫一）","分隔菌絲＋瓶狀 phialides＋paint brush 排列（Penicillium/Talaromyces marneffei）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "皮癬菌（Dermatophytes）", "zh": "紅色毛癬菌", "en": "Trichophyton rubrum", "stars": 2,
+      "sys": ["皮膚/毛髮/甲","淺表"],
+      "morph": "多量**淚滴狀小分生孢子（沿菌絲側生）**、少大分生孢子；菌落背面**酒紅色**。",
+      "oxy": "SDA（含 cycloheximide＝Mycosel）25–30℃ 慢長。",
+      "media": "SDA/Mycosel；皮癬菌試驗培養基（DTM）變紅。",
+      "tests": "背面酒紅色素；**urease(−)、毛髮穿孔試驗(−)**（與 T. mentagrophytes 區分）。",
+      "vir": "角質親和（keratinophilic）。",
+      "dis": "足癬、體癬、甲癬（最常見皮癬菌）。",
+      "resist": "terbinafine／azole／griseofulvin。",
+      "hot": ["**T. rubrum 背面酒紅色＋大量小分生孢子**；最常見皮癬菌。"],
+      "qa": [["104年 第71題","SDA 背面酒紅色之皮癬菌（Trichophyton rubrum）"],["105年 第66題","親人類性（anthropophilic）皮癬菌（含 T. rubrum、E. floccosum）"],["103年 第68題","Trichophyton 之分類門＝子囊菌門（舊稱不完全菌）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "皮癬菌（Dermatophytes）", "zh": "鬚瘡毛癬菌", "en": "Trichophyton mentagrophytes", "stars": 1,
+      "sys": ["皮膚/毛髮/甲","淺表"],
+      "morph": "成簇圓形小分生孢子、**螺旋菌絲（spiral hyphae）**。",
+      "oxy": "SDA/Mycosel。",
+      "media": "SDA/Mycosel、DTM。",
+      "tests": "**urease(+)、毛髮穿孔試驗(+)**（與 T. rubrum 區分）。",
+      "vir": "角質親和（人畜共通）。",
+      "dis": "足癬、體癬。",
+      "resist": "terbinafine。",
+      "hot": ["**T. mentagrophytes urease(+)、毛髮穿孔(+)**；與 T. rubrum（urease−、不穿孔、背面酒紅）鑑別。"],
+      "qa": [["105年 第69題","彈簧（螺旋）狀菌絲＋球形小分生孢子稀疏葡萄串（T. mentagrophytes）"],["108年 第53題","三屬皮癬菌共同特性＝嗜角質（keratinophilic）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "皮癬菌（Dermatophytes）", "zh": "犬小芽孢菌", "en": "Microsporum canis", "stars": 1,
+      "sys": ["皮膚/毛髮/甲","淺表"],
+      "morph": "**紡錘形、厚壁、表面粗糙的大分生孢子（≥6 隔）**；小分生孢子少。",
+      "oxy": "SDA/Mycosel，菌落黃色，背面黃橙。",
+      "media": "SDA/Mycosel。",
+      "tests": "大分生孢子型態；感染毛髮 **Wood's 燈螢光(+)**。",
+      "vir": "人畜共通（貓、狗）。",
+      "dis": "頭癬、體癬（兒童）。",
+      "resist": "griseofulvin／terbinafine。",
+      "hot": ["**Microsporum：紡錘形粗壁大分生孢子**；M. canis 感染毛髮 Wood's 燈螢光(+)。"],
+      "qa": [["114年 第66題","多刺厚壁紡錘形大分生孢子＋少數棒狀小分生孢子（Microsporum canis）"],["103年 第68題","紡錘狀多細胞、壁厚粗大、尖端微鉤之大分生孢子（Microsporum canis）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "皮癬菌（Dermatophytes）", "zh": "絮狀表皮癬菌", "en": "Epidermophyton floccosum", "stars": 1,
+      "sys": ["皮膚/毛髮/甲","淺表"],
+      "morph": "**棍棒（杵）狀、平滑大分生孢子成簇、無小分生孢子**；不侵犯毛髮。",
+      "oxy": "SDA/Mycosel，菌落黃綠色。",
+      "media": "SDA/Mycosel。",
+      "tests": "杵狀大分生孢子、無小分生孢子。",
+      "vir": "角質親和（皮膚、甲，不犯毛髮）。",
+      "dis": "股癬、足癬、甲癬。",
+      "resist": "terbinafine。",
+      "hot": ["**Epidermophyton：杵狀平滑大分生孢子、無小分生孢子、不侵犯毛髮**。"],
+      "qa": [["109年 第70題","棍棒狀（club-shape）大分生孢子、無小分生孢子（Epidermophyton）"],["110年 第14題（醫二）","Epidermophyton 不產生小分生孢子（敘述正確）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "透明絲狀菌／麴菌（Hyaline molds）", "zh": "煙麴菌", "en": "Aspergillus fumigatus", "stars": 3,
+      "sys": ["肺","系統性","伺機性"],
+      "morph": "**分隔菌絲、45°銳角分枝（dichotomous）**；分生孢子頭單列、僅上半部小梗；**耐熱（45℃可長）**。",
+      "oxy": "SDA 快長，藍綠色絨毛菌落。",
+      "media": "SDA。",
+      "tests": "分生孢子頭型態、45°分枝；血清 galactomannan 抗原。",
+      "vir": "血管侵犯；過敏反應。",
+      "dis": "侵襲性肺麴菌病、麴菌球（aspergilloma）、過敏性支氣管肺麴菌病（ABPA）。",
+      "resist": "**voriconazole 首選**／amphotericin B；azole 抗藥漸增。",
+      "hot": ["**分隔菌絲＋45°銳角分枝＝Aspergillus**（對比毛黴寬大無隔、90°）。","A. fumigatus 耐熱(45℃)、孢子頭單列上半部。"],
+      "qa": [["113年 第65題","慢性氣喘、45°角分支＋分生孢子柄末端膨大囊泡及瓶狀物（Aspergillus）"],["107年 第16題（醫二）","Aspergillus 型態特徵＝瓶狀（flask-shaped）phialides"],["109年 第71題","菌絲具分隔即可排除毛黴（zygomycetes）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "透明絲狀菌／麴菌（Hyaline molds）", "zh": "黃麴菌", "en": "Aspergillus flavus", "stars": 1,
+      "sys": ["肺","伺機性"],
+      "morph": "分隔菌絲；孢子頭雙列/單列，黃綠色。",
+      "oxy": "SDA 黃綠色菌落。",
+      "media": "SDA。",
+      "tests": "孢子頭型態、色素。",
+      "vir": "**產 aflatoxin（黃麴毒素，肝毒/致癌）**。",
+      "dis": "鼻竇麴菌病、角膜炎、麴菌球；aflatoxicosis。",
+      "resist": "voriconazole／amphotericin B。",
+      "hot": ["**A. flavus 產 aflatoxin（黃麴毒素，與肝癌相關）**。"],
+      "qa": [["概念","Aspergillus flavus 產黃麴毒素 aflatoxin"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "透明絲狀菌／麴菌（Hyaline molds）", "zh": "黑麴菌", "en": "Aspergillus niger", "stars": 1,
+      "sys": ["淺表","伺機性"],
+      "morph": "分隔菌絲；孢子頭**雙列、黑色**、球形放射狀。",
+      "oxy": "SDA 黑色孢子（反面淡黃）。",
+      "media": "SDA。",
+      "tests": "黑色孢子頭；組織可見**草酸鈣結晶**。",
+      "vir": "外耳道感染。",
+      "dis": "外耳道黴菌病（otomycosis）、麴菌球。",
+      "resist": "voriconazole／amphotericin B。",
+      "hot": ["**A. niger 黑色孢子頭、外耳道黴菌病（otomycosis）**；組織可見草酸鈣結晶。"],
+      "qa": [["113年 第69題","觀察 Aspergillus 原始分生孢子排列宜用膠帶法（tape method）"],["概念","A. niger 黑色孢子頭、外耳道黴菌病（otomycosis）"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "透明絲狀菌／麴菌（Hyaline molds）", "zh": "鐮刀菌（鐮孢菌）", "en": "Fusarium", "stars": 1,
+      "sys": ["眼","伺機性","血流","皮膚/毛髮/甲"],
+      "morph": "分隔菌絲；**香蕉/獨木舟形、多隔大分生孢子（canoe-shaped）**。",
+      "oxy": "SDA 快長，棉絮狀、多色。",
+      "media": "SDA；免疫低下播散時**血液培養可陽性**（多數黴菌不會）。",
+      "tests": "香蕉狀大分生孢子。",
+      "vir": "黴菌毒素；角膜侵犯。",
+      "dis": "角膜炎（隱形眼鏡相關）、甲癬、免疫低下播散。",
+      "resist": "**廣泛抗藥**（voriconazole/amphotericin B 部分有效）。",
+      "hot": ["**Fusarium：香蕉/獨木舟狀大分生孢子**；角膜炎與免疫低下播散，血培養可陽性、抗藥性高。"],
+      "qa": [["概念","Fusarium 角膜炎（隱形眼鏡相關）；可血培養陽性、廣泛抗藥"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "暗色絲狀菌（Dematiaceous）", "zh": "佩特羅斯枝孢瓶黴", "en": "Fonsecaea pedrosoi", "stars": 1,
+      "sys": ["皮下","皮膚/毛髮/甲"],
+      "morph": "**暗色（含黑色素）分隔菌絲**；組織內見**硬殼小體（muriform/sclerotic bodies）**。",
+      "oxy": "SDA 黑色絨毛菌落（正反面黑）。",
+      "media": "SDA。",
+      "tests": "muriform bodies；**Fontana-Masson 黑色素(+)**。",
+      "vir": "黑色素為毒力因子。",
+      "dis": "著色芽生菌病（chromoblastomycosis）；慢性皮下、刺傷植入。",
+      "resist": "itraconazole／terbinafine（療程長）。",
+      "hot": ["**組織內硬殼小體（muriform/sclerotic bodies）＝著色芽生菌病**；暗色真菌 Fontana-Masson 染黑色素(+)。"],
+      "qa": [["概念","著色芽生菌病：組織內 muriform bodies；暗色真菌 Fontana-Masson(+)"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "暗色絲狀菌（Dematiaceous）", "zh": "班替枝孢瓶黴", "en": "Cladophialophora bantiana", "stars": 1,
+      "sys": ["中樞神經","皮下"],
+      "morph": "暗色分隔菌絲、**長鏈分生孢子（少分枝）**。",
+      "oxy": "SDA 橄欖黑菌落。",
+      "media": "SDA。",
+      "tests": "長鏈 conidia；Fontana-Masson(+)。",
+      "vir": "**嗜神經（neurotropic）**。",
+      "dis": "腦膿瘍（phaeohyphomycosis；免疫正常者亦可）。",
+      "resist": "治療困難；voriconazole/amphotericin B＋手術。",
+      "hot": ["**Cladophialophora bantiana：嗜神經暗色真菌，腦膿瘍**。"],
+      "qa": [["概念","暗色真菌腦膿瘍代表＝Cladophialophora bantiana"]]
+    },
+    {
+      "h1": "子囊菌門（Ascomycota）", "h2": "肺囊蟲（Pneumocystis）", "zh": "耶氏肺囊蟲", "en": "Pneumocystis jirovecii", "stars": 2,
+      "sys": ["肺","伺機性"],
+      "morph": "組織內見**囊體（cyst，內含最多 8 個囊內小體）與滋養體**；分類屬真菌，但細胞膜缺乏典型 ergosterol。",
+      "oxy": "**無法以一般培養基人工培養**；靠染色/分子診斷。",
+      "media": "無（取 BAL/痰直接鏡檢）；**GMS 銀染或 toluidine blue O 染囊壁**、Giemsa 染滋養體。",
+      "tests": "GMS 銀染囊壁（黑）、免疫螢光、PCR、(1,3)-β-D-glucan。",
+      "vir": "AIDS/免疫低下伺機性感染。",
+      "dis": "肺囊蟲肺炎（PCP/PJP）。",
+      "resist": "治療與預防用 **TMP-SMX**（對 azole/echinocandin 反應有限）。",
+      "hot": ["**Pneumocystis 無法人工培養**；GMS 銀染囊壁、TMP-SMX 治療。"],
+      "qa": [["106年 第3題（地特·醫微）","比較 Talaromyces marneffei 與 Pneumocystis jirovecii 之形態/感染/流行病學（申論）"],["概念","Pneumocystis 無法培養；GMS 銀染囊壁、PCR、TMP-SMX 治療"]]
+    },
+    {
+      "h1": "擔子菌門（Basidiomycota）", "h2": "酵母型（Cryptococcus·Malassezia 等）", "zh": "新型隱球菌", "en": "Cryptococcus neoformans", "stars": 3,
+      "sys": ["中樞神經","肺","伺機性"],
+      "morph": "圓形酵母，**具厚多醣莢膜（capsule）**、窄基底單芽。",
+      "oxy": "SDA 黏稠菌落；**bird seed／niger seed agar 產黑色素呈棕黑色**。",
+      "media": "SDA；niger（bird seed）agar（棕色）；CSF 以印度墨汁鏡檢。",
+      "tests": "**India ink 莢膜（透亮暈）＋urease(+)＋酚氧化酶/黑色素(+)**；Mucicarmine 染莢膜紅。",
+      "vir": "**莢膜**、黑色素（laccase）。",
+      "dis": "隱球菌腦膜炎（AIDS）、肺隱球菌病。",
+      "resist": "amphotericin B＋5-FC 誘導，後 fluconazole。",
+      "hot": ["**India ink 看莢膜＋urease(+)＋bird/niger seed 產黑色素＝Cryptococcus**。","Mucicarmine 將莢膜染紅；**窄基底出芽**（對比 Blastomyces 寬基底）。"],
+      "qa": [["111年 第17題","產咖啡色菌落以區分的培養基（niger seed agar）→ Cryptococcus"],["108年 第67題","將 Cryptococcus 莢膜染紅之染色（Mucicarmine）"],["113年 第66題","酵母、urease(+)、bird seed 深棕菌落 → Cryptococcus 鑑定依據"]]
+    },
+    {
+      "h1": "擔子菌門（Basidiomycota）", "h2": "酵母型（Cryptococcus·Malassezia 等）", "zh": "格特隱球菌", "en": "Cryptococcus gattii", "stars": 1,
+      "sys": ["中樞神經","肺"],
+      "morph": "與 neoformans 相似，具莢膜、窄基底出芽。",
+      "oxy": "SDA；**CGB（canavanine-glycine-bromothymol）agar 變藍**。",
+      "media": "SDA；CGB（藍）。",
+      "tests": "India ink、urease(+)；**CGB(+) 變藍** 區分 gattii vs neoformans。",
+      "vir": "莢膜；**可感染免疫正常者**。",
+      "dis": "隱球菌病（太平洋西北、熱帶；免疫正常宿主）。",
+      "resist": "amphotericin B／fluconazole（療程較長）。",
+      "hot": ["**C. gattii 以 CGB agar 變藍與 C. neoformans 區分**；可感染免疫正常者。"],
+      "qa": [["概念","CGB agar 區分 C. gattii（藍）與 C. neoformans"]]
+    },
+    {
+      "h1": "擔子菌門（Basidiomycota）", "h2": "酵母型（Cryptococcus·Malassezia 等）", "zh": "糠秕馬拉色菌", "en": "Malassezia furfur", "stars": 2,
+      "sys": ["皮膚/毛髮/甲","淺表","血流"],
+      "morph": "酵母＋短菌絲，皮屑鏡檢呈**「義大利麵與肉丸（spaghetti and meatballs）」**。",
+      "oxy": "**嗜脂（lipophilic）**，需於 SDA 上**覆蓋橄欖油**才能生長。",
+      "media": "SDA＋橄欖油（脂質覆蓋）。",
+      "tests": "嗜脂需求、KOH 皮屑鏡檢。",
+      "vir": "嗜脂，好發於皮脂腺豐富部位。",
+      "dis": "汗斑（花斑癬，tinea versicolor）、脂漏性皮膚炎；靜脈脂質營養者導管相關敗血症。",
+      "resist": "外用/口服 azole。",
+      "hot": ["**Malassezia 嗜脂，需加油脂才長**；皮屑「義大利麵與肉丸」。"],
+      "qa": [["114年 第17題（醫二）","可在不含脂質培養基生長者為 M. pachydermatis；M. furfur 需脂質"]]
+    },
+    {
+      "h1": "擔子菌門（Basidiomycota）", "h2": "酵母型（Cryptococcus·Malassezia 等）", "zh": "阿薩希毛孢子菌", "en": "Trichosporon asahii", "stars": 1,
+      "sys": ["血流","伺機性","皮膚/毛髮/甲"],
+      "morph": "酵母＋假菌絲＋**真菌絲＋關節孢子（arthroconidia）**。",
+      "oxy": "SDA 奶油色皺褶菌落。",
+      "media": "SDA。",
+      "tests": "**urease(+)、arthroconidia**。",
+      "vir": "伺機性播散。",
+      "dis": "白毛結節（white piedra）、免疫低下播散性 trichosporonosis。",
+      "resist": "**血清隱球菌乳膠抗原可交叉反應**；azole/voriconazole。",
+      "hot": ["**Trichosporon 產關節孢子（arthroconidia）＋urease(+)**；播散症與隱球菌抗原可交叉反應。"],
+      "qa": [["106年 第60題","cornmeal agar 上形成關節孢子（arthroconidia）者＝Trichosporon"]]
+    },
+    {
+      "h1": "接合菌門／毛黴門（Zygomycota）", "h2": "毛黴目（Mucorales）", "zh": "根黴菌", "en": "Rhizopus", "stars": 3,
+      "sys": ["系統性","伺機性","肺"],
+      "morph": "**寬大、少/無分隔菌絲（coenocytic）、90°直角分枝**；孢子囊＋**假根（rhizoid）位於匍匐枝節點正下方**。",
+      "oxy": "SDA 數日內快長，棉花糖樣、布滿培養皿（lid lifter）。",
+      "media": "SDA。",
+      "tests": "寬無隔菌絲、直角分枝、假根位置。",
+      "vir": "**血管侵犯（angioinvasion）、組織壞死**；鐵離子/酸中毒（DKA）促進生長。",
+      "dis": "毛黴病（糖尿病酮酸中毒者鼻腦型；肺型）。",
+      "resist": "**amphotericin B＋手術清創**；對 voriconazole **無效**。",
+      "hot": ["**寬大無分隔菌絲＋直角(90°)分枝＝毛黴目**（對比 Aspergillus 分隔、45°）。","Rhizopus 假根在匍匐枝節點正下方；DKA→鼻腦型；治療 amphotericin＋清創，voriconazole 無效。"],
+      "qa": [["114年 第69題","不分節菌絲、孢子囊柄下有假根、上有孢子囊（Rhizopus）"],["108年 第66題","Rhizopus 的孢子囊柄與假根相對、位於同一節點；位於兩假根節之間較符合 Lichtheimia（舊稱 Absidia）"]]
+    },
+    {
+      "h1": "接合菌門／毛黴門（Zygomycota）", "h2": "毛黴目（Mucorales）", "zh": "毛黴菌", "en": "Mucor", "stars": 1,
+      "sys": ["系統性","伺機性"],
+      "morph": "寬大、少/無分隔菌絲；具孢子囊但**無假根、無匍匐枝**（與 Rhizopus 區分）。",
+      "oxy": "SDA 快長。",
+      "media": "SDA。",
+      "tests": "**無假根**；寬無隔菌絲、直角分枝。",
+      "vir": "血管侵犯。",
+      "dis": "毛黴病（鼻腦/肺/播散）。",
+      "resist": "amphotericin B＋清創；部分對 isavuconazole 有效。",
+      "hot": ["**Mucor 無假根（對比 Rhizopus 有假根）**；同屬毛黴目寬無隔、直角分枝。"],
+      "qa": [["114年 第69題","有假根＝Rhizopus；Mucor 無假根（對比鑑別）"],["109年 第71題","菌絲具分隔即可排除毛黴（zygomycetes）"]]
+    }
+  ],
+  "tables": [
+    {
+      "id": "dimorphic-tissue", "scope": "雙相型真菌（Dimorphic）",
+      "title": "雙相型真菌：組織/酵母相特徵速記",
+      "note": "25℃ 黴菌相 ↔ 37℃(組織) 酵母相。",
+      "columns": ["菌", "組織/酵母相特徵", "流行/關鍵"],
+      "rows": [
+        ["Histoplasma capsulatum", "巨噬細胞內小酵母", "tuberculate macroconidia；鳥蝙蝠糞"],
+        ["Blastomyces dermatitidis", "寬基底單芽厚壁酵母", "北美"],
+        ["Coccidioides immitis", "球囊(spherule)含內孢子", "關節孢子；美西南沙漠"],
+        ["Paracoccidioides brasiliensis", "舵輪狀多重出芽", "中南美"],
+        ["Sporothrix schenckii", "雪茄形酵母", "玫瑰園丁；皮下植入"],
+        ["Talaromyces marneffei", "橫裂(fission)酵母", "紅色色素；東南亞 HIV"]
+      ],
+      "footnote": "**寬基底＝Blastomyces；窄基底＝Cryptococcus；球囊＝Coccidioides；舵輪＝Paracoccidioides；雪茄形＝Sporothrix**。"
+    },
+    {
+      "id": "candida-id", "scope": "酵母菌（Candida 等）",
+      "title": "常見 Candida 鑑別與抗藥",
+      "note": "germ tube／CHROMagar 顏色／fluconazole。",
+      "columns": ["Candida", "germ tube", "CHROMagar", "fluconazole"],
+      "rows": [
+        ["albicans", "＋", "綠", "敏感"],
+        ["tropicalis", "－(可假芽管)", "藍/鋼藍", "多敏感"],
+        ["glabrata", "－", "紫/粉", "常抗藥"],
+        ["krusei", "－", "粉紅粗糙", "天生抗藥"],
+        ["auris", "－", "多變", "多重抗藥"]
+      ],
+      "footnote": "**germ tube(+)＝albicans**；krusei 天生對 fluconazole 抗藥；auris 多重抗藥需分子鑑定。"
+    },
+    {
+      "id": "septate-vs", "scope": "毛黴目（Mucorales）",
+      "title": "麴菌 vs 毛黴目（最高頻鑑別）",
+      "note": "顯微菌絲與治療差異。",
+      "columns": ["特徵", "Aspergillus（麴菌）", "毛黴目（Mucorales）"],
+      "rows": [
+        ["菌絲", "分隔(septate)、細", "寬大、少/無分隔(coenocytic)"],
+        ["分枝角度", "45°銳角", "90°直角"],
+        ["組織", "血管侵犯", "強血管侵犯、壞死"],
+        ["voriconazole", "有效(首選)", "無效"],
+        ["治療", "voriconazole", "amphotericin B＋手術清創"]
+      ],
+      "footnote": "**分隔＋45°＝Aspergillus；寬無隔＋90°＝毛黴目**；毛黴目對 voriconazole 無效是常考治療陷阱。"
+    }
+  ]
+}
