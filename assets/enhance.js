@@ -7,32 +7,46 @@
     if(n>60)return;setTimeout(function(){ready(cb,n+1);},100);}
   function starCount(card){var s=card.querySelector('.stars');return s?(s.textContent.match(/★/g)||[]).length:0;}
   function esc(q){return q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
-  var KEY='collapsed:'+location.pathname;
+  var KEY='card-state-v2:'+location.pathname;
 
   ready(function(){
     var search=document.getElementById('search');
     var controls=document.querySelector('.controls');
-    var hf=false;
+    var hf=false,beforeHigh=null;
 
     // 1) 記住展開/收合（localStorage）
     var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
-    var savedCards=saved.cards||saved,savedGroups=saved.groups||{};
-    document.querySelectorAll('#cards .card').forEach(function(c){if(c.id&&savedCards[c.id])c.classList.add('collapsed');});
-    document.querySelectorAll('#cards .group').forEach(function(g){if(g.dataset.group&&savedGroups[g.dataset.group])g.classList.add('collapsed');});
+    var savedCards=saved.cards||{},savedGroups=saved.groups||{};
+    document.querySelectorAll('#cards .card').forEach(function(c){
+      var collapsed=c.id&&Object.prototype.hasOwnProperty.call(savedCards,c.id)?savedCards[c.id]:true;
+      c.classList.toggle('collapsed',collapsed);
+    });
+    document.querySelectorAll('#cards .group').forEach(function(g){
+      var collapsed=g.dataset.group&&Object.prototype.hasOwnProperty.call(savedGroups,g.dataset.group)?savedGroups[g.dataset.group]:false;
+      g.classList.toggle('collapsed',collapsed);
+    });
     function saveCollapsed(){
       var cards={},groups={};
-      document.querySelectorAll('#cards .card.collapsed').forEach(function(c){if(c.id)cards[c.id]=1;});
-      document.querySelectorAll('#cards .group.collapsed').forEach(function(g){if(g.dataset.group)groups[g.dataset.group]=1;});
+      document.querySelectorAll('#cards .card').forEach(function(c){if(c.id)cards[c.id]=c.classList.contains('collapsed');});
+      document.querySelectorAll('#cards .group').forEach(function(g){if(g.dataset.group)groups[g.dataset.group]=g.classList.contains('collapsed');});
       try{localStorage.setItem(KEY,JSON.stringify({cards:cards,groups:groups}));}catch(e){}
     }
+    function captureView(){
+      return {cards:[].map.call(document.querySelectorAll('#cards .card'),function(c){return [c,c.classList.contains('collapsed')];}),
+        groups:[].map.call(document.querySelectorAll('#cards .group'),function(g){return [g,g.classList.contains('collapsed')];})};
+    }
+    function restoreView(state){if(!state)return;
+      state.cards.forEach(function(x){x[0].classList.toggle('collapsed',x[1]);});
+      state.groups.forEach(function(x){x[0].classList.toggle('collapsed',x[1]);});}
 
     // 2) 只看極高頻：只顯示並展開 ⭐⭐⭐ 卡片
     if(controls){var btn=document.createElement('button');btn.type='button';btn.className='hf-btn';btn.textContent='⭐⭐⭐ 只看極高頻';
       btn.setAttribute('aria-pressed','false');
       controls.appendChild(btn);
-      btn.onclick=function(){hf=!hf;btn.classList.toggle('on',hf);btn.setAttribute('aria-pressed',hf?'true':'false');
+      btn.onclick=function(){if(!hf)beforeHigh=captureView();hf=!hf;btn.classList.toggle('on',hf);btn.setAttribute('aria-pressed',hf?'true':'false');
         btn.textContent=hf?'⭐⭐⭐ 極高頻 ON':'⭐⭐⭐ 只看極高頻';
         if(hf&&search)search.value='';
+        if(!hf){restoreView(beforeHigh);beforeHigh=null;}
         if(search)search.dispatchEvent(new Event('input'));else post();};}
 
     // 2b) 手機標籤抽屜（bacteria/fungi 臨床標籤；media 已自帶 toggle 故略過）
@@ -110,7 +124,7 @@
         }}});}
     document.addEventListener('click',function(e){
       if(!e.target||!e.target.closest)return;
-      if(e.target.closest('.card-head,.group-head')||e.target.closest('#expandAll')||e.target.closest('#collapseAll'))setTimeout(saveCollapsed,0);
+      if(!hf&&(e.target.closest('.card-head,.group-head')||e.target.closest('#expandAll')||e.target.closest('#collapseAll')))setTimeout(saveCollapsed,0);
       var tag=e.target.closest('.tagfilter');if(tag)setTimeout(function(){tag.setAttribute('aria-pressed',tag.classList.contains('active')?'true':'false');},0);
       if(e.target.closest('.tagfilter,.tag-toggle,#expandAll,#collapseAll'))post();});
     post();
