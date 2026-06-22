@@ -1,0 +1,27 @@
+/* P1 閱讀性增強（三個模組共用，疊加於各模組樣式之上） */
+mark.hl{background:#ffe58a;color:inherit;border-radius:2px;padding:0 1px}
+.hf-btn{cursor:pointer;border:1.5px solid #e0b34a;background:#fff;border-radius:8px;
+  padding:6px 12px;font-size:13px;color:#b9770e;white-space:nowrap}
+.hf-btn:hover{background:#fff7e6}
+.hf-btn.on{background:#ffe58a;color:#7a5200;border-color:#e0a317;font-weight:700}
+/* 比較表表頭 sticky（長表捲動時固定欄名） */
+.cmp .cmp-scroll{max-height:72vh;overflow-y:auto}
+.cmp table thead th{position:sticky;top:0;z-index:2}
+.card,.group{scroll-margin-top:220px}
+/* 手機：縮短 sticky header、隱藏副標讓內容更高 */
+@media(max-width:640px){
+  header.top{position:static;padding:8px 12px}
+  header.top h1{font-size:15px}
+  .sub{display:none}
+  .legend{display:none}
+  .card,.group{scroll-margin-top:12px}
+}
+/* 手機標籤抽屜（桌機隱藏按鈕、標籤照常顯示；手機收合僅顯示按鈕與已選） */
+.tag-drawer-btn{cursor:pointer;border:1.5px solid #cdd5df;background:#fff;border-radius:999px;
+  padding:5px 13px;font-size:13px;color:#556;font-weight:700;display:none}
+.tag-drawer-btn:hover{border-color:#99a}
+@media(max-width:640px){
+  .tag-drawer-btn{display:inline-block}
+  .tagbar.has-drawer:not(.open) .tagfilter:not(.active){display:none}
+  .tagbar.has-drawer:not(.open) .tagbar-label{display:none}
+}

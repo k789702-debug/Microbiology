@@ -1,0 +1,30 @@
+name: Validate data
+
+# 每次 push / PR 變動資料或程式時，自動驗證 bacteria.json、media.json 與 fungi.json
+on:
+  push:
+    paths:
+      - '**/data/**'
+      - 'schema/**'
+      - 'scripts/**'
+      - '.github/workflows/validate.yml'
+  pull_request:
+    paths:
+      - '**/data/**'
+      - 'schema/**'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 驗證細菌資料
+        run: node scripts/validate_bacteria.js
+      - name: 驗證培養基資料
+        run: node scripts/validate_media.js
+      - name: 驗證真菌資料
+        run: node scripts/validate_fungi.js
