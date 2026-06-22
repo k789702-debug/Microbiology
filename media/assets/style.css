@@ -21,7 +21,7 @@ header.top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#f
 .th-badge{background:var(--th);color:#fff;border-radius:8px;padding:4px 12px;font-weight:700;font-size:14px;letter-spacing:1px}
 h1{font-size:19px;margin:0;font-weight:800}
 .sub{color:var(--muted);font-size:12.5px;margin-top:2px}
-.nav{margin-left:auto;display:flex;gap:8px}
+.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .nav a{border:1.5px solid var(--th-line);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--th)}
 .nav a:hover{background:var(--th-soft)}
 .nav a.cur{background:var(--th);color:#fff;border-color:var(--th)}
@@ -108,7 +108,11 @@ table.qa td.yr{white-space:nowrap;color:var(--th);font-weight:700;width:120px}
 .cmp td{padding:5px 8px;border:1px solid var(--th-line);text-align:center}
 .cmp td.name{text-align:left;font-weight:700;white-space:nowrap}
 .cmp tbody tr:nth-child(even){background:#f3fbf9}
-@media(max-width:640px){.field{grid-template-columns:1fr;gap:2px}h1{font-size:16px}table.sp td.nm{width:auto}}
+@media(max-width:640px){
+  .field{grid-template-columns:1fr;gap:2px}h1{font-size:16px}table.sp td.nm{width:auto}
+  .nav{width:100%;margin-left:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .nav a{text-align:center;padding:6px 8px}
+}
 
 /* ===== 類型主題（未來各群）：以 .group[data-type] 覆寫 ===== */
 .group[data-type="base"]{--th:#5b6b7a;--th-soft:#eef2f6;--th-line:#cfd9e2}

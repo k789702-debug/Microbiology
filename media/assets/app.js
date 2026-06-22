@@ -15,6 +15,8 @@
   function genusOf(name){const m=String(name).match(/^([A-Z][a-z]+)/);return m?m[1]:null;}
   // 細菌大綱已收錄的屬（xref 白名單；只連得到的才做超連結）
   const BACT_GENERA=new Set(["Acinetobacter","Actinomyces","Bacillus","Bacteroides","Bartonella","Bordetella","Borrelia","Brucella","Burkholderia","Campylobacter","Chlamydia","Citrobacter","Clostridioides","Clostridium","Corynebacterium","Coxiella","Ehrlichia","Enterobacter","Enterococcus","Erysipelothrix","Escherichia","Francisella","Fusobacterium","Haemophilus","Helicobacter","Klebsiella","Lactobacillus","Legionella","Leptospira","Listeria","Moraxella","Mycobacterium","Mycoplasma","Neisseria","Nocardia","Pasteurella","Prevotella","Proteus","Pseudomonas","Rickettsia","Salmonella","Serratia","Shigella","Staphylococcus","Stenotrophomonas","Streptococcus","Treponema","Ureaplasma","Vibrio","Yersinia"]);
+  // 真菌大綱已收錄的屬（連到 ../fungi）
+  const FUNGI_GENERA=new Set(["Aspergillus", "Blastomyces", "Candida", "Cladophialophora", "Coccidioides", "Cryptococcus", "Epidermophyton", "Fonsecaea", "Fusarium", "Histoplasma", "Malassezia", "Microsporum", "Mucor", "Paracoccidioides", "Pneumocystis", "Rhizopus", "Sporothrix", "Talaromyces", "Trichophyton", "Trichosporon"]);
 
   let DATA=null, activeTags=new Set();
 
@@ -46,9 +48,9 @@
   function spTable(species){
     const rows=species.map(s=>{
       const g=genusOf(s[0]);
-      const nameCell=(g && BACT_GENERA.has(g))
-        ? '<a class="xref" href="../bacteria/index.html?q='+encodeURIComponent(g)+'" title="到細菌大綱查 '+esc(g)+'">'+esc(s[0])+'</a>'
-        : esc(s[0]);
+      let nameCell=esc(s[0]);
+      if(g && BACT_GENERA.has(g)) nameCell='<a class="xref" href="../bacteria/index.html?q='+encodeURIComponent(g)+'" title="到細菌大綱查 '+esc(g)+'">'+esc(s[0])+'</a>';
+      else if(g && FUNGI_GENERA.has(g)) nameCell='<a class="xref" href="../fungi/index.html?q='+encodeURIComponent(g)+'" title="到真菌大綱查 '+esc(g)+'">'+esc(s[0])+'</a>';
       return '<tr><td class="nm">'+nameCell+'</td><td>'+md(s[1])+'</td></tr>';
     }).join('');
     return '<table class="sp"><tbody>'+rows+'</tbody></table>';
